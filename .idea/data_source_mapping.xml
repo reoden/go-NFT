@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourcePerFileMappings">
+    <file url="file://$APPLICATION_CONFIG_DIR$/consoles/db/f702d783-9465-418b-be37-7dbee9c08be6/console.sql" value="f702d783-9465-418b-be37-7dbee9c08be6" />
+    <file url="file://$PROJECT_DIR$/internal/services/catalogs/db/migrations/go-migrate/schema.sql" value="f702d783-9465-418b-be37-7dbee9c08be6" />
+  </component>
+</project>

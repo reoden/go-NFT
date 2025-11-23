@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/internal/services/catalogs/db/migrations/atlas/20230919170700.sql" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/internal/services/catalogs/db/migrations/atlas/goose/00001_enable_uuid_extension.sql" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/internal/services/catalogs/db/migrations/atlas/goose/00002_create_products_table.sql" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/internal/services/catalogs/db/migrations/go-migrate/000001_enable_uuid_extension.down.sql" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/internal/services/catalogs/db/migrations/go-migrate/000001_enable_uuid_extension.up.sql" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/internal/services/catalogs/db/migrations/go-migrate/000002_create_products_table.down.sql" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/internal/services/catalogs/db/migrations/go-migrate/000002_create_products_table.up.sql" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/internal/services/catalogs/db/migrations/go-migrate/000005_create_products_table.down.sql" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/internal/services/catalogs/db/migrations/go-migrate/000005_create_products_table.up.sql" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/internal/services/catalogs/db/migrations/go-migrate/schema.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/internal/services/catalogs/db/migrations/goose-migrate/00001_enable_uuid_extension.sql" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/internal/services/catalogs/db/migrations/goose-migrate/00002_create_products_table.sql" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/internal/services/catalogs/db/migrations/goose-migrate/00003_create_product_table.sql" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/internal/services/catalogs/db/migrations/goose-migrate/00004_create_product_table.sql" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/internal/services/catalogs/db/migrations/goose-migrate/00005_create_product_table.sql" dialect="GenericSQL" />
+  </component>
+</project>
