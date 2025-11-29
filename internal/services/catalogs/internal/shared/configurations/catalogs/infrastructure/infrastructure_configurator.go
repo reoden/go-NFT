@@ -1,13 +1,13 @@
 package infrastructure
 
 import (
-	"github.com/reoden/go-echo-template/pkg/fxapp/contracts"
-	"github.com/reoden/go-echo-template/pkg/logger"
-	loggingpipelines "github.com/reoden/go-echo-template/pkg/logger/pipelines"
-	"github.com/reoden/go-echo-template/pkg/otel/metrics"
-	metricspipelines "github.com/reoden/go-echo-template/pkg/otel/metrics/mediatr/pipelines"
-	"github.com/reoden/go-echo-template/pkg/otel/tracing"
-	tracingpipelines "github.com/reoden/go-echo-template/pkg/otel/tracing/mediatr/pipelines"
+	"github.com/reoden/go-NFT/pkg/fxapp/contracts"
+	"github.com/reoden/go-NFT/pkg/logger"
+	loggingpipelines "github.com/reoden/go-NFT/pkg/logger/pipelines"
+	"github.com/reoden/go-NFT/pkg/otel/metrics"
+	metricspipelines "github.com/reoden/go-NFT/pkg/otel/metrics/mediatr/pipelines"
+	"github.com/reoden/go-NFT/pkg/otel/tracing"
+	tracingpipelines "github.com/reoden/go-NFT/pkg/otel/tracing/mediatr/pipelines"
 
 	"github.com/mehdihadeli/go-mediatr"
 )

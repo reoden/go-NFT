@@ -3,8 +3,8 @@ package pipeline
 import (
 	"context"
 
-	"github.com/reoden/go-echo-template/pkg/logger"
-	"github.com/reoden/go-echo-template/pkg/validation"
+	"github.com/reoden/go-NFT/pkg/logger"
+	"github.com/reoden/go-NFT/pkg/validation"
 
 	"github.com/mehdihadeli/go-mediatr"
 )

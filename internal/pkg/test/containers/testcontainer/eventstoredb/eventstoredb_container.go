@@ -6,10 +6,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/reoden/go-echo-template/pkg/eventstroredb"
-	"github.com/reoden/go-echo-template/pkg/eventstroredb/config"
-	"github.com/reoden/go-echo-template/pkg/logger"
-	"github.com/reoden/go-echo-template/pkg/test/containers/contracts"
+	"github.com/reoden/go-NFT/pkg/eventstroredb"
+	"github.com/reoden/go-NFT/pkg/eventstroredb/config"
+	"github.com/reoden/go-NFT/pkg/logger"
+	"github.com/reoden/go-NFT/pkg/test/containers/contracts"
 
 	"emperror.dev/errors"
 	"github.com/EventStore/EventStore-Client-Go/esdb"

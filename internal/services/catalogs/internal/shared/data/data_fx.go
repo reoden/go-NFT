@@ -1,7 +1,7 @@
 package data
 
 import (
-	"github.com/reoden/go-echo-template/catalogs/internal/shared/data/dbcontext"
+	"github.com/reoden/go-NFT/catalogs/internal/shared/data/dbcontext"
 
 	"go.uber.org/fx"
 )

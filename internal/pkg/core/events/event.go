@@ -3,7 +3,7 @@ package events
 import (
 	"time"
 
-	typeMapper "github.com/reoden/go-echo-template/pkg/reflection/typemapper"
+	typeMapper "github.com/reoden/go-NFT/pkg/reflection/typemapper"
 
 	uuid "github.com/satori/go.uuid"
 )

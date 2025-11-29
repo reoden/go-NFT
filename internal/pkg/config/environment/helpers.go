@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/reoden/go-echo-template/pkg/constants"
+	"github.com/reoden/go-NFT/pkg/constants"
 
 	"emperror.dev/errors"
 	"github.com/spf13/viper"

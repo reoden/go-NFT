@@ -3,7 +3,7 @@ package cqrs
 import (
 	"reflect"
 
-	"github.com/reoden/go-echo-template/pkg/reflection/typemapper"
+	"github.com/reoden/go-NFT/pkg/reflection/typemapper"
 )
 
 type TypeInfo interface {

@@ -3,7 +3,7 @@ package types
 import (
 	"time"
 
-	typeMapper "github.com/reoden/go-echo-template/pkg/reflection/typemapper"
+	typeMapper "github.com/reoden/go-NFT/pkg/reflection/typemapper"
 )
 
 type IMessage interface {

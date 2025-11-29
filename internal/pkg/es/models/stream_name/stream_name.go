@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/reoden/go-echo-template/pkg/es/models"
+	"github.com/reoden/go-NFT/pkg/es/models"
 
 	"github.com/goccy/go-reflect"
 	uuid "github.com/satori/go.uuid"

@@ -1,8 +1,8 @@
 package handlers
 
 import (
-	problemDetails "github.com/reoden/go-echo-template/pkg/http/httperrors/problemdetails"
-	"github.com/reoden/go-echo-template/pkg/logger"
+	problemDetails "github.com/reoden/go-NFT/pkg/http/httperrors/problemdetails"
+	"github.com/reoden/go-NFT/pkg/logger"
 
 	"emperror.dev/errors"
 	"github.com/labstack/echo/v4"

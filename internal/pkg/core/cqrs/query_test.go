@@ -3,7 +3,7 @@ package cqrs
 import (
 	"testing"
 
-	"github.com/reoden/go-echo-template/pkg/reflection/typemapper"
+	"github.com/reoden/go-NFT/pkg/reflection/typemapper"
 
 	uuid "github.com/satori/go.uuid"
 	"github.com/stretchr/testify/assert"

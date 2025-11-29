@@ -1,7 +1,7 @@
 package eventstroredb
 
 import (
-	"github.com/reoden/go-echo-template/pkg/eventstroredb/config"
+	"github.com/reoden/go-NFT/pkg/eventstroredb/config"
 
 	"github.com/EventStore/EventStore-Client-Go/esdb"
 )

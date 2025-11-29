@@ -4,7 +4,7 @@ import (
 	"context"
 	"testing"
 
-	"github.com/reoden/go-echo-template/pkg/mongodb"
+	"github.com/reoden/go-NFT/pkg/mongodb"
 )
 
 type MongoContainerOptions struct {

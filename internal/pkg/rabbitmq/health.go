@@ -3,8 +3,8 @@ package rabbitmq
 import (
 	"context"
 
-	"github.com/reoden/go-echo-template/pkg/health/contracts"
-	"github.com/reoden/go-echo-template/pkg/rabbitmq/types"
+	"github.com/reoden/go-NFT/pkg/health/contracts"
+	"github.com/reoden/go-NFT/pkg/rabbitmq/types"
 
 	"emperror.dev/errors"
 )

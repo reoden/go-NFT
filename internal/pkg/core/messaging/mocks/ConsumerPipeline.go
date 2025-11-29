@@ -5,8 +5,8 @@ package mocks
 import (
 	context "context"
 
-	pipeline "github.com/reoden/go-echo-template/pkg/core/messaging/pipeline"
-	types "github.com/reoden/go-echo-template/pkg/core/messaging/types"
+	pipeline "github.com/reoden/go-NFT/pkg/core/messaging/pipeline"
+	types "github.com/reoden/go-NFT/pkg/core/messaging/types"
 	mock "github.com/stretchr/testify/mock"
 )
 

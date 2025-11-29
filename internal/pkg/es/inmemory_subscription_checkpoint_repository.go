@@ -3,7 +3,7 @@ package es
 import (
 	"context"
 
-	"github.com/reoden/go-echo-template/pkg/es/contracts"
+	"github.com/reoden/go-NFT/pkg/es/contracts"
 )
 
 type inMemorySubscriptionCheckpointRepository struct {

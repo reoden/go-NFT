@@ -3,7 +3,7 @@ package mongodb
 import (
 	"context"
 
-	"github.com/reoden/go-echo-template/pkg/utils"
+	"github.com/reoden/go-NFT/pkg/utils"
 
 	"emperror.dev/errors"
 	"go.mongodb.org/mongo-driver/bson"

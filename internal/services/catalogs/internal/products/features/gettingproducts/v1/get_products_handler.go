@@ -3,15 +3,15 @@ package v1
 import (
 	"context"
 
-	datamodel "github.com/reoden/go-echo-template/catalogs/internal/products/data/datamodels"
-	dtosv1 "github.com/reoden/go-echo-template/catalogs/internal/products/dtos/v1"
-	"github.com/reoden/go-echo-template/catalogs/internal/products/dtos/v1/fxparams"
-	"github.com/reoden/go-echo-template/catalogs/internal/products/features/gettingproducts/v1/dtos"
-	"github.com/reoden/go-echo-template/catalogs/internal/products/models"
-	"github.com/reoden/go-echo-template/pkg/core/cqrs"
-	customErrors "github.com/reoden/go-echo-template/pkg/http/httperrors/customerrors"
-	"github.com/reoden/go-echo-template/pkg/postgresgorm/helpers/gormextensions"
-	"github.com/reoden/go-echo-template/pkg/utils"
+	datamodel "github.com/reoden/go-NFT/catalogs/internal/products/data/datamodels"
+	dtosv1 "github.com/reoden/go-NFT/catalogs/internal/products/dtos/v1"
+	"github.com/reoden/go-NFT/catalogs/internal/products/dtos/v1/fxparams"
+	"github.com/reoden/go-NFT/catalogs/internal/products/features/gettingproducts/v1/dtos"
+	"github.com/reoden/go-NFT/catalogs/internal/products/models"
+	"github.com/reoden/go-NFT/pkg/core/cqrs"
+	customErrors "github.com/reoden/go-NFT/pkg/http/httperrors/customerrors"
+	"github.com/reoden/go-NFT/pkg/postgresgorm/helpers/gormextensions"
+	"github.com/reoden/go-NFT/pkg/utils"
 
 	"github.com/mehdihadeli/go-mediatr"
 )

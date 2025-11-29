@@ -1,13 +1,13 @@
 package fxapp
 
 import (
-	"github.com/reoden/go-echo-template/pkg/config/environment"
-	"github.com/reoden/go-echo-template/pkg/fxapp/contracts"
-	"github.com/reoden/go-echo-template/pkg/logger"
-	loggerConfig "github.com/reoden/go-echo-template/pkg/logger/config"
-	"github.com/reoden/go-echo-template/pkg/logger/logrous"
-	"github.com/reoden/go-echo-template/pkg/logger/models"
-	"github.com/reoden/go-echo-template/pkg/logger/zap"
+	"github.com/reoden/go-NFT/pkg/config/environment"
+	"github.com/reoden/go-NFT/pkg/fxapp/contracts"
+	"github.com/reoden/go-NFT/pkg/logger"
+	loggerConfig "github.com/reoden/go-NFT/pkg/logger/config"
+	"github.com/reoden/go-NFT/pkg/logger/logrous"
+	"github.com/reoden/go-NFT/pkg/logger/models"
+	"github.com/reoden/go-NFT/pkg/logger/zap"
 
 	"go.uber.org/fx"
 )

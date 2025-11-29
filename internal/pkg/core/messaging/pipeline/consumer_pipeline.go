@@ -3,7 +3,7 @@ package pipeline
 import (
 	"context"
 
-	"github.com/reoden/go-echo-template/pkg/core/messaging/types"
+	"github.com/reoden/go-NFT/pkg/core/messaging/types"
 )
 
 // ConsumerHandlerFunc is a continuation for the next task to execute in the pipeline

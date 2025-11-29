@@ -3,8 +3,8 @@ package catalogs
 import (
 	"context"
 
-	"github.com/reoden/go-echo-template/catalogs/internal/products/models"
-	"github.com/reoden/go-echo-template/pkg/migration/contracts"
+	"github.com/reoden/go-NFT/catalogs/internal/products/models"
+	"github.com/reoden/go-NFT/pkg/migration/contracts"
 
 	"gorm.io/gorm"
 )

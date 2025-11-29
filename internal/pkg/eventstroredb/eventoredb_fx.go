@@ -4,8 +4,8 @@ import (
 	"context"
 	"time"
 
-	"github.com/reoden/go-echo-template/pkg/eventstroredb/config"
-	"github.com/reoden/go-echo-template/pkg/logger"
+	"github.com/reoden/go-NFT/pkg/eventstroredb/config"
+	"github.com/reoden/go-NFT/pkg/logger"
 
 	"github.com/EventStore/EventStore-Client-Go/esdb"
 	"go.uber.org/fx"

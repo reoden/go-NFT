@@ -3,12 +3,12 @@ package defaultLogger
 import (
 	"os"
 
-	"github.com/reoden/go-echo-template/pkg/constants"
-	"github.com/reoden/go-echo-template/pkg/logger"
-	"github.com/reoden/go-echo-template/pkg/logger/config"
-	"github.com/reoden/go-echo-template/pkg/logger/logrous"
-	"github.com/reoden/go-echo-template/pkg/logger/models"
-	"github.com/reoden/go-echo-template/pkg/logger/zap"
+	"github.com/reoden/go-NFT/pkg/constants"
+	"github.com/reoden/go-NFT/pkg/logger"
+	"github.com/reoden/go-NFT/pkg/logger/config"
+	"github.com/reoden/go-NFT/pkg/logger/logrous"
+	"github.com/reoden/go-NFT/pkg/logger/models"
+	"github.com/reoden/go-NFT/pkg/logger/zap"
 )
 
 var l logger.Logger

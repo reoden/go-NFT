@@ -4,12 +4,12 @@ import (
 	"context"
 	"testing"
 
-	"github.com/reoden/go-echo-template/pkg/config"
-	"github.com/reoden/go-echo-template/pkg/config/environment"
-	"github.com/reoden/go-echo-template/pkg/core"
-	"github.com/reoden/go-echo-template/pkg/logger/external/fxlog"
-	"github.com/reoden/go-echo-template/pkg/logger/zap"
-	"github.com/reoden/go-echo-template/pkg/mongodb"
+	"github.com/reoden/go-NFT/pkg/config"
+	"github.com/reoden/go-NFT/pkg/config/environment"
+	"github.com/reoden/go-NFT/pkg/core"
+	"github.com/reoden/go-NFT/pkg/logger/external/fxlog"
+	"github.com/reoden/go-NFT/pkg/logger/zap"
+	"github.com/reoden/go-NFT/pkg/mongodb"
 
 	"github.com/stretchr/testify/assert"
 	"go.mongodb.org/mongo-driver/mongo"

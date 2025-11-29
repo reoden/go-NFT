@@ -1,8 +1,8 @@
 package postgresmessaging
 
 import (
-	"github.com/reoden/go-echo-template/pkg/core/messaging/persistmessage"
-	"github.com/reoden/go-echo-template/pkg/postgresmessaging/messagepersistence"
+	"github.com/reoden/go-NFT/pkg/core/messaging/persistmessage"
+	"github.com/reoden/go-NFT/pkg/postgresmessaging/messagepersistence"
 
 	"go.uber.org/fx"
 	"gorm.io/gorm"

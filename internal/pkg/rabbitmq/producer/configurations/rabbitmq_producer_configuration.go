@@ -3,10 +3,10 @@ package configurations
 import (
 	"reflect"
 
-	types2 "github.com/reoden/go-echo-template/pkg/core/messaging/types"
-	"github.com/reoden/go-echo-template/pkg/core/messaging/utils"
-	"github.com/reoden/go-echo-template/pkg/rabbitmq/producer/options"
-	"github.com/reoden/go-echo-template/pkg/rabbitmq/types"
+	types2 "github.com/reoden/go-NFT/pkg/core/messaging/types"
+	"github.com/reoden/go-NFT/pkg/core/messaging/utils"
+	"github.com/reoden/go-NFT/pkg/rabbitmq/producer/options"
+	"github.com/reoden/go-NFT/pkg/rabbitmq/types"
 )
 
 type RabbitMQProducerConfiguration struct {

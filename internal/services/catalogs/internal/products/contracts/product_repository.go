@@ -3,8 +3,8 @@ package contracts
 import (
 	"context"
 
-	"github.com/reoden/go-echo-template/catalogs/internal/products/models"
-	"github.com/reoden/go-echo-template/pkg/utils"
+	"github.com/reoden/go-NFT/catalogs/internal/products/models"
+	"github.com/reoden/go-NFT/pkg/utils"
 
 	uuid "github.com/satori/go.uuid"
 )

@@ -3,7 +3,7 @@ package interceptors
 import (
 	"context"
 
-	grpcerrors "github.com/reoden/go-echo-template/pkg/grpc/grpcErrors"
+	grpcerrors "github.com/reoden/go-NFT/pkg/grpc/grpcErrors"
 
 	"emperror.dev/errors"
 	"google.golang.org/grpc"

@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	"fmt"
 
-	bun2 "github.com/reoden/go-echo-template/pkg/bun"
+	bun2 "github.com/reoden/go-NFT/pkg/bun"
 
 	"emperror.dev/errors"
 	"github.com/uptrace/bun"

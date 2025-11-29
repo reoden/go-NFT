@@ -1,8 +1,8 @@
 package v1
 
 import (
-	customErrors "github.com/reoden/go-echo-template/pkg/http/httperrors/customerrors"
-	"github.com/reoden/go-echo-template/pkg/utils"
+	customErrors "github.com/reoden/go-NFT/pkg/http/httperrors/customerrors"
+	"github.com/reoden/go-NFT/pkg/utils"
 
 	validation "github.com/go-ozzo/ozzo-validation"
 )

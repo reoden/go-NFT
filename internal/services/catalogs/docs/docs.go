@@ -10,8 +10,8 @@ const docTemplate = `{
         "description": "{{escape .Description}}",
         "title": "{{.Title}}",
         "contact": {
-            "name": "Mehdi Hadeli",
-            "url": "https://github.com/mehdihadeli"
+            "name": "Reoden",
+            "url": "https://github.com/Reoden"
         },
         "version": "{{.Version}}"
     },
@@ -52,7 +52,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/github_com_reoden_go-echo-template_catalogs_internal_products_features_gettingproducts_v1_dtos.GetProductsResponseDto"
+                            "$ref": "#/definitions/dtos.GetProductsResponseDto"
                         }
                     }
                 }
@@ -76,7 +76,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/github_com_reoden_go-echo-template_catalogs_internal_products_features_creatingproduct_v1_dtos.CreateProductRequestDto"
+                            "$ref": "#/definitions/dtos.CreateProductRequestDto"
                         }
                     }
                 ],
@@ -84,7 +84,7 @@ const docTemplate = `{
                     "201": {
                         "description": "Created",
                         "schema": {
-                            "$ref": "#/definitions/github_com_reoden_go-echo-template_catalogs_internal_products_features_creatingproduct_v1_dtos.CreateProductResponseDto"
+                            "$ref": "#/definitions/dtos.CreateProductResponseDto"
                         }
                     }
                 }
@@ -114,7 +114,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/github_com_reoden_go-echo-template_catalogs_internal_products_features_searchingproduct_v1_dtos.SearchProductsResponseDto"
+                            "$ref": "#/definitions/dtos.SearchProductsResponseDto"
                         }
                     }
                 }
@@ -146,7 +146,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/github_com_reoden_go-echo-template_catalogs_internal_products_features_gettingproductbyid_v1_dtos.GetProductByIdResponseDto"
+                            "$ref": "#/definitions/dtos.GetProductByIdResponseDto"
                         }
                     }
                 }
@@ -170,7 +170,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/github_com_reoden_go-echo-template_catalogs_internal_products_features_updatingproduct_v1_dtos.UpdateProductRequestDto"
+                            "$ref": "#/definitions/dtos.UpdateProductRequestDto"
                         }
                     },
                     {
@@ -217,30 +217,7 @@ const docTemplate = `{
         }
     },
     "definitions": {
-        "github_com_reoden_go-echo-template_catalogs_internal_products_dtos_v1.ProductDto": {
-            "type": "object",
-            "properties": {
-                "createdAt": {
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string"
-                },
-                "id": {
-                    "type": "string"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "price": {
-                    "type": "number"
-                },
-                "updatedAt": {
-                    "type": "string"
-                }
-            }
-        },
-        "github_com_reoden_go-echo-template_catalogs_internal_products_features_creatingproduct_v1_dtos.CreateProductRequestDto": {
+        "dtos.CreateProductRequestDto": {
             "type": "object",
             "properties": {
                 "description": {
@@ -254,7 +231,7 @@ const docTemplate = `{
                 }
             }
         },
-        "github_com_reoden_go-echo-template_catalogs_internal_products_features_creatingproduct_v1_dtos.CreateProductResponseDto": {
+        "dtos.CreateProductResponseDto": {
             "type": "object",
             "properties": {
                 "productId": {
@@ -262,31 +239,31 @@ const docTemplate = `{
                 }
             }
         },
-        "github_com_reoden_go-echo-template_catalogs_internal_products_features_gettingproductbyid_v1_dtos.GetProductByIdResponseDto": {
+        "dtos.GetProductByIdResponseDto": {
             "type": "object",
             "properties": {
                 "product": {
-                    "$ref": "#/definitions/github_com_reoden_go-echo-template_catalogs_internal_products_dtos_v1.ProductDto"
+                    "$ref": "#/definitions/v1.ProductDto"
                 }
             }
         },
-        "github_com_reoden_go-echo-template_catalogs_internal_products_features_gettingproducts_v1_dtos.GetProductsResponseDto": {
+        "dtos.GetProductsResponseDto": {
             "type": "object",
             "properties": {
                 "products": {
-                    "$ref": "#/definitions/utils.ListResult-github_com_reoden_go-echo-template_catalogs_internal_products_dtos_v1_ProductDto"
+                    "$ref": "#/definitions/utils.ListResult-v1_ProductDto"
                 }
             }
         },
-        "github_com_reoden_go-echo-template_catalogs_internal_products_features_searchingproduct_v1_dtos.SearchProductsResponseDto": {
+        "dtos.SearchProductsResponseDto": {
             "type": "object",
             "properties": {
                 "products": {
-                    "$ref": "#/definitions/utils.ListResult-github_com_reoden_go-echo-template_catalogs_internal_products_dtos_v1_ProductDto"
+                    "$ref": "#/definitions/utils.ListResult-v1_ProductDto"
                 }
             }
         },
-        "github_com_reoden_go-echo-template_catalogs_internal_products_features_updatingproduct_v1_dtos.UpdateProductRequestDto": {
+        "dtos.UpdateProductRequestDto": {
             "type": "object",
             "properties": {
                 "description": {
@@ -334,13 +311,13 @@ const docTemplate = `{
                 }
             }
         },
-        "utils.ListResult-github_com_reoden_go-echo-template_catalogs_internal_products_dtos_v1_ProductDto": {
+        "utils.ListResult-v1_ProductDto": {
             "type": "object",
             "properties": {
                 "items": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/github_com_reoden_go-echo-template_catalogs_internal_products_dtos_v1.ProductDto"
+                        "$ref": "#/definitions/v1.ProductDto"
                     }
                 },
                 "page": {
@@ -356,6 +333,36 @@ const docTemplate = `{
                     "type": "integer"
                 }
             }
+        },
+        "v1.ProductDto": {
+            "type": "object",
+            "properties": {
+                "createdAt": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "updatedAt": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "BearerAuth": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
         }
     }
 }`
@@ -366,8 +373,8 @@ var SwaggerInfo = &swag.Spec{
 	Host:             "",
 	BasePath:         "",
 	Schemes:          []string{},
-	Title:            "Catalogs Write-Service Api",
-	Description:      "Catalogs Write-Service Api.",
+	Title:            "Catalogs Service Api",
+	Description:      "Catalogs Service Api.",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,
 	LeftDelim:        "{{",

@@ -1,7 +1,7 @@
 package gomigrate
 
 import (
-	"github.com/reoden/go-echo-template/pkg/migration"
+	"github.com/reoden/go-NFT/pkg/migration"
 
 	"go.uber.org/fx"
 )

@@ -4,8 +4,8 @@ import (
 	"context"
 	"testing"
 
-	"github.com/reoden/go-echo-template/pkg/eventstroredb/config"
-	"github.com/reoden/go-echo-template/pkg/logger"
+	"github.com/reoden/go-NFT/pkg/eventstroredb/config"
+	"github.com/reoden/go-NFT/pkg/logger"
 )
 
 var EventstoreDBContainerOptionsDecorator = func(t *testing.T, ctx context.Context) interface{} {

@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/reoden/go-echo-template/pkg/grpc/config"
-	"github.com/reoden/go-echo-template/pkg/grpc/handlers/otel"
+	"github.com/reoden/go-NFT/pkg/grpc/config"
+	"github.com/reoden/go-NFT/pkg/grpc/handlers/otel"
 
 	"emperror.dev/errors"
 	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"

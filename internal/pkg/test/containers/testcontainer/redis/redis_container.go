@@ -6,9 +6,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/reoden/go-echo-template/pkg/logger"
-	redis2 "github.com/reoden/go-echo-template/pkg/redis"
-	"github.com/reoden/go-echo-template/pkg/test/containers/contracts"
+	"github.com/reoden/go-NFT/pkg/logger"
+	redis2 "github.com/reoden/go-NFT/pkg/redis"
+	"github.com/reoden/go-NFT/pkg/test/containers/contracts"
 
 	"emperror.dev/errors"
 	"github.com/docker/go-connections/nat"

@@ -4,7 +4,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/reoden/go-echo-template/pkg/reflection/typemapper"
+	"github.com/reoden/go-NFT/pkg/reflection/typemapper"
 
 	"github.com/brianvoe/gofakeit/v6"
 	uuid "github.com/satori/go.uuid"

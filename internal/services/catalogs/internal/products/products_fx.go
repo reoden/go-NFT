@@ -1,17 +1,17 @@
 package products
 
 import (
-	"github.com/reoden/go-echo-template/catalogs/internal/products/data/repositories"
-	creatingproductv1 "github.com/reoden/go-echo-template/catalogs/internal/products/features/creatingproduct/v1"
-	deletingproductv1 "github.com/reoden/go-echo-template/catalogs/internal/products/features/deletingproduct/v1"
-	gettingproductbyidv1 "github.com/reoden/go-echo-template/catalogs/internal/products/features/gettingproductbyid/v1"
-	gettingproductsv1 "github.com/reoden/go-echo-template/catalogs/internal/products/features/gettingproducts/v1"
-	searchingproductsv1 "github.com/reoden/go-echo-template/catalogs/internal/products/features/searchingproduct/v1"
-	updatingoroductsv1 "github.com/reoden/go-echo-template/catalogs/internal/products/features/updatingproduct/v1"
-	"github.com/reoden/go-echo-template/catalogs/internal/shared/grpc"
-	"github.com/reoden/go-echo-template/pkg/core/cqrs"
-	"github.com/reoden/go-echo-template/pkg/core/web/route"
-	"github.com/reoden/go-echo-template/pkg/http/customecho/contracts"
+	"github.com/reoden/go-NFT/catalogs/internal/products/data/repositories"
+	creatingproductv1 "github.com/reoden/go-NFT/catalogs/internal/products/features/creatingproduct/v1"
+	deletingproductv1 "github.com/reoden/go-NFT/catalogs/internal/products/features/deletingproduct/v1"
+	gettingproductbyidv1 "github.com/reoden/go-NFT/catalogs/internal/products/features/gettingproductbyid/v1"
+	gettingproductsv1 "github.com/reoden/go-NFT/catalogs/internal/products/features/gettingproducts/v1"
+	searchingproductsv1 "github.com/reoden/go-NFT/catalogs/internal/products/features/searchingproduct/v1"
+	updatingoroductsv1 "github.com/reoden/go-NFT/catalogs/internal/products/features/updatingproduct/v1"
+	"github.com/reoden/go-NFT/catalogs/internal/shared/grpc"
+	"github.com/reoden/go-NFT/pkg/core/cqrs"
+	"github.com/reoden/go-NFT/pkg/core/web/route"
+	"github.com/reoden/go-NFT/pkg/http/customecho/contracts"
 
 	"github.com/labstack/echo/v4"
 	"go.uber.org/fx"

@@ -1,8 +1,8 @@
 package catalogs
 
 import (
-	"github.com/reoden/go-echo-template/catalogs/docs"
-	customEcho "github.com/reoden/go-echo-template/pkg/http/customecho/contracts"
+	"github.com/reoden/go-NFT/catalogs/docs"
+	customEcho "github.com/reoden/go-NFT/pkg/http/customecho/contracts"
 
 	"github.com/labstack/echo/v4"
 	echoSwagger "github.com/swaggo/echo-swagger"

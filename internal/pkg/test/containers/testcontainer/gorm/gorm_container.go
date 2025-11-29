@@ -6,9 +6,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/reoden/go-echo-template/pkg/logger"
-	gormPostgres "github.com/reoden/go-echo-template/pkg/postgresgorm"
-	"github.com/reoden/go-echo-template/pkg/test/containers/contracts"
+	"github.com/reoden/go-NFT/pkg/logger"
+	gormPostgres "github.com/reoden/go-NFT/pkg/postgresgorm"
+	"github.com/reoden/go-NFT/pkg/test/containers/contracts"
 
 	"emperror.dev/errors"
 	"github.com/docker/go-connections/nat"

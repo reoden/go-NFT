@@ -3,7 +3,7 @@ package mongodb
 import (
 	"context"
 
-	"github.com/reoden/go-echo-template/pkg/health/contracts"
+	"github.com/reoden/go-NFT/pkg/health/contracts"
 
 	"go.mongodb.org/mongo-driver/mongo"
 )

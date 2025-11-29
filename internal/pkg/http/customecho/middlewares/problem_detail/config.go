@@ -1,7 +1,7 @@
 package problemdetail
 
 import (
-	problemDetails "github.com/reoden/go-echo-template/pkg/http/httperrors/problemdetails"
+	problemDetails "github.com/reoden/go-NFT/pkg/http/httperrors/problemdetails"
 
 	"github.com/labstack/echo/v4/middleware"
 )

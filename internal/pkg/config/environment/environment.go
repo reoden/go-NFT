@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 	"syscall"
 
-	"github.com/reoden/go-echo-template/pkg/constants"
+	"github.com/reoden/go-NFT/pkg/constants"
 
 	"emperror.dev/errors"
 	"github.com/joho/godotenv"

@@ -1,6 +1,6 @@
 package tracing
 
-import "github.com/reoden/go-echo-template/pkg/core/metadata"
+import "github.com/reoden/go-NFT/pkg/core/metadata"
 
 type MessageCarrier struct {
 	meta *metadata.Metadata

@@ -1,7 +1,7 @@
 package integrationEvents
 
 import (
-	"github.com/reoden/go-echo-template/pkg/core/messaging/types"
+	"github.com/reoden/go-NFT/pkg/core/messaging/types"
 
 	uuid "github.com/satori/go.uuid"
 )

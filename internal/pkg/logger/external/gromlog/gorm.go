@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/reoden/go-echo-template/pkg/logger"
+	"github.com/reoden/go-NFT/pkg/logger"
 
 	gormlogger "gorm.io/gorm/logger"
 )

@@ -7,9 +7,9 @@ import (
 	"reflect"
 	"time"
 
-	"github.com/reoden/go-echo-template/pkg/http/httperrors/contracts"
-	defaultLogger "github.com/reoden/go-echo-template/pkg/logger/defaultlogger"
-	typeMapper "github.com/reoden/go-echo-template/pkg/reflection/typemapper"
+	"github.com/reoden/go-NFT/pkg/http/httperrors/contracts"
+	defaultLogger "github.com/reoden/go-NFT/pkg/logger/defaultlogger"
+	typeMapper "github.com/reoden/go-NFT/pkg/reflection/typemapper"
 
 	"emperror.dev/errors"
 )

@@ -3,7 +3,7 @@ package es
 import (
 	"fmt"
 
-	"github.com/reoden/go-echo-template/pkg/es/contracts/projection"
+	"github.com/reoden/go-NFT/pkg/es/contracts/projection"
 
 	"go.uber.org/fx"
 )

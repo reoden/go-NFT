@@ -5,9 +5,9 @@ import (
 	"errors"
 	"net/http"
 
-	"github.com/reoden/go-echo-template/pkg/http/customecho/config"
-	"github.com/reoden/go-echo-template/pkg/http/customecho/contracts"
-	"github.com/reoden/go-echo-template/pkg/logger"
+	"github.com/reoden/go-NFT/pkg/http/customecho/config"
+	"github.com/reoden/go-NFT/pkg/http/customecho/contracts"
+	"github.com/reoden/go-NFT/pkg/logger"
 
 	"go.uber.org/fx"
 )

@@ -1,8 +1,8 @@
-module github.com/reoden/go-echo-template/catalogs
+module github.com/reoden/go-NFT/catalogs
 
 go 1.25.4
 
-replace github.com/reoden/go-echo-template/pkg => ../../pkg/
+replace github.com/reoden/go-NFT/pkg => ../../pkg/
 
 require (
 	emperror.dev/errors v0.8.1
@@ -10,11 +10,12 @@ require (
 	github.com/go-ozzo/ozzo-validation v3.6.0+incompatible
 	github.com/go-playground/validator v9.31.0+incompatible
 	github.com/goccy/go-json v0.10.5
+	github.com/golang-jwt/jwt/v5 v5.3.0
 	github.com/iancoleman/strcase v0.3.0
 	github.com/labstack/echo/v4 v4.13.4
 	github.com/mehdihadeli/go-mediatr v1.4.0
 	github.com/pterm/pterm v0.12.82
-	github.com/reoden/go-echo-template/pkg v0.0.0-00010101000000-000000000000
+	github.com/reoden/go-NFT/pkg v0.0.0-00010101000000-000000000000
 	github.com/satori/go.uuid v1.2.0
 	github.com/spf13/cobra v1.10.1
 	github.com/stretchr/testify v1.11.1
@@ -92,6 +93,7 @@ require (
 	github.com/jinzhu/now v1.1.5 // indirect
 	github.com/joho/godotenv v1.5.1 // indirect
 	github.com/klauspost/compress v1.18.0 // indirect
+	github.com/labstack/echo-jwt/v4 v4.4.0 // indirect
 	github.com/labstack/gommon v0.4.2 // indirect
 	github.com/leodido/go-urn v1.2.1 // indirect
 	github.com/lithammer/fuzzysearch v1.1.8 // indirect
@@ -173,7 +175,7 @@ require (
 	golang.org/x/sys v0.38.0 // indirect
 	golang.org/x/term v0.37.0 // indirect
 	golang.org/x/text v0.31.0 // indirect
-	golang.org/x/time v0.11.0 // indirect
+	golang.org/x/time v0.14.0 // indirect
 	golang.org/x/tools v0.39.0 // indirect
 	google.golang.org/genproto/googleapis/api v0.0.0-20251022142026-3a174f9686a8 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20251022142026-3a174f9686a8 // indirect

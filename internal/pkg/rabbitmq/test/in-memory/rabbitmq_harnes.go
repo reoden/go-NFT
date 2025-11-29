@@ -3,9 +3,9 @@ package in_memory
 import (
 	"context"
 
-	consumer2 "github.com/reoden/go-echo-template/pkg/core/messaging/consumer"
-	"github.com/reoden/go-echo-template/pkg/core/messaging/types"
-	"github.com/reoden/go-echo-template/pkg/core/metadata"
+	consumer2 "github.com/reoden/go-NFT/pkg/core/messaging/consumer"
+	"github.com/reoden/go-NFT/pkg/core/messaging/types"
+	"github.com/reoden/go-NFT/pkg/core/metadata"
 )
 
 type RabbitmqInMemoryHarnesses struct {

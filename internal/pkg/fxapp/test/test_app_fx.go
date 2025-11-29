@@ -3,10 +3,10 @@ package test
 import (
 	"time"
 
-	"github.com/reoden/go-echo-template/pkg/config"
-	"github.com/reoden/go-echo-template/pkg/config/environment"
-	"github.com/reoden/go-echo-template/pkg/logger"
-	"github.com/reoden/go-echo-template/pkg/logger/zap"
+	"github.com/reoden/go-NFT/pkg/config"
+	"github.com/reoden/go-NFT/pkg/config/environment"
+	"github.com/reoden/go-NFT/pkg/logger"
+	"github.com/reoden/go-NFT/pkg/logger/zap"
 
 	"go.uber.org/fx"
 	"go.uber.org/fx/fxtest"

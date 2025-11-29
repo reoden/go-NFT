@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"time"
 
-	defaultLogger "github.com/reoden/go-echo-template/pkg/logger/defaultlogger"
+	defaultLogger "github.com/reoden/go-NFT/pkg/logger/defaultlogger"
 
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"

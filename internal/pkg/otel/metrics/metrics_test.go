@@ -6,11 +6,11 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/reoden/go-echo-template/pkg/config"
-	customEcho "github.com/reoden/go-echo-template/pkg/http/customecho"
-	"github.com/reoden/go-echo-template/pkg/logger/external/fxlog"
-	"github.com/reoden/go-echo-template/pkg/logger/zap"
-	"github.com/reoden/go-echo-template/pkg/otel/metrics"
+	"github.com/reoden/go-NFT/pkg/config"
+	customEcho "github.com/reoden/go-NFT/pkg/http/customecho"
+	"github.com/reoden/go-NFT/pkg/logger/external/fxlog"
+	"github.com/reoden/go-NFT/pkg/logger/zap"
+	"github.com/reoden/go-NFT/pkg/otel/metrics"
 
 	"go.uber.org/fx"
 	"go.uber.org/fx/fxtest"

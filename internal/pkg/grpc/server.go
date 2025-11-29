@@ -5,10 +5,10 @@ import (
 	"net"
 	"time"
 
-	"github.com/reoden/go-echo-template/pkg/grpc/config"
-	"github.com/reoden/go-echo-template/pkg/grpc/handlers/otel"
-	"github.com/reoden/go-echo-template/pkg/grpc/interceptors"
-	"github.com/reoden/go-echo-template/pkg/logger"
+	"github.com/reoden/go-NFT/pkg/grpc/config"
+	"github.com/reoden/go-NFT/pkg/grpc/handlers/otel"
+	"github.com/reoden/go-NFT/pkg/grpc/interceptors"
+	"github.com/reoden/go-NFT/pkg/logger"
 
 	"emperror.dev/errors"
 	grpcMiddleware "github.com/grpc-ecosystem/go-grpc-middleware"

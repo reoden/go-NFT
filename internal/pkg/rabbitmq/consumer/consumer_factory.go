@@ -1,14 +1,14 @@
 package consumer
 
 import (
-	"github.com/reoden/go-echo-template/pkg/core/messaging/consumer"
-	"github.com/reoden/go-echo-template/pkg/core/messaging/types"
-	serializer "github.com/reoden/go-echo-template/pkg/core/serializer"
-	"github.com/reoden/go-echo-template/pkg/logger"
-	"github.com/reoden/go-echo-template/pkg/rabbitmq/config"
-	consumerConfigurations "github.com/reoden/go-echo-template/pkg/rabbitmq/consumer/configurations"
-	"github.com/reoden/go-echo-template/pkg/rabbitmq/consumer/consumercontracts"
-	types2 "github.com/reoden/go-echo-template/pkg/rabbitmq/types"
+	"github.com/reoden/go-NFT/pkg/core/messaging/consumer"
+	"github.com/reoden/go-NFT/pkg/core/messaging/types"
+	serializer "github.com/reoden/go-NFT/pkg/core/serializer"
+	"github.com/reoden/go-NFT/pkg/logger"
+	"github.com/reoden/go-NFT/pkg/rabbitmq/config"
+	consumerConfigurations "github.com/reoden/go-NFT/pkg/rabbitmq/consumer/configurations"
+	"github.com/reoden/go-NFT/pkg/rabbitmq/consumer/consumercontracts"
+	types2 "github.com/reoden/go-NFT/pkg/rabbitmq/types"
 )
 
 type consumerFactory struct {

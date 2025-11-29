@@ -4,7 +4,7 @@ import (
 	"context"
 	"testing"
 
-	postgres "github.com/reoden/go-echo-template/pkg/postgrespgx"
+	postgres "github.com/reoden/go-NFT/pkg/postgrespgx"
 )
 
 type PostgresPgxContainer interface {

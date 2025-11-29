@@ -8,9 +8,9 @@ import (
 	"context"
 	"time"
 
-	"github.com/reoden/go-echo-template/pkg/config/environment"
-	"github.com/reoden/go-echo-template/pkg/http/customecho/contracts"
-	"github.com/reoden/go-echo-template/pkg/logger"
+	"github.com/reoden/go-NFT/pkg/config/environment"
+	"github.com/reoden/go-NFT/pkg/http/customecho/contracts"
+	"github.com/reoden/go-NFT/pkg/logger"
 
 	"emperror.dev/errors"
 	"github.com/labstack/echo/v4"

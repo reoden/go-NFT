@@ -3,10 +3,10 @@ package pipelines
 import (
 	"context"
 
-	"github.com/reoden/go-echo-template/pkg/core/cqrs"
-	"github.com/reoden/go-echo-template/pkg/logger"
-	"github.com/reoden/go-echo-template/pkg/postgresgorm/helpers/gormextensions"
-	typeMapper "github.com/reoden/go-echo-template/pkg/reflection/typemapper"
+	"github.com/reoden/go-NFT/pkg/core/cqrs"
+	"github.com/reoden/go-NFT/pkg/logger"
+	"github.com/reoden/go-NFT/pkg/postgresgorm/helpers/gormextensions"
+	typeMapper "github.com/reoden/go-NFT/pkg/reflection/typemapper"
 
 	"github.com/mehdihadeli/go-mediatr"
 	"gorm.io/gorm"

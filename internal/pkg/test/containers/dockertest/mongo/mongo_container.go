@@ -7,8 +7,8 @@ import (
 	"strconv"
 	"testing"
 
-	"github.com/reoden/go-echo-template/pkg/mongodb"
-	"github.com/reoden/go-echo-template/pkg/test/containers/contracts"
+	"github.com/reoden/go-NFT/pkg/mongodb"
+	"github.com/reoden/go-NFT/pkg/test/containers/contracts"
 
 	"github.com/ory/dockertest/v3"
 	"github.com/ory/dockertest/v3/docker"

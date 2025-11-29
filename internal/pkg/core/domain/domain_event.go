@@ -1,8 +1,8 @@
 package domain
 
 import (
-	"github.com/reoden/go-echo-template/pkg/core/events"
-	expectedStreamVersion "github.com/reoden/go-echo-template/pkg/es/models/stream_version"
+	"github.com/reoden/go-NFT/pkg/core/events"
+	expectedStreamVersion "github.com/reoden/go-NFT/pkg/es/models/stream_version"
 
 	uuid "github.com/satori/go.uuid"
 )

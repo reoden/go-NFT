@@ -3,12 +3,12 @@ package fxapp
 import (
 	"time"
 
-	"github.com/reoden/go-echo-template/pkg/config"
-	logConfig "github.com/reoden/go-echo-template/pkg/logger/config"
-	"github.com/reoden/go-echo-template/pkg/logger/external/fxlog"
-	"github.com/reoden/go-echo-template/pkg/logger/logrous"
-	"github.com/reoden/go-echo-template/pkg/logger/models"
-	"github.com/reoden/go-echo-template/pkg/logger/zap"
+	"github.com/reoden/go-NFT/pkg/config"
+	logConfig "github.com/reoden/go-NFT/pkg/logger/config"
+	"github.com/reoden/go-NFT/pkg/logger/external/fxlog"
+	"github.com/reoden/go-NFT/pkg/logger/logrous"
+	"github.com/reoden/go-NFT/pkg/logger/models"
+	"github.com/reoden/go-NFT/pkg/logger/zap"
 
 	"go.uber.org/fx"
 )

@@ -3,9 +3,9 @@ package gormdbcontext
 import (
 	"context"
 
-	defaultlogger "github.com/reoden/go-echo-template/pkg/logger/defaultlogger"
-	"github.com/reoden/go-echo-template/pkg/postgresgorm/contracts"
-	"github.com/reoden/go-echo-template/pkg/postgresgorm/helpers/gormextensions"
+	defaultlogger "github.com/reoden/go-NFT/pkg/logger/defaultlogger"
+	"github.com/reoden/go-NFT/pkg/postgresgorm/contracts"
+	"github.com/reoden/go-NFT/pkg/postgresgorm/helpers/gormextensions"
 
 	"gorm.io/gorm"
 )

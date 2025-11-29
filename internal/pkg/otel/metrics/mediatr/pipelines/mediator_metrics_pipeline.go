@@ -5,12 +5,12 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/reoden/go-echo-template/pkg/core/cqrs"
-	"github.com/reoden/go-echo-template/pkg/core/events"
-	"github.com/reoden/go-echo-template/pkg/otel/constants/telemetrytags"
-	"github.com/reoden/go-echo-template/pkg/otel/metrics"
-	customAttribute "github.com/reoden/go-echo-template/pkg/otel/tracing/attribute"
-	"github.com/reoden/go-echo-template/pkg/reflection/typemapper"
+	"github.com/reoden/go-NFT/pkg/core/cqrs"
+	"github.com/reoden/go-NFT/pkg/core/events"
+	"github.com/reoden/go-NFT/pkg/otel/constants/telemetrytags"
+	"github.com/reoden/go-NFT/pkg/otel/metrics"
+	customAttribute "github.com/reoden/go-NFT/pkg/otel/tracing/attribute"
+	"github.com/reoden/go-NFT/pkg/reflection/typemapper"
 
 	"github.com/mehdihadeli/go-mediatr"
 	"go.opentelemetry.io/otel/attribute"

@@ -3,10 +3,10 @@ package gormextensions
 import (
 	"context"
 
-	"github.com/reoden/go-echo-template/pkg/postgresgorm/constants"
-	"github.com/reoden/go-echo-template/pkg/postgresgorm/contracts"
-	"github.com/reoden/go-echo-template/pkg/postgresgorm/scopes"
-	"github.com/reoden/go-echo-template/pkg/utils"
+	"github.com/reoden/go-NFT/pkg/postgresgorm/constants"
+	"github.com/reoden/go-NFT/pkg/postgresgorm/contracts"
+	"github.com/reoden/go-NFT/pkg/postgresgorm/scopes"
+	"github.com/reoden/go-NFT/pkg/utils"
 
 	"emperror.dev/errors"
 	"gorm.io/gorm"

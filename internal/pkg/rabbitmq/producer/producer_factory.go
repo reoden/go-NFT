@@ -1,14 +1,14 @@
 package producer
 
 import (
-	"github.com/reoden/go-echo-template/pkg/core/messaging/producer"
-	"github.com/reoden/go-echo-template/pkg/core/messaging/types"
-	serializer "github.com/reoden/go-echo-template/pkg/core/serializer"
-	"github.com/reoden/go-echo-template/pkg/logger"
-	"github.com/reoden/go-echo-template/pkg/rabbitmq/config"
-	producerConfigurations "github.com/reoden/go-echo-template/pkg/rabbitmq/producer/configurations"
-	"github.com/reoden/go-echo-template/pkg/rabbitmq/producer/producercontracts"
-	types2 "github.com/reoden/go-echo-template/pkg/rabbitmq/types"
+	"github.com/reoden/go-NFT/pkg/core/messaging/producer"
+	"github.com/reoden/go-NFT/pkg/core/messaging/types"
+	serializer "github.com/reoden/go-NFT/pkg/core/serializer"
+	"github.com/reoden/go-NFT/pkg/logger"
+	"github.com/reoden/go-NFT/pkg/rabbitmq/config"
+	producerConfigurations "github.com/reoden/go-NFT/pkg/rabbitmq/producer/configurations"
+	"github.com/reoden/go-NFT/pkg/rabbitmq/producer/producercontracts"
+	types2 "github.com/reoden/go-NFT/pkg/rabbitmq/types"
 )
 
 type producerFactory struct {

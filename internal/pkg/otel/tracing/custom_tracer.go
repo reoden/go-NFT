@@ -3,7 +3,7 @@ package tracing
 import (
 	"context"
 
-	"github.com/reoden/go-echo-template/pkg/otel/tracing/utils"
+	"github.com/reoden/go-NFT/pkg/otel/tracing/utils"
 
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/trace"

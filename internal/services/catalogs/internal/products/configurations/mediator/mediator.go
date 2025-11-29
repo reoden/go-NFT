@@ -1,6 +1,6 @@
 package mediator
 
-import "github.com/reoden/go-echo-template/pkg/core/cqrs"
+import "github.com/reoden/go-NFT/pkg/core/cqrs"
 
 func RegisterMediatorHandlers(handlers []cqrs.HandlerRegisterer) error {
 	for _, handler := range handlers {

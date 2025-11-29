@@ -51,7 +51,7 @@
   "tracingOptions": {
     "enable": true,
     "serviceName": "test",
-    "instrumentationName": "github.com/reoden/go-echo-template/pkg/test",
+    "instrumentationName": "github.com/reoden/go-NFT/pkg/test",
     "id": 1,
     "useStdout": false,
     "alwaysOnSampler": true,
@@ -67,7 +67,7 @@
     "port": ":3001",
     "metricsRoutePath": "metrics",
     "serviceName": "test",
-    "instrumentationName": "github.com/reoden/go-echo-template/pkg/test"
+    "instrumentationName": "github.com/reoden/go-NFT/pkg/test"
   },
   "eventStoreDbOptions": {
     "host": "localhost",

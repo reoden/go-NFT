@@ -1,6 +1,6 @@
 package dtos
 
-import dtoV1 "github.com/reoden/go-echo-template/catalogs/internal/products/dtos/v1"
+import dtoV1 "github.com/reoden/go-NFT/catalogs/internal/products/dtos/v1"
 
 // https://echo.labstack.com/guide/response/
 type GetProductByIdResponseDto struct {

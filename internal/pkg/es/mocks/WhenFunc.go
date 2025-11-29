@@ -3,7 +3,7 @@
 package mocks
 
 import (
-	domain "github.com/reoden/go-echo-template/pkg/core/domain"
+	domain "github.com/reoden/go-NFT/pkg/core/domain"
 	mock "github.com/stretchr/testify/mock"
 )
 

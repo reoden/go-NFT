@@ -3,7 +3,7 @@
 package mocks
 
 import (
-	consumer "github.com/reoden/go-echo-template/pkg/core/messaging/consumer"
+	consumer "github.com/reoden/go-NFT/pkg/core/messaging/consumer"
 	mock "github.com/stretchr/testify/mock"
 )
 

@@ -5,12 +5,12 @@ import (
 	"testing"
 	"time"
 
-	"github.com/reoden/go-echo-template/pkg/config"
-	"github.com/reoden/go-echo-template/pkg/config/environment"
-	"github.com/reoden/go-echo-template/pkg/core"
-	"github.com/reoden/go-echo-template/pkg/logger/external/fxlog"
-	"github.com/reoden/go-echo-template/pkg/logger/zap"
-	gormPostgres "github.com/reoden/go-echo-template/pkg/postgresgorm"
+	"github.com/reoden/go-NFT/pkg/config"
+	"github.com/reoden/go-NFT/pkg/config/environment"
+	"github.com/reoden/go-NFT/pkg/core"
+	"github.com/reoden/go-NFT/pkg/logger/external/fxlog"
+	"github.com/reoden/go-NFT/pkg/logger/zap"
+	gormPostgres "github.com/reoden/go-NFT/pkg/postgresgorm"
 
 	"github.com/docker/go-connections/nat"
 	"github.com/stretchr/testify/assert"

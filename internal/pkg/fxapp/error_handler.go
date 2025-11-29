@@ -1,7 +1,7 @@
 package fxapp
 
 import (
-	"github.com/reoden/go-echo-template/pkg/logger"
+	"github.com/reoden/go-NFT/pkg/logger"
 )
 
 type FxErrorHandler struct {

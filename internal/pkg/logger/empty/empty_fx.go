@@ -1,8 +1,8 @@
 package empty
 
 import (
-	logger2 "github.com/reoden/go-echo-template/pkg/logger"
-	"github.com/reoden/go-echo-template/pkg/logger/config"
+	logger2 "github.com/reoden/go-NFT/pkg/logger"
+	"github.com/reoden/go-NFT/pkg/logger/config"
 
 	"go.uber.org/fx"
 )

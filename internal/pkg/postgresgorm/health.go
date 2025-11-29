@@ -4,7 +4,7 @@ import (
 	"context"
 	"database/sql"
 
-	"github.com/reoden/go-echo-template/pkg/health/contracts"
+	"github.com/reoden/go-NFT/pkg/health/contracts"
 )
 
 type gormHealthChecker struct {

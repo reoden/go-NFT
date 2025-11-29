@@ -1,7 +1,7 @@
 package v1
 
 import (
-	"github.com/reoden/go-echo-template/pkg/utils"
+	"github.com/reoden/go-NFT/pkg/utils"
 )
 
 // Ref: https://golangbot.com/inheritance/

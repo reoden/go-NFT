@@ -4,8 +4,8 @@ import (
 	"context"
 	"testing"
 
-	"github.com/reoden/go-echo-template/pkg/logger"
-	"github.com/reoden/go-echo-template/pkg/mongodb"
+	"github.com/reoden/go-NFT/pkg/logger"
+	"github.com/reoden/go-NFT/pkg/mongodb"
 )
 
 var MongoContainerOptionsDecorator = func(t *testing.T, ctx context.Context) interface{} {

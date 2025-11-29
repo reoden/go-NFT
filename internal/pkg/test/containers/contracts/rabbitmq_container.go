@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/reoden/go-echo-template/pkg/rabbitmq/config"
+	"github.com/reoden/go-NFT/pkg/rabbitmq/config"
 )
 
 type RabbitMQContainerOptions struct {

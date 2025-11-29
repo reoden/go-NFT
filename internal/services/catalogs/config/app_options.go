@@ -3,9 +3,9 @@ package config
 import (
 	"strings"
 
-	"github.com/reoden/go-echo-template/pkg/config"
-	"github.com/reoden/go-echo-template/pkg/config/environment"
-	typeMapper "github.com/reoden/go-echo-template/pkg/reflection/typemapper"
+	"github.com/reoden/go-NFT/pkg/config"
+	"github.com/reoden/go-NFT/pkg/config/environment"
+	typeMapper "github.com/reoden/go-NFT/pkg/reflection/typemapper"
 
 	"github.com/iancoleman/strcase"
 )

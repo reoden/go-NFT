@@ -3,8 +3,8 @@
 package mocks
 
 import (
-	domain "github.com/reoden/go-echo-template/pkg/core/domain"
-	metadata "github.com/reoden/go-echo-template/pkg/core/metadata"
+	domain "github.com/reoden/go-NFT/pkg/core/domain"
+	metadata "github.com/reoden/go-NFT/pkg/core/metadata"
 
 	mock "github.com/stretchr/testify/mock"
 

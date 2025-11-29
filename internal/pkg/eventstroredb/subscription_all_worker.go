@@ -5,12 +5,12 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/reoden/go-echo-template/pkg/es"
-	"github.com/reoden/go-echo-template/pkg/es/contracts"
-	"github.com/reoden/go-echo-template/pkg/es/contracts/projection"
-	"github.com/reoden/go-echo-template/pkg/eventstroredb/config"
-	"github.com/reoden/go-echo-template/pkg/logger"
-	typeMapper "github.com/reoden/go-echo-template/pkg/reflection/typemapper"
+	"github.com/reoden/go-NFT/pkg/es"
+	"github.com/reoden/go-NFT/pkg/es/contracts"
+	"github.com/reoden/go-NFT/pkg/es/contracts/projection"
+	"github.com/reoden/go-NFT/pkg/eventstroredb/config"
+	"github.com/reoden/go-NFT/pkg/logger"
+	typeMapper "github.com/reoden/go-NFT/pkg/reflection/typemapper"
 
 	"emperror.dev/errors"
 	"github.com/EventStore/EventStore-Client-Go/esdb"

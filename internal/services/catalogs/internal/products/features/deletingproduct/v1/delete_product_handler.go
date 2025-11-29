@@ -4,13 +4,13 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/reoden/go-echo-template/catalogs/internal/products/data/datamodels"
-	"github.com/reoden/go-echo-template/catalogs/internal/products/dtos/v1/fxparams"
-	integrationEvents "github.com/reoden/go-echo-template/catalogs/internal/products/features/deletingproduct/v1/events/integrationevents"
-	"github.com/reoden/go-echo-template/pkg/core/cqrs"
-	customErrors "github.com/reoden/go-echo-template/pkg/http/httperrors/customerrors"
-	"github.com/reoden/go-echo-template/pkg/logger"
-	"github.com/reoden/go-echo-template/pkg/postgresgorm/gormdbcontext"
+	"github.com/reoden/go-NFT/catalogs/internal/products/data/datamodels"
+	"github.com/reoden/go-NFT/catalogs/internal/products/dtos/v1/fxparams"
+	integrationEvents "github.com/reoden/go-NFT/catalogs/internal/products/features/deletingproduct/v1/events/integrationevents"
+	"github.com/reoden/go-NFT/pkg/core/cqrs"
+	customErrors "github.com/reoden/go-NFT/pkg/http/httperrors/customerrors"
+	"github.com/reoden/go-NFT/pkg/logger"
+	"github.com/reoden/go-NFT/pkg/postgresgorm/gormdbcontext"
 
 	"github.com/mehdihadeli/go-mediatr"
 )

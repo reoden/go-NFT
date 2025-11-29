@@ -3,7 +3,7 @@ package tracing
 import (
 	"context"
 
-	"github.com/reoden/go-echo-template/pkg/logger"
+	"github.com/reoden/go-NFT/pkg/logger"
 
 	"go.opentelemetry.io/otel/trace"
 	"go.uber.org/fx"

@@ -6,8 +6,8 @@ import (
 	"strconv"
 	"testing"
 
-	gormPostgres "github.com/reoden/go-echo-template/pkg/postgresgorm"
-	"github.com/reoden/go-echo-template/pkg/test/containers/contracts"
+	gormPostgres "github.com/reoden/go-NFT/pkg/postgresgorm"
+	"github.com/reoden/go-NFT/pkg/test/containers/contracts"
 
 	"github.com/ory/dockertest/v3"
 	"github.com/ory/dockertest/v3/docker"

@@ -1,7 +1,7 @@
 package consumer
 
 import (
-	"github.com/reoden/go-echo-template/pkg/core/messaging/types"
+	"github.com/reoden/go-NFT/pkg/core/messaging/types"
 )
 
 type ConsumerConnector interface {

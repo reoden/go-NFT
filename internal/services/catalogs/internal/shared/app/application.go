@@ -1,10 +1,10 @@
 package app
 
 import (
-	"github.com/reoden/go-echo-template/catalogs/internal/shared/configurations/catalogs"
-	"github.com/reoden/go-echo-template/pkg/config/environment"
-	"github.com/reoden/go-echo-template/pkg/fxapp"
-	"github.com/reoden/go-echo-template/pkg/logger"
+	"github.com/reoden/go-NFT/catalogs/internal/shared/configurations/catalogs"
+	"github.com/reoden/go-NFT/pkg/config/environment"
+	"github.com/reoden/go-NFT/pkg/fxapp"
+	"github.com/reoden/go-NFT/pkg/logger"
 
 	"go.uber.org/fx"
 )

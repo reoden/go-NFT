@@ -7,9 +7,9 @@ import (
 	"database/sql"
 	"fmt"
 
-	"github.com/reoden/go-echo-template/pkg/logger"
-	"github.com/reoden/go-echo-template/pkg/migration"
-	"github.com/reoden/go-echo-template/pkg/migration/contracts"
+	"github.com/reoden/go-NFT/pkg/logger"
+	"github.com/reoden/go-NFT/pkg/migration"
+	"github.com/reoden/go-NFT/pkg/migration/contracts"
 
 	"emperror.dev/errors"
 	"github.com/golang-migrate/migrate/v4"

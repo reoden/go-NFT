@@ -5,12 +5,12 @@ import (
 	"net/http"
 	"reflect"
 
-	"github.com/reoden/go-echo-template/pkg/core/metadata"
-	grpcerrors "github.com/reoden/go-echo-template/pkg/grpc/grpcErrors"
-	customErrors "github.com/reoden/go-echo-template/pkg/http/httperrors/customerrors"
-	problemdetails "github.com/reoden/go-echo-template/pkg/http/httperrors/problemdetails"
-	"github.com/reoden/go-echo-template/pkg/otel/constants/telemetrytags"
-	errorUtils "github.com/reoden/go-echo-template/pkg/utils/errorutils"
+	"github.com/reoden/go-NFT/pkg/core/metadata"
+	grpcerrors "github.com/reoden/go-NFT/pkg/grpc/grpcErrors"
+	customErrors "github.com/reoden/go-NFT/pkg/http/httperrors/customerrors"
+	problemdetails "github.com/reoden/go-NFT/pkg/http/httperrors/problemdetails"
+	"github.com/reoden/go-NFT/pkg/otel/constants/telemetrytags"
+	errorUtils "github.com/reoden/go-NFT/pkg/utils/errorutils"
 
 	"github.com/ahmetb/go-linq/v3"
 	"go.opentelemetry.io/otel/attribute"

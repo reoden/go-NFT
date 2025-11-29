@@ -3,7 +3,7 @@
 package mocks
 
 import (
-	metadata "github.com/reoden/go-echo-template/pkg/core/metadata"
+	metadata "github.com/reoden/go-NFT/pkg/core/metadata"
 	mock "github.com/stretchr/testify/mock"
 )
 

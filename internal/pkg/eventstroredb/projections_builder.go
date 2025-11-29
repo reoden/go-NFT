@@ -1,7 +1,7 @@
 package eventstroredb
 
 import (
-	"github.com/reoden/go-echo-template/pkg/es/contracts/projection"
+	"github.com/reoden/go-NFT/pkg/es/contracts/projection"
 )
 
 type ProjectionsBuilder interface {

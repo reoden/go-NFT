@@ -3,7 +3,7 @@ package projection
 import (
 	"context"
 
-	"github.com/reoden/go-echo-template/pkg/es/models"
+	"github.com/reoden/go-NFT/pkg/es/models"
 )
 
 type IProjection interface {

@@ -1,10 +1,10 @@
 package configurations
 
 import (
-	messageConsumer "github.com/reoden/go-echo-template/pkg/core/messaging/consumer"
-	"github.com/reoden/go-echo-template/pkg/core/messaging/pipeline"
-	types2 "github.com/reoden/go-echo-template/pkg/core/messaging/types"
-	"github.com/reoden/go-echo-template/pkg/rabbitmq/types"
+	messageConsumer "github.com/reoden/go-NFT/pkg/core/messaging/consumer"
+	"github.com/reoden/go-NFT/pkg/core/messaging/pipeline"
+	types2 "github.com/reoden/go-NFT/pkg/core/messaging/types"
+	"github.com/reoden/go-NFT/pkg/rabbitmq/types"
 )
 
 type RabbitMQConsumerConfigurationBuilder interface {

@@ -5,7 +5,7 @@ import (
 	"math"
 	"strconv"
 
-	"github.com/reoden/go-echo-template/pkg/mapper"
+	"github.com/reoden/go-NFT/pkg/mapper"
 
 	"emperror.dev/errors"
 	"github.com/goccy/go-json"

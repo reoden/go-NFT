@@ -4,9 +4,9 @@ import (
 	"context"
 	"database/sql"
 
-	"github.com/reoden/go-echo-template/pkg/constants"
-	customErrors "github.com/reoden/go-echo-template/pkg/http/httperrors/customerrors"
-	errorUtils "github.com/reoden/go-echo-template/pkg/utils/errorutils"
+	"github.com/reoden/go-NFT/pkg/constants"
+	customErrors "github.com/reoden/go-NFT/pkg/http/httperrors/customerrors"
+	errorUtils "github.com/reoden/go-NFT/pkg/utils/errorutils"
 
 	"emperror.dev/errors"
 	"github.com/go-playground/validator"

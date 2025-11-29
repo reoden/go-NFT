@@ -4,12 +4,12 @@ import (
 	"context"
 	"testing"
 
-	"github.com/reoden/go-echo-template/pkg/config"
-	"github.com/reoden/go-echo-template/pkg/config/environment"
-	"github.com/reoden/go-echo-template/pkg/core"
-	"github.com/reoden/go-echo-template/pkg/logger/external/fxlog"
-	"github.com/reoden/go-echo-template/pkg/logger/zap"
-	redis2 "github.com/reoden/go-echo-template/pkg/redis"
+	"github.com/reoden/go-NFT/pkg/config"
+	"github.com/reoden/go-NFT/pkg/config/environment"
+	"github.com/reoden/go-NFT/pkg/core"
+	"github.com/reoden/go-NFT/pkg/logger/external/fxlog"
+	"github.com/reoden/go-NFT/pkg/logger/zap"
+	redis2 "github.com/reoden/go-NFT/pkg/redis"
 
 	"github.com/redis/go-redis/v9"
 	"github.com/stretchr/testify/assert"

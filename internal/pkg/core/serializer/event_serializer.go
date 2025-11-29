@@ -3,7 +3,7 @@ package serializer
 import (
 	"reflect"
 
-	"github.com/reoden/go-echo-template/pkg/core/domain"
+	"github.com/reoden/go-NFT/pkg/core/domain"
 )
 
 type EventSerializer interface {

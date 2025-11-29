@@ -3,7 +3,7 @@ package redis
 import (
 	"context"
 
-	"github.com/reoden/go-echo-template/pkg/health/contracts"
+	"github.com/reoden/go-NFT/pkg/health/contracts"
 
 	"github.com/redis/go-redis/v9"
 )

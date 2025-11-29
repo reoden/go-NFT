@@ -5,11 +5,11 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/reoden/go-echo-template/pkg/core/messaging/persistmessage"
-	"github.com/reoden/go-echo-template/pkg/core/messaging/types"
-	"github.com/reoden/go-echo-template/pkg/core/serializer"
-	customErrors "github.com/reoden/go-echo-template/pkg/http/httperrors/customerrors"
-	"github.com/reoden/go-echo-template/pkg/logger"
+	"github.com/reoden/go-NFT/pkg/core/messaging/persistmessage"
+	"github.com/reoden/go-NFT/pkg/core/messaging/types"
+	"github.com/reoden/go-NFT/pkg/core/serializer"
+	customErrors "github.com/reoden/go-NFT/pkg/http/httperrors/customerrors"
+	"github.com/reoden/go-NFT/pkg/logger"
 
 	uuid "github.com/satori/go.uuid"
 )

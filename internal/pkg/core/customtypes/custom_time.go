@@ -8,7 +8,7 @@ import (
 	"strings"
 	"time"
 
-	customErrors "github.com/reoden/go-echo-template/pkg/http/httperrors/customerrors"
+	customErrors "github.com/reoden/go-NFT/pkg/http/httperrors/customerrors"
 
 	"github.com/araddon/dateparse"
 )

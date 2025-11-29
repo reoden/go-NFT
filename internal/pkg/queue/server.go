@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/reoden/go-echo-template/pkg/logger"
-	redis2 "github.com/reoden/go-echo-template/pkg/redis"
+	"github.com/reoden/go-NFT/pkg/logger"
+	redis2 "github.com/reoden/go-NFT/pkg/redis"
 
 	"github.com/hibiken/asynq"
 	"go.uber.org/fx"

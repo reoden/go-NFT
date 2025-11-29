@@ -4,8 +4,8 @@ import (
 	"context"
 	"testing"
 
-	"github.com/reoden/go-echo-template/pkg/logger"
-	postgres "github.com/reoden/go-echo-template/pkg/postgrespgx"
+	"github.com/reoden/go-NFT/pkg/logger"
+	postgres "github.com/reoden/go-NFT/pkg/postgrespgx"
 )
 
 var PostgresPgxContainerOptionsDecorator = func(t *testing.T, ctx context.Context) interface{} {

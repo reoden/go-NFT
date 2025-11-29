@@ -3,7 +3,7 @@ package json
 import (
 	"log"
 
-	"github.com/reoden/go-echo-template/pkg/core/serializer"
+	"github.com/reoden/go-NFT/pkg/core/serializer"
 
 	"github.com/TylerBrock/colorjson"
 	"github.com/goccy/go-json"

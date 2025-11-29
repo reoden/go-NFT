@@ -1,8 +1,8 @@
 package dbcontext
 
 import (
-	"github.com/reoden/go-echo-template/pkg/postgresgorm/contracts"
-	"github.com/reoden/go-echo-template/pkg/postgresgorm/gormdbcontext"
+	"github.com/reoden/go-NFT/pkg/postgresgorm/contracts"
+	"github.com/reoden/go-NFT/pkg/postgresgorm/gormdbcontext"
 
 	"gorm.io/gorm"
 )

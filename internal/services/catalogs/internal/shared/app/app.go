@@ -3,8 +3,8 @@ package app
 import (
 	"context"
 
-	"github.com/reoden/go-echo-template/catalogs/internal/shared/configurations/catalogs"
-	"github.com/reoden/go-echo-template/pkg/otel/tracing"
+	"github.com/reoden/go-NFT/catalogs/internal/shared/configurations/catalogs"
+	"github.com/reoden/go-NFT/pkg/otel/tracing"
 )
 
 type App struct{}

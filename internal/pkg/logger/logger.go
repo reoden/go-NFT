@@ -3,7 +3,7 @@ package logger
 import (
 	"time"
 
-	"github.com/reoden/go-echo-template/pkg/logger/models"
+	"github.com/reoden/go-NFT/pkg/logger/models"
 )
 
 type Fields map[string]interface{}

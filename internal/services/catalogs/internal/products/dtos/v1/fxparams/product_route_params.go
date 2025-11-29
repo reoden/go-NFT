@@ -1,8 +1,8 @@
 package fxparams
 
 import (
-	"github.com/reoden/go-echo-template/catalogs/internal/shared/contracts"
-	"github.com/reoden/go-echo-template/pkg/logger"
+	"github.com/reoden/go-NFT/catalogs/internal/shared/contracts"
+	"github.com/reoden/go-NFT/pkg/logger"
 
 	"github.com/go-playground/validator"
 	"github.com/labstack/echo/v4"

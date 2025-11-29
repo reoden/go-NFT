@@ -1,7 +1,7 @@
 package config
 
 import (
-	"github.com/reoden/go-echo-template/pkg/config/environment"
+	"github.com/reoden/go-NFT/pkg/config/environment"
 
 	"go.uber.org/fx"
 )

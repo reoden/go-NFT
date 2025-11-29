@@ -3,7 +3,7 @@
 package mocks
 
 import (
-	pipeline "github.com/reoden/go-echo-template/pkg/core/messaging/pipeline"
+	pipeline "github.com/reoden/go-NFT/pkg/core/messaging/pipeline"
 	mock "github.com/stretchr/testify/mock"
 )
 

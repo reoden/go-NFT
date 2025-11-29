@@ -1,10 +1,10 @@
 package fxparams
 
 import (
-	"github.com/reoden/go-echo-template/catalogs/internal/shared/data/dbcontext"
-	"github.com/reoden/go-echo-template/pkg/core/messaging/producer"
-	"github.com/reoden/go-echo-template/pkg/logger"
-	"github.com/reoden/go-echo-template/pkg/otel/tracing"
+	"github.com/reoden/go-NFT/catalogs/internal/shared/data/dbcontext"
+	"github.com/reoden/go-NFT/pkg/core/messaging/producer"
+	"github.com/reoden/go-NFT/pkg/logger"
+	"github.com/reoden/go-NFT/pkg/otel/tracing"
 
 	"go.uber.org/fx"
 )

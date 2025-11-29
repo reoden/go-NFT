@@ -1,8 +1,8 @@
 package json
 
 import (
-	"github.com/reoden/go-echo-template/pkg/core/metadata"
-	"github.com/reoden/go-echo-template/pkg/core/serializer"
+	"github.com/reoden/go-NFT/pkg/core/metadata"
+	"github.com/reoden/go-NFT/pkg/core/serializer"
 
 	"emperror.dev/errors"
 )

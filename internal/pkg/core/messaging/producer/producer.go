@@ -3,8 +3,8 @@ package producer
 import (
 	"context"
 
-	"github.com/reoden/go-echo-template/pkg/core/messaging/types"
-	"github.com/reoden/go-echo-template/pkg/core/metadata"
+	"github.com/reoden/go-NFT/pkg/core/messaging/types"
+	"github.com/reoden/go-NFT/pkg/core/metadata"
 )
 
 type Producer interface {

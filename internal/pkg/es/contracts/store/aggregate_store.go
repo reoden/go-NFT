@@ -3,11 +3,11 @@ package store
 import (
 	"context"
 
-	"github.com/reoden/go-echo-template/pkg/core/metadata"
-	"github.com/reoden/go-echo-template/pkg/es/models"
-	appendResult "github.com/reoden/go-echo-template/pkg/es/models/append_result"
-	readPosition "github.com/reoden/go-echo-template/pkg/es/models/stream_position/read_position"
-	expectedStreamVersion "github.com/reoden/go-echo-template/pkg/es/models/stream_version"
+	"github.com/reoden/go-NFT/pkg/core/metadata"
+	"github.com/reoden/go-NFT/pkg/es/models"
+	appendResult "github.com/reoden/go-NFT/pkg/es/models/append_result"
+	readPosition "github.com/reoden/go-NFT/pkg/es/models/stream_position/read_position"
+	expectedStreamVersion "github.com/reoden/go-NFT/pkg/es/models/stream_version"
 
 	uuid "github.com/satori/go.uuid"
 )

@@ -7,9 +7,9 @@ import (
 	"strconv"
 	"testing"
 
-	"github.com/reoden/go-echo-template/pkg/logger"
-	"github.com/reoden/go-echo-template/pkg/rabbitmq/config"
-	"github.com/reoden/go-echo-template/pkg/test/containers/contracts"
+	"github.com/reoden/go-NFT/pkg/logger"
+	"github.com/reoden/go-NFT/pkg/rabbitmq/config"
+	"github.com/reoden/go-NFT/pkg/test/containers/contracts"
 
 	"github.com/ory/dockertest/v3"
 	"github.com/ory/dockertest/v3/docker"

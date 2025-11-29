@@ -1,7 +1,7 @@
 package dtos
 
 import (
-	"github.com/reoden/go-echo-template/pkg/utils"
+	"github.com/reoden/go-NFT/pkg/utils"
 )
 
 type SearchProductsRequestDto struct {

@@ -16,7 +16,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/reoden/go-echo-template/pkg/config/environment"
+	"github.com/reoden/go-NFT/pkg/config/environment"
 
 	"emperror.dev/errors"
 	"github.com/samber/lo"

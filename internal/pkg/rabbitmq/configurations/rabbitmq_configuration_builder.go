@@ -1,9 +1,9 @@
 package configurations
 
 import (
-	"github.com/reoden/go-echo-template/pkg/core/messaging/types"
-	consumerConfigurations "github.com/reoden/go-echo-template/pkg/rabbitmq/consumer/configurations"
-	producerConfigurations "github.com/reoden/go-echo-template/pkg/rabbitmq/producer/configurations"
+	"github.com/reoden/go-NFT/pkg/core/messaging/types"
+	consumerConfigurations "github.com/reoden/go-NFT/pkg/rabbitmq/consumer/configurations"
+	producerConfigurations "github.com/reoden/go-NFT/pkg/rabbitmq/producer/configurations"
 
 	"github.com/samber/lo"
 )

@@ -5,8 +5,8 @@ package mocks
 import (
 	context "context"
 
-	persistmessage "github.com/reoden/go-echo-template/pkg/core/messaging/persistmessage"
-	types "github.com/reoden/go-echo-template/pkg/core/messaging/types"
+	persistmessage "github.com/reoden/go-NFT/pkg/core/messaging/persistmessage"
+	types "github.com/reoden/go-NFT/pkg/core/messaging/types"
 	mock "github.com/stretchr/testify/mock"
 
 	uuid "github.com/satori/go.uuid"

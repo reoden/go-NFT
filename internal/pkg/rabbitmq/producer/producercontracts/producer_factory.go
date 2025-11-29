@@ -1,9 +1,9 @@
 package producercontracts
 
 import (
-	"github.com/reoden/go-echo-template/pkg/core/messaging/producer"
-	types2 "github.com/reoden/go-echo-template/pkg/core/messaging/types"
-	"github.com/reoden/go-echo-template/pkg/rabbitmq/producer/configurations"
+	"github.com/reoden/go-NFT/pkg/core/messaging/producer"
+	types2 "github.com/reoden/go-NFT/pkg/core/messaging/types"
+	"github.com/reoden/go-NFT/pkg/rabbitmq/producer/configurations"
 )
 
 type ProducerFactory interface {

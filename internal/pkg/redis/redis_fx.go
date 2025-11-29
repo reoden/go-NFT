@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/reoden/go-echo-template/pkg/health/contracts"
-	"github.com/reoden/go-echo-template/pkg/logger"
+	"github.com/reoden/go-NFT/pkg/health/contracts"
+	"github.com/reoden/go-NFT/pkg/logger"
 
 	"github.com/redis/go-redis/v9"
 	"go.uber.org/fx"

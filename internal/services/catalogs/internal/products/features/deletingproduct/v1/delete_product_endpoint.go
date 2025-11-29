@@ -3,10 +3,10 @@ package v1
 import (
 	"net/http"
 
-	"github.com/reoden/go-echo-template/catalogs/internal/products/dtos/v1/fxparams"
-	"github.com/reoden/go-echo-template/catalogs/internal/products/features/deletingproduct/v1/dtos"
-	"github.com/reoden/go-echo-template/pkg/core/web/route"
-	customErrors "github.com/reoden/go-echo-template/pkg/http/httperrors/customerrors"
+	"github.com/reoden/go-NFT/catalogs/internal/products/dtos/v1/fxparams"
+	"github.com/reoden/go-NFT/catalogs/internal/products/features/deletingproduct/v1/dtos"
+	"github.com/reoden/go-NFT/pkg/core/web/route"
+	customErrors "github.com/reoden/go-NFT/pkg/http/httperrors/customerrors"
 
 	"emperror.dev/errors"
 	"github.com/labstack/echo/v4"

@@ -3,8 +3,8 @@ package metrics
 import (
 	"context"
 
-	"github.com/reoden/go-echo-template/pkg/http/customecho/contracts"
-	"github.com/reoden/go-echo-template/pkg/logger"
+	"github.com/reoden/go-NFT/pkg/http/customecho/contracts"
+	"github.com/reoden/go-NFT/pkg/logger"
 
 	"go.opentelemetry.io/contrib/instrumentation/host"
 	"go.opentelemetry.io/otel"

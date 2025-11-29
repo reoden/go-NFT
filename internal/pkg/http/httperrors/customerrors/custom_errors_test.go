@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/reoden/go-echo-template/pkg/http/httperrors/contracts"
-	errorUtils "github.com/reoden/go-echo-template/pkg/utils/errorutils"
+	"github.com/reoden/go-NFT/pkg/http/httperrors/contracts"
+	errorUtils "github.com/reoden/go-NFT/pkg/utils/errorutils"
 
 	"emperror.dev/errors"
 	"github.com/stretchr/testify/assert"

@@ -4,8 +4,8 @@ import (
 	"database/sql"
 	"fmt"
 
-	defaultlogger "github.com/reoden/go-echo-template/pkg/logger/defaultlogger"
-	"github.com/reoden/go-echo-template/pkg/logger/external/gromlog"
+	defaultlogger "github.com/reoden/go-NFT/pkg/logger/defaultlogger"
+	"github.com/reoden/go-NFT/pkg/logger/external/gromlog"
 
 	"emperror.dev/errors"
 	"github.com/glebarez/sqlite"

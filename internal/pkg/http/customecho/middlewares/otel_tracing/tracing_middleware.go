@@ -8,7 +8,7 @@ package oteltracing
 import (
 	"fmt"
 
-	"github.com/reoden/go-echo-template/pkg/otel/tracing/utils"
+	"github.com/reoden/go-NFT/pkg/otel/tracing/utils"
 
 	"github.com/labstack/echo/v4"
 	"go.opentelemetry.io/otel/propagation"

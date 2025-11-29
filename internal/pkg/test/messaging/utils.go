@@ -3,12 +3,12 @@ package messaging
 import (
 	"context"
 
-	"github.com/reoden/go-echo-template/pkg/core/messaging/bus"
-	"github.com/reoden/go-echo-template/pkg/core/messaging/types"
-	"github.com/reoden/go-echo-template/pkg/core/messaging/utils"
-	typeMapper "github.com/reoden/go-echo-template/pkg/reflection/typemapper"
-	"github.com/reoden/go-echo-template/pkg/test/hypothesis"
-	"github.com/reoden/go-echo-template/pkg/test/messaging/consumer"
+	"github.com/reoden/go-NFT/pkg/core/messaging/bus"
+	"github.com/reoden/go-NFT/pkg/core/messaging/types"
+	"github.com/reoden/go-NFT/pkg/core/messaging/utils"
+	typeMapper "github.com/reoden/go-NFT/pkg/reflection/typemapper"
+	"github.com/reoden/go-NFT/pkg/test/hypothesis"
+	"github.com/reoden/go-NFT/pkg/test/messaging/consumer"
 )
 
 func ShouldProduced[T types.IMessage](

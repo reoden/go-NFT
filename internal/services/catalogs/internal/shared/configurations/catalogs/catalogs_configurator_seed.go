@@ -3,8 +3,8 @@ package catalogs
 import (
 	"time"
 
-	datamodel "github.com/reoden/go-echo-template/catalogs/internal/products/data/datamodels"
-	"github.com/reoden/go-echo-template/pkg/testfixture"
+	datamodel "github.com/reoden/go-NFT/catalogs/internal/products/data/datamodels"
+	"github.com/reoden/go-NFT/pkg/testfixture"
 
 	"emperror.dev/errors"
 	"github.com/brianvoe/gofakeit/v6"

@@ -5,11 +5,11 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/reoden/go-echo-template/pkg/core/messaging/pipeline"
-	types2 "github.com/reoden/go-echo-template/pkg/core/messaging/types"
-	"github.com/reoden/go-echo-template/pkg/otel/constants/telemetrytags"
-	"github.com/reoden/go-echo-template/pkg/otel/metrics"
-	attribute2 "github.com/reoden/go-echo-template/pkg/otel/tracing/attribute"
+	"github.com/reoden/go-NFT/pkg/core/messaging/pipeline"
+	types2 "github.com/reoden/go-NFT/pkg/core/messaging/types"
+	"github.com/reoden/go-NFT/pkg/otel/constants/telemetrytags"
+	"github.com/reoden/go-NFT/pkg/otel/metrics"
+	attribute2 "github.com/reoden/go-NFT/pkg/otel/tracing/attribute"
 
 	"github.com/iancoleman/strcase"
 	"go.opentelemetry.io/otel/attribute"

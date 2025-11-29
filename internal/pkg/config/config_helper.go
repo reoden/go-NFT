@@ -6,9 +6,9 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/reoden/go-echo-template/pkg/config/environment"
-	"github.com/reoden/go-echo-template/pkg/constants"
-	typeMapper "github.com/reoden/go-echo-template/pkg/reflection/typemapper"
+	"github.com/reoden/go-NFT/pkg/config/environment"
+	"github.com/reoden/go-NFT/pkg/constants"
+	typeMapper "github.com/reoden/go-NFT/pkg/reflection/typemapper"
 
 	"emperror.dev/errors"
 	"github.com/caarlos0/env/v8"

@@ -1,8 +1,8 @@
 package http
 
 import (
-	"github.com/reoden/go-echo-template/pkg/http/client"
-	customEcho "github.com/reoden/go-echo-template/pkg/http/customecho"
+	"github.com/reoden/go-NFT/pkg/http/client"
+	customEcho "github.com/reoden/go-NFT/pkg/http/customecho"
 
 	"go.uber.org/fx"
 )

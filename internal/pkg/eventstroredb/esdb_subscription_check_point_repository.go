@@ -6,10 +6,10 @@ import (
 	"io"
 	"time"
 
-	"github.com/reoden/go-echo-template/pkg/core/events"
-	"github.com/reoden/go-echo-template/pkg/es/contracts"
-	"github.com/reoden/go-echo-template/pkg/logger"
-	typeMapper "github.com/reoden/go-echo-template/pkg/reflection/typemapper"
+	"github.com/reoden/go-NFT/pkg/core/events"
+	"github.com/reoden/go-NFT/pkg/es/contracts"
+	"github.com/reoden/go-NFT/pkg/logger"
+	typeMapper "github.com/reoden/go-NFT/pkg/reflection/typemapper"
 
 	"emperror.dev/errors"
 	"github.com/EventStore/EventStore-Client-Go/esdb"

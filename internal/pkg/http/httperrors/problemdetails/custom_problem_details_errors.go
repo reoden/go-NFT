@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/reoden/go-echo-template/pkg/constants"
+	"github.com/reoden/go-NFT/pkg/constants"
 )
 
 func NewValidationProblemDetail(detail string, stackTrace string) ProblemDetailErr {

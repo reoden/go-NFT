@@ -4,8 +4,8 @@ import (
 	"context"
 	"testing"
 
-	"github.com/reoden/go-echo-template/pkg/logger"
-	"github.com/reoden/go-echo-template/pkg/redis"
+	"github.com/reoden/go-NFT/pkg/logger"
+	"github.com/reoden/go-NFT/pkg/redis"
 )
 
 var RedisContainerOptionsDecorator = func(t *testing.T, ctx context.Context) interface{} {

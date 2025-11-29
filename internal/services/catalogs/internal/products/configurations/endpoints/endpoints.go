@@ -1,7 +1,7 @@
 package endpoints
 
 import (
-	"github.com/reoden/go-echo-template/pkg/core/web/route"
+	"github.com/reoden/go-NFT/pkg/core/web/route"
 )
 
 func RegisterEndpoints(endpoints []route.Endpoint) error {

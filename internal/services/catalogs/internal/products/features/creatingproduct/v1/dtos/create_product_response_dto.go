@@ -1,7 +1,7 @@
 package dtos
 
 import (
-	"github.com/reoden/go-echo-template/pkg/core/serializer/json"
+	"github.com/reoden/go-NFT/pkg/core/serializer/json"
 
 	uuid "github.com/satori/go.uuid"
 )

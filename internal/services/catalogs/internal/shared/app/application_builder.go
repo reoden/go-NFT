@@ -1,8 +1,8 @@
 package app
 
 import (
-	"github.com/reoden/go-echo-template/pkg/fxapp"
-	"github.com/reoden/go-echo-template/pkg/fxapp/contracts"
+	"github.com/reoden/go-NFT/pkg/fxapp"
+	"github.com/reoden/go-NFT/pkg/fxapp/contracts"
 )
 
 type CatalogsApplicationBuilder struct {

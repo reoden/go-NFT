@@ -1,6 +1,6 @@
 package dtos
 
-import "github.com/reoden/go-echo-template/pkg/utils"
+import "github.com/reoden/go-NFT/pkg/utils"
 
 // https://echo.labstack.com/guide/binding/
 // https://echo.labstack.com/guide/request/

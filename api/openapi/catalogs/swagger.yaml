@@ -1,20 +1,5 @@
 definitions:
-  github_com_reoden_go-echo-template_catalogs_internal_products_dtos_v1.ProductDto:
-    properties:
-      createdAt:
-        type: string
-      description:
-        type: string
-      id:
-        type: string
-      name:
-        type: string
-      price:
-        type: number
-      updatedAt:
-        type: string
-    type: object
-  github_com_reoden_go-echo-template_catalogs_internal_products_features_creatingproduct_v1_dtos.CreateProductRequestDto:
+  dtos.CreateProductRequestDto:
     properties:
       description:
         type: string
@@ -23,27 +8,27 @@ definitions:
       price:
         type: number
     type: object
-  github_com_reoden_go-echo-template_catalogs_internal_products_features_creatingproduct_v1_dtos.CreateProductResponseDto:
+  dtos.CreateProductResponseDto:
     properties:
       productId:
         type: string
     type: object
-  github_com_reoden_go-echo-template_catalogs_internal_products_features_gettingproductbyid_v1_dtos.GetProductByIdResponseDto:
+  dtos.GetProductByIdResponseDto:
     properties:
       product:
-        $ref: '#/definitions/github_com_reoden_go-echo-template_catalogs_internal_products_dtos_v1.ProductDto'
+        $ref: '#/definitions/v1.ProductDto'
     type: object
-  github_com_reoden_go-echo-template_catalogs_internal_products_features_gettingproducts_v1_dtos.GetProductsResponseDto:
+  dtos.GetProductsResponseDto:
     properties:
       products:
-        $ref: '#/definitions/utils.ListResult-github_com_reoden_go-echo-template_catalogs_internal_products_dtos_v1_ProductDto'
+        $ref: '#/definitions/utils.ListResult-v1_ProductDto'
     type: object
-  github_com_reoden_go-echo-template_catalogs_internal_products_features_searchingproduct_v1_dtos.SearchProductsResponseDto:
+  dtos.SearchProductsResponseDto:
     properties:
       products:
-        $ref: '#/definitions/utils.ListResult-github_com_reoden_go-echo-template_catalogs_internal_products_dtos_v1_ProductDto'
+        $ref: '#/definitions/utils.ListResult-v1_ProductDto'
     type: object
-  github_com_reoden_go-echo-template_catalogs_internal_products_features_updatingproduct_v1_dtos.UpdateProductRequestDto:
+  dtos.UpdateProductRequestDto:
     properties:
       description:
         type: string
@@ -74,11 +59,11 @@ definitions:
       size:
         type: integer
     type: object
-  utils.ListResult-github_com_reoden_go-echo-template_catalogs_internal_products_dtos_v1_ProductDto:
+  utils.ListResult-v1_ProductDto:
     properties:
       items:
         items:
-          $ref: '#/definitions/github_com_reoden_go-echo-template_catalogs_internal_products_dtos_v1.ProductDto'
+          $ref: '#/definitions/v1.ProductDto'
         type: array
       page:
         type: integer
@@ -89,12 +74,27 @@ definitions:
       totalPage:
         type: integer
     type: object
+  v1.ProductDto:
+    properties:
+      createdAt:
+        type: string
+      description:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+      price:
+        type: number
+      updatedAt:
+        type: string
+    type: object
 info:
   contact:
-    name: Mehdi Hadeli
-    url: https://github.com/mehdihadeli
-  description: Catalogs Write-Service Api.
-  title: Catalogs Write-Service Api
+    name: Reoden
+    url: https://github.com/Reoden
+  description: Catalogs Service Api.
+  title: Catalogs Service Api
   version: "1.0"
 paths:
   /api/v1/products:
@@ -118,7 +118,7 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/github_com_reoden_go-echo-template_catalogs_internal_products_features_gettingproducts_v1_dtos.GetProductsResponseDto'
+            $ref: '#/definitions/dtos.GetProductsResponseDto'
       summary: Get all product
       tags:
       - Products
@@ -132,14 +132,14 @@ paths:
         name: CreateProductRequestDto
         required: true
         schema:
-          $ref: '#/definitions/github_com_reoden_go-echo-template_catalogs_internal_products_features_creatingproduct_v1_dtos.CreateProductRequestDto'
+          $ref: '#/definitions/dtos.CreateProductRequestDto'
       produces:
       - application/json
       responses:
         "201":
           description: Created
           schema:
-            $ref: '#/definitions/github_com_reoden_go-echo-template_catalogs_internal_products_features_creatingproduct_v1_dtos.CreateProductResponseDto'
+            $ref: '#/definitions/dtos.CreateProductResponseDto'
       summary: Create product
       tags:
       - Products
@@ -178,7 +178,7 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/github_com_reoden_go-echo-template_catalogs_internal_products_features_gettingproductbyid_v1_dtos.GetProductByIdResponseDto'
+            $ref: '#/definitions/dtos.GetProductByIdResponseDto'
       summary: Get product by id
       tags:
       - Products
@@ -192,7 +192,7 @@ paths:
         name: UpdateProductRequestDto
         required: true
         schema:
-          $ref: '#/definitions/github_com_reoden_go-echo-template_catalogs_internal_products_features_updatingproduct_v1_dtos.UpdateProductRequestDto'
+          $ref: '#/definitions/dtos.UpdateProductRequestDto'
       - description: Product ID
         in: path
         name: id
@@ -221,8 +221,13 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/github_com_reoden_go-echo-template_catalogs_internal_products_features_searchingproduct_v1_dtos.SearchProductsResponseDto'
+            $ref: '#/definitions/dtos.SearchProductsResponseDto'
       summary: Search products
       tags:
       - Products
+securityDefinitions:
+  BearerAuth:
+    in: header
+    name: Authorization
+    type: apiKey
 swagger: "2.0"

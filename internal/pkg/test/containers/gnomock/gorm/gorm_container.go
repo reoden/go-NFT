@@ -5,8 +5,8 @@ import (
 	"log"
 	"testing"
 
-	gormPostgres "github.com/reoden/go-echo-template/pkg/postgresgorm"
-	"github.com/reoden/go-echo-template/pkg/test/containers/contracts"
+	gormPostgres "github.com/reoden/go-NFT/pkg/postgresgorm"
+	"github.com/reoden/go-NFT/pkg/test/containers/contracts"
 
 	"emperror.dev/errors"
 	"github.com/orlangure/gnomock"

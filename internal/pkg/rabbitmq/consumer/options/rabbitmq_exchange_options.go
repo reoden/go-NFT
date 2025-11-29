@@ -1,6 +1,6 @@
 package options
 
-import "github.com/reoden/go-echo-template/pkg/rabbitmq/types"
+import "github.com/reoden/go-NFT/pkg/rabbitmq/types"
 
 type RabbitMQExchangeOptions struct {
 	Name       string

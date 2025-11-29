@@ -3,9 +3,9 @@ package json
 import (
 	"reflect"
 
-	"github.com/reoden/go-echo-template/pkg/core/messaging/types"
-	"github.com/reoden/go-echo-template/pkg/core/serializer"
-	typeMapper "github.com/reoden/go-echo-template/pkg/reflection/typemapper"
+	"github.com/reoden/go-NFT/pkg/core/messaging/types"
+	"github.com/reoden/go-NFT/pkg/core/serializer"
+	typeMapper "github.com/reoden/go-NFT/pkg/reflection/typemapper"
 
 	"emperror.dev/errors"
 )

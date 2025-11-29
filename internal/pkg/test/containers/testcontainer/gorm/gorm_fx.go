@@ -4,8 +4,8 @@ import (
 	"context"
 	"testing"
 
-	"github.com/reoden/go-echo-template/pkg/logger"
-	gormPostgres "github.com/reoden/go-echo-template/pkg/postgresgorm"
+	"github.com/reoden/go-NFT/pkg/logger"
+	gormPostgres "github.com/reoden/go-NFT/pkg/postgresgorm"
 )
 
 var GormContainerOptionsDecorator = func(t *testing.T, ctx context.Context) interface{} {

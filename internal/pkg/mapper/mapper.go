@@ -7,8 +7,8 @@ import (
 	"fmt"
 	"reflect"
 
-	defaultLogger "github.com/reoden/go-echo-template/pkg/logger/defaultlogger"
-	reflectionHelper "github.com/reoden/go-echo-template/pkg/reflection/reflectionhelper"
+	defaultLogger "github.com/reoden/go-NFT/pkg/logger/defaultlogger"
+	reflectionHelper "github.com/reoden/go-NFT/pkg/reflection/reflectionhelper"
 
 	"emperror.dev/errors"
 	"github.com/ahmetb/go-linq/v3"

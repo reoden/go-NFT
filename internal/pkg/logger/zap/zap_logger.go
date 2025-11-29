@@ -4,11 +4,11 @@ import (
 	"os"
 	"time"
 
-	"github.com/reoden/go-echo-template/pkg/config/environment"
-	"github.com/reoden/go-echo-template/pkg/constants"
-	"github.com/reoden/go-echo-template/pkg/logger"
-	config2 "github.com/reoden/go-echo-template/pkg/logger/config"
-	"github.com/reoden/go-echo-template/pkg/logger/models"
+	"github.com/reoden/go-NFT/pkg/config/environment"
+	"github.com/reoden/go-NFT/pkg/constants"
+	"github.com/reoden/go-NFT/pkg/logger"
+	config2 "github.com/reoden/go-NFT/pkg/logger/config"
+	"github.com/reoden/go-NFT/pkg/logger/models"
 
 	"github.com/uptrace/opentelemetry-go-extra/otelzap"
 	"go.uber.org/zap"

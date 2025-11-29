@@ -3,7 +3,7 @@ package messageHeader
 import (
 	"time"
 
-	"github.com/reoden/go-echo-template/pkg/core/metadata"
+	"github.com/reoden/go-NFT/pkg/core/metadata"
 )
 
 func GetCorrelationId(m metadata.Metadata) string {

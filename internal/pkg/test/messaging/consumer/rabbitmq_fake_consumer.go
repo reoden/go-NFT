@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/reoden/go-echo-template/pkg/core/messaging/types"
-	"github.com/reoden/go-echo-template/pkg/test/hypothesis"
+	"github.com/reoden/go-NFT/pkg/core/messaging/types"
+	"github.com/reoden/go-NFT/pkg/test/hypothesis"
 )
 
 type RabbitMQFakeTestConsumerHandler[T any] struct {

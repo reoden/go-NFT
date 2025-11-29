@@ -1,6 +1,6 @@
 package serializer
 
-import "github.com/reoden/go-echo-template/pkg/core/metadata"
+import "github.com/reoden/go-NFT/pkg/core/metadata"
 
 type MetadataSerializer interface {
 	Serialize(meta metadata.Metadata) ([]byte, error)

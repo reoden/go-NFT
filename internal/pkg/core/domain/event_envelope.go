@@ -1,7 +1,7 @@
 package domain
 
 import (
-	"github.com/reoden/go-echo-template/pkg/core/metadata"
+	"github.com/reoden/go-NFT/pkg/core/metadata"
 )
 
 type EventEnvelope struct {

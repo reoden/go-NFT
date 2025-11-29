@@ -5,16 +5,17 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/reoden/go-echo-template/pkg/constants"
-	"github.com/reoden/go-echo-template/pkg/http/customecho/config"
-	"github.com/reoden/go-echo-template/pkg/http/customecho/contracts"
-	hadnlers "github.com/reoden/go-echo-template/pkg/http/customecho/hadnlers"
-	ipratelimit "github.com/reoden/go-echo-template/pkg/http/customecho/middlewares/ip_ratelimit"
-	"github.com/reoden/go-echo-template/pkg/http/customecho/middlewares/log"
-	otelMetrics "github.com/reoden/go-echo-template/pkg/http/customecho/middlewares/otel_metrics"
-	oteltracing "github.com/reoden/go-echo-template/pkg/http/customecho/middlewares/otel_tracing"
-	problemdetail "github.com/reoden/go-echo-template/pkg/http/customecho/middlewares/problem_detail"
-	"github.com/reoden/go-echo-template/pkg/logger"
+	"github.com/reoden/go-NFT/pkg/constants"
+	"github.com/reoden/go-NFT/pkg/http/customecho/config"
+	"github.com/reoden/go-NFT/pkg/http/customecho/contracts"
+	hadnlers "github.com/reoden/go-NFT/pkg/http/customecho/hadnlers"
+	"github.com/reoden/go-NFT/pkg/http/customecho/middlewares/auth"
+	ipratelimit "github.com/reoden/go-NFT/pkg/http/customecho/middlewares/ip_ratelimit"
+	"github.com/reoden/go-NFT/pkg/http/customecho/middlewares/log"
+	otelMetrics "github.com/reoden/go-NFT/pkg/http/customecho/middlewares/otel_metrics"
+	oteltracing "github.com/reoden/go-NFT/pkg/http/customecho/middlewares/otel_tracing"
+	problemdetail "github.com/reoden/go-NFT/pkg/http/customecho/middlewares/problem_detail"
+	"github.com/reoden/go-NFT/pkg/logger"
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
@@ -100,10 +101,14 @@ func (s *echoHttpServer) GracefulShutdown(ctx context.Context) error {
 
 func (s *echoHttpServer) SetupDefaultMiddlewares() {
 	skipper := func(c echo.Context) bool {
-		return strings.Contains(c.Request().URL.Path, "swagger") ||
-			strings.Contains(c.Request().URL.Path, "metrics") ||
-			strings.Contains(c.Request().URL.Path, "health") ||
-			strings.Contains(c.Request().URL.Path, "favicon.ico")
+		path := c.Request().URL.Path
+		if strings.Contains(path, "swagger") ||
+			strings.Contains(path, "metrics") ||
+			strings.Contains(path, "health") ||
+			strings.Contains(path, "favicon.ico") {
+			return true
+		}
+		return false
 	}
 
 	// set error handler
@@ -141,6 +146,19 @@ func (s *echoHttpServer) SetupDefaultMiddlewares() {
 		Level:   constants.GzipLevel,
 		Skipper: skipper,
 	}))
+
+	authSkipper := func(c echo.Context) bool {
+		return func(ec echo.Context) bool {
+			path := ec.Request().URL.Path
+			method := ec.Request().Method
+			if strings.HasPrefix(path, "/api/v1/products/") && method == echo.GET {
+				return true
+			}
+			return false
+		}(c)
+	}
+
+	s.echo.Use(auth.EchoAuth(authSkipper))
 	// should be last middleware
 	s.echo.Use(problemdetail.ProblemDetail(problemdetail.WithSkipper(skipper)))
 }

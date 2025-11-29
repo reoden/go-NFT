@@ -1,8 +1,8 @@
 package configurations
 
 import (
-	types2 "github.com/reoden/go-echo-template/pkg/core/messaging/types"
-	"github.com/reoden/go-echo-template/pkg/rabbitmq/types"
+	types2 "github.com/reoden/go-NFT/pkg/core/messaging/types"
+	"github.com/reoden/go-NFT/pkg/rabbitmq/types"
 )
 
 type RabbitMQProducerConfigurationBuilder interface {

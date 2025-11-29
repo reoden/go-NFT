@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	"github.com/reoden/go-echo-template/catalogs/internal/shared/app"
+	"github.com/reoden/go-NFT/catalogs/internal/shared/app"
 
 	"github.com/pterm/pterm"
 	"github.com/pterm/pterm/putils"
@@ -22,11 +22,15 @@ var rootCmd = &cobra.Command{
 
 // https://github.com/swaggo/swag#how-to-use-it-with-gin
 
-// @contact.name Mehdi Hadeli
-// @contact.url https://github.com/mehdihadeli
-// @title Catalogs Write-Service Api
+// @contact.name Reoden
+// @contact.url https://github.com/Reoden
+// @title Catalogs Service Api
 // @version 1.0
-// @description Catalogs Write-Service Api.
+// @description Catalogs Service Api.
+
+// @securityDefinitions.apikey BearerAuth
+// @in header
+// @name Authorization
 func main() {
 	pterm.DefaultBigText.WithLetters(
 		putils.LettersFromStringWithStyle("Catalogs", pterm.FgLightGreen.ToStyle()),

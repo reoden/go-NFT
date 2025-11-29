@@ -3,8 +3,8 @@ package health
 import (
 	"net/http"
 
-	contracts2 "github.com/reoden/go-echo-template/pkg/health/contracts"
-	"github.com/reoden/go-echo-template/pkg/http/customecho/contracts"
+	contracts2 "github.com/reoden/go-NFT/pkg/health/contracts"
+	"github.com/reoden/go-NFT/pkg/http/customecho/contracts"
 
 	"github.com/labstack/echo/v4"
 )

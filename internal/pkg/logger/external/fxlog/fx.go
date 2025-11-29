@@ -3,7 +3,7 @@ package fxlog
 import (
 	"strings"
 
-	"github.com/reoden/go-echo-template/pkg/logger"
+	"github.com/reoden/go-NFT/pkg/logger"
 
 	"go.uber.org/fx"
 	"go.uber.org/fx/fxevent"

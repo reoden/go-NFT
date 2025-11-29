@@ -10,9 +10,9 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/reoden/go-echo-template/pkg/logger"
-	migration "github.com/reoden/go-echo-template/pkg/migration"
-	"github.com/reoden/go-echo-template/pkg/migration/contracts"
+	"github.com/reoden/go-NFT/pkg/logger"
+	migration "github.com/reoden/go-NFT/pkg/migration"
+	"github.com/reoden/go-NFT/pkg/migration/contracts"
 
 	"github.com/pressly/goose/v3"
 )

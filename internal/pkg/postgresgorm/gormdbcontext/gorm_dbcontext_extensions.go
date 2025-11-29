@@ -4,12 +4,12 @@ import (
 	"context"
 	"fmt"
 
-	customErrors "github.com/reoden/go-echo-template/pkg/http/httperrors/customerrors"
-	defaultlogger "github.com/reoden/go-echo-template/pkg/logger/defaultlogger"
-	"github.com/reoden/go-echo-template/pkg/mapper"
-	"github.com/reoden/go-echo-template/pkg/postgresgorm/contracts"
-	"github.com/reoden/go-echo-template/pkg/postgresgorm/scopes"
-	typeMapper "github.com/reoden/go-echo-template/pkg/reflection/typemapper"
+	customErrors "github.com/reoden/go-NFT/pkg/http/httperrors/customerrors"
+	defaultlogger "github.com/reoden/go-NFT/pkg/logger/defaultlogger"
+	"github.com/reoden/go-NFT/pkg/mapper"
+	"github.com/reoden/go-NFT/pkg/postgresgorm/contracts"
+	"github.com/reoden/go-NFT/pkg/postgresgorm/scopes"
+	typeMapper "github.com/reoden/go-NFT/pkg/reflection/typemapper"
 
 	"github.com/iancoleman/strcase"
 	uuid "github.com/satori/go.uuid"

@@ -3,7 +3,7 @@ package grpcerrors
 import (
 	"time"
 
-	"github.com/reoden/go-echo-template/pkg/constants"
+	"github.com/reoden/go-NFT/pkg/constants"
 
 	"google.golang.org/grpc/codes"
 )

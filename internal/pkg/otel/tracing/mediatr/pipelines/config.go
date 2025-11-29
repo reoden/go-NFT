@@ -1,8 +1,8 @@
 package pipelines
 
 import (
-	"github.com/reoden/go-echo-template/pkg/logger"
-	defaultLogger "github.com/reoden/go-echo-template/pkg/logger/defaultlogger"
+	"github.com/reoden/go-NFT/pkg/logger"
+	defaultLogger "github.com/reoden/go-NFT/pkg/logger/defaultlogger"
 )
 
 type config struct {

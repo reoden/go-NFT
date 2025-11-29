@@ -1,11 +1,11 @@
 package mappings
 
 import (
-	datamodel "github.com/reoden/go-echo-template/catalogs/internal/products/data/datamodels"
-	dtoV1 "github.com/reoden/go-echo-template/catalogs/internal/products/dtos/v1"
-	"github.com/reoden/go-echo-template/catalogs/internal/products/models"
-	productsService "github.com/reoden/go-echo-template/catalogs/internal/shared/grpc/genproto"
-	"github.com/reoden/go-echo-template/pkg/mapper"
+	datamodel "github.com/reoden/go-NFT/catalogs/internal/products/data/datamodels"
+	dtoV1 "github.com/reoden/go-NFT/catalogs/internal/products/dtos/v1"
+	"github.com/reoden/go-NFT/catalogs/internal/products/models"
+	productsService "github.com/reoden/go-NFT/catalogs/internal/shared/grpc/genproto"
+	"github.com/reoden/go-NFT/pkg/mapper"
 
 	"google.golang.org/protobuf/types/known/timestamppb"
 )

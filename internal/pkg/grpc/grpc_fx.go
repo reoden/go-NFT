@@ -3,8 +3,8 @@ package grpc
 import (
 	"context"
 
-	"github.com/reoden/go-echo-template/pkg/grpc/config"
-	"github.com/reoden/go-echo-template/pkg/logger"
+	"github.com/reoden/go-NFT/pkg/grpc/config"
+	"github.com/reoden/go-NFT/pkg/logger"
 
 	"go.uber.org/fx"
 )

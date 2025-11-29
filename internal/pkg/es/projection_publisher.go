@@ -3,8 +3,8 @@ package es
 import (
 	"context"
 
-	"github.com/reoden/go-echo-template/pkg/es/contracts/projection"
-	"github.com/reoden/go-echo-template/pkg/es/models"
+	"github.com/reoden/go-NFT/pkg/es/contracts/projection"
+	"github.com/reoden/go-NFT/pkg/es/models"
 
 	"emperror.dev/errors"
 )

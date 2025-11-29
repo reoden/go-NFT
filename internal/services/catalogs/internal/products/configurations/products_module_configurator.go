@@ -1,13 +1,13 @@
 package configurations
 
 import (
-	"github.com/reoden/go-echo-template/catalogs/internal/products/configurations/endpoints"
-	"github.com/reoden/go-echo-template/catalogs/internal/products/configurations/mappings"
-	"github.com/reoden/go-echo-template/catalogs/internal/products/configurations/mediator"
-	"github.com/reoden/go-echo-template/catalogs/internal/shared/grpc"
-	productsservice "github.com/reoden/go-echo-template/catalogs/internal/shared/grpc/genproto"
-	fxcontracts "github.com/reoden/go-echo-template/pkg/fxapp/contracts"
-	grpcServer "github.com/reoden/go-echo-template/pkg/grpc"
+	"github.com/reoden/go-NFT/catalogs/internal/products/configurations/endpoints"
+	"github.com/reoden/go-NFT/catalogs/internal/products/configurations/mappings"
+	"github.com/reoden/go-NFT/catalogs/internal/products/configurations/mediator"
+	"github.com/reoden/go-NFT/catalogs/internal/shared/grpc"
+	productsservice "github.com/reoden/go-NFT/catalogs/internal/shared/grpc/genproto"
+	fxcontracts "github.com/reoden/go-NFT/pkg/fxapp/contracts"
+	grpcServer "github.com/reoden/go-NFT/pkg/grpc"
 
 	googleGrpc "google.golang.org/grpc"
 )

@@ -3,11 +3,11 @@ package catalogs
 import (
 	"fmt"
 
-	"github.com/reoden/go-echo-template/catalogs/config"
-	"github.com/reoden/go-echo-template/catalogs/internal/products"
-	"github.com/reoden/go-echo-template/catalogs/internal/shared/configurations/catalogs/infrastructure"
-	"github.com/reoden/go-echo-template/catalogs/internal/shared/contracts"
-	"github.com/reoden/go-echo-template/catalogs/internal/shared/data"
+	"github.com/reoden/go-NFT/catalogs/config"
+	"github.com/reoden/go-NFT/catalogs/internal/products"
+	"github.com/reoden/go-NFT/catalogs/internal/shared/configurations/catalogs/infrastructure"
+	"github.com/reoden/go-NFT/catalogs/internal/shared/contracts"
+	"github.com/reoden/go-NFT/catalogs/internal/shared/data"
 
 	"go.opentelemetry.io/otel/metric"
 	api "go.opentelemetry.io/otel/metric"

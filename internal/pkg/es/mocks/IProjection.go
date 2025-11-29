@@ -5,7 +5,7 @@ package mocks
 import (
 	context "context"
 
-	models "github.com/reoden/go-echo-template/pkg/es/models"
+	models "github.com/reoden/go-NFT/pkg/es/models"
 	mock "github.com/stretchr/testify/mock"
 )
 

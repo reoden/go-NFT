@@ -4,7 +4,7 @@ import (
 	"context"
 	"testing"
 
-	redis2 "github.com/reoden/go-echo-template/pkg/redis"
+	redis2 "github.com/reoden/go-NFT/pkg/redis"
 )
 
 type RedisContainerOptions struct {

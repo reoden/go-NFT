@@ -4,7 +4,7 @@ import (
 	"context"
 	"testing"
 
-	"github.com/reoden/go-echo-template/pkg/eventstroredb/config"
+	"github.com/reoden/go-NFT/pkg/eventstroredb/config"
 )
 
 type EventstoreDBContainerOptions struct {

@@ -1,8 +1,8 @@
 package models
 
 import (
-	"github.com/reoden/go-echo-template/pkg/core/domain"
-	"github.com/reoden/go-echo-template/pkg/core/metadata"
+	"github.com/reoden/go-NFT/pkg/core/domain"
+	"github.com/reoden/go-NFT/pkg/core/metadata"
 
 	uuid "github.com/satori/go.uuid"
 )

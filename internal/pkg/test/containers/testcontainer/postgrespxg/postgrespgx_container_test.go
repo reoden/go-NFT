@@ -4,7 +4,7 @@ import (
 	"context"
 	"testing"
 
-	defaultLogger "github.com/reoden/go-echo-template/pkg/logger/defaultlogger"
+	defaultLogger "github.com/reoden/go-NFT/pkg/logger/defaultlogger"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"

@@ -5,17 +5,17 @@ package mocks
 import (
 	context "context"
 
-	appendResult "github.com/reoden/go-echo-template/pkg/es/models/append_result"
+	appendResult "github.com/reoden/go-NFT/pkg/es/models/append_result"
 
-	expectedStreamVersion "github.com/reoden/go-echo-template/pkg/es/models/stream_version"
+	expectedStreamVersion "github.com/reoden/go-NFT/pkg/es/models/stream_version"
 
-	metadata "github.com/reoden/go-echo-template/pkg/core/metadata"
+	metadata "github.com/reoden/go-NFT/pkg/core/metadata"
 
 	mock "github.com/stretchr/testify/mock"
 
-	models "github.com/reoden/go-echo-template/pkg/es/models"
+	models "github.com/reoden/go-NFT/pkg/es/models"
 
-	readPosition "github.com/reoden/go-echo-template/pkg/es/models/stream_position/read_position"
+	readPosition "github.com/reoden/go-NFT/pkg/es/models/stream_position/read_position"
 
 	uuid "github.com/satori/go.uuid"
 )

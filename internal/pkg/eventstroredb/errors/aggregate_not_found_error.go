@@ -3,7 +3,7 @@ package errors
 import (
 	"fmt"
 
-	customErrors "github.com/reoden/go-echo-template/pkg/http/httperrors/customerrors"
+	customErrors "github.com/reoden/go-NFT/pkg/http/httperrors/customerrors"
 
 	"emperror.dev/errors"
 	uuid "github.com/satori/go.uuid"

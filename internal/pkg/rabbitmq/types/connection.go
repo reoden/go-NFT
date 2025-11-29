@@ -3,9 +3,9 @@ package types
 import (
 	"fmt"
 
-	defaultLogger "github.com/reoden/go-echo-template/pkg/logger/defaultlogger"
-	"github.com/reoden/go-echo-template/pkg/rabbitmq/config"
-	errorUtils "github.com/reoden/go-echo-template/pkg/utils/errorutils"
+	defaultLogger "github.com/reoden/go-NFT/pkg/logger/defaultlogger"
+	"github.com/reoden/go-NFT/pkg/rabbitmq/config"
+	errorUtils "github.com/reoden/go-NFT/pkg/utils/errorutils"
 
 	"emperror.dev/errors"
 	"github.com/rabbitmq/amqp091-go"
