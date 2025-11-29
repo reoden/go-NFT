@@ -32,12 +32,12 @@ if [ "$command" == "gorm-sync" ]; then
    # shellcheck disable=SC2164
    # atlas migrate diff -h
    cd "$path"
-   atlas migrate diff --env gorm --config "file://atlas.hcl"
+   atlas.exe migrate diff --env gorm --config "file://atlas.hcl"
 elif [ "$command" == "apply" ]; then
   # shellcheck disable=SC2164
   # atlas migrate apply -h
   cd "$path"
-  atlas migrate apply --dir "file://db/migrations/atlas" --url "$connection"
+  atlas.exe migrate apply --dir "file://db/migrations/atlas" --url "$connection"
 elif [ "$command" == "down" ]; then
   echo "Running down command..."
 else

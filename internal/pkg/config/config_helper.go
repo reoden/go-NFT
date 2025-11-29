@@ -62,8 +62,6 @@ func BindConfigKey[T any](
 		configPath = d
 	}
 
-	fmt.Println("[DEBUG] configPath = ", configPath)
-
 	// https://github.com/spf13/viper/issues/390#issuecomment-718756752
 	viper.SetConfigName(fmt.Sprintf("config.%s", currentEnv))
 	viper.AddConfigPath(configPath)

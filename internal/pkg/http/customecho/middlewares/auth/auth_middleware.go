@@ -12,7 +12,6 @@ import (
 
 func EchoAuth(skipper func(c echo.Context) bool) echo.MiddlewareFunc {
 	secret := os.Getenv("JWT_SECRET")
-	fmt.Println("[DEBUG] secret = ", secret)
 	return echojwt.WithConfig(echojwt.Config{
 		SigningKey: []byte(secret),
 		Skipper:    skipper,

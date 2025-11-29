@@ -29,11 +29,7 @@ func NewGoosePostgres(
 	logger logger.Logger,
 ) contracts.PostgresMigrationRunner {
 	goose.SetBaseFS(nil)
-
-	fmt.Println("[DEBUG] goose config = ", config)
-
 	wd, _ := os.Getwd()
-	fmt.Println("[DEBUG] current working directory:", wd)
 
 	return &goosePostgresMigrator{config: config, db: db, logger: logger}
 }

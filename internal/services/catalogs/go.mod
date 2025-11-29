@@ -10,7 +10,6 @@ require (
 	github.com/go-ozzo/ozzo-validation v3.6.0+incompatible
 	github.com/go-playground/validator v9.31.0+incompatible
 	github.com/goccy/go-json v0.10.5
-	github.com/golang-jwt/jwt/v5 v5.3.0
 	github.com/iancoleman/strcase v0.3.0
 	github.com/labstack/echo/v4 v4.13.4
 	github.com/mehdihadeli/go-mediatr v1.4.0
@@ -78,6 +77,7 @@ require (
 	github.com/go-viper/mapstructure/v2 v2.4.0 // indirect
 	github.com/goccy/go-reflect v1.2.0 // indirect
 	github.com/goccy/go-yaml v1.18.0 // indirect
+	github.com/golang-jwt/jwt/v5 v5.3.0 // indirect
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/gookit/color v1.5.4 // indirect
 	github.com/grafana/regexp v0.0.0-20240518133315-a468a5bfb3bc // indirect

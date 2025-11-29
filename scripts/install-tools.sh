@@ -63,7 +63,7 @@ go install github.com/onsi/ginkgo/v2/ginkgo@latest
 go install github.com/bufbuild/buf/cmd/buf@latest
 
 # https://github.com/ariga/atlas#quick-installation
-#npx --yes @ariga/atlas
+#go install ariga.io/atlas/cmd/atlas@latest
 
 #OS="$(uname -s)"
 #
