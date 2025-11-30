@@ -1,7 +1,6 @@
 package auth
 
 import (
-	"fmt"
 	"os"
 
 	echojwt "github.com/labstack/echo-jwt/v4"

@@ -12,5 +12,5 @@ atlas migrate hash --env go-migrate
 ```
 
 ```bash
-atlas schema inspect --env go-migrate --url "file://db/migrations/go-migrate" --format "{{ sql . \"  \" }}" > ./db/migrations/go-migrate/schema.sql
+atlas schema inspect --env go-migrate --url "file://db/migrations/go-migrate" --format "{{ sql . \"  \" }}" > ./db/migrations/go-migrate/schema.txt
 ```

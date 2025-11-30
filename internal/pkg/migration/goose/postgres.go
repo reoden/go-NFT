@@ -6,8 +6,6 @@ import (
 	"context"
 	"database/sql"
 	"errors"
-	"fmt"
-	"os"
 	"strconv"
 
 	"github.com/reoden/go-NFT/pkg/logger"
@@ -29,7 +27,6 @@ func NewGoosePostgres(
 	logger logger.Logger,
 ) contracts.PostgresMigrationRunner {
 	goose.SetBaseFS(nil)
-	wd, _ := os.Getwd()
 
 	return &goosePostgresMigrator{config: config, db: db, logger: logger}
 }

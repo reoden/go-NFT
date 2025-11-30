@@ -1,0 +1,44 @@
+definitions:
+  dtos.CreateUserRequestDto:
+    properties:
+      invite_code:
+        type: string
+      phone:
+        type: string
+    type: object
+  dtos.CreateUserResponseDto:
+    properties:
+      userID:
+        type: string
+    type: object
+info:
+  contact:
+    name: Reoden
+    url: https://github.com/Reoden
+  description: User Service Api.
+  title: User Service Api
+  version: "1.0"
+paths:
+  /api/v1/user:
+    post:
+      consumes:
+      - application/json
+      description: Create new user item
+      parameters:
+      - description: User data
+        in: body
+        name: CreateUserRequestDto
+        required: true
+        schema:
+          $ref: '#/definitions/dtos.CreateUserRequestDto'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/dtos.CreateUserResponseDto'
+      summary: Create user
+      tags:
+      - User
+swagger: "2.0"

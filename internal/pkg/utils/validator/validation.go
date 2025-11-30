@@ -1,6 +1,9 @@
 package validator
 
-import "github.com/go-playground/validator"
+import (
+	"emperror.dev/errors"
+	"github.com/go-playground/validator"
+)
 
 var validate *validator.Validate
 
@@ -13,7 +16,8 @@ func Validate(input interface{}) error {
 	if err := validate.Struct(input); err != nil {
 		// this check ensures there wasn't an error
 		// with the validation process itself
-		if _, ok := err.(*validator.InvalidValidationError); ok {
+		var invalidValidationError *validator.InvalidValidationError
+		if errors.As(err, &invalidValidationError) {
 			return err
 		}
 		return err

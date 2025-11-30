@@ -1,26 +1,26 @@
 package app
 
 import (
-	"github.com/reoden/go-NFT/pkg/fxapp"
-	"github.com/reoden/go-NFT/pkg/fxapp/contracts"
+    "github.com/reoden/go-NFT/pkg/fxapp"
+    "github.com/reoden/go-NFT/pkg/fxapp/contracts"
 )
 
-type CatalogsApplicationBuilder struct {
-	contracts.ApplicationBuilder
+type UserApplicationBuilder struct {
+    contracts.ApplicationBuilder
 }
 
-func NewCatalogsWriteApplicationBuilder() *CatalogsApplicationBuilder {
-	builder := &CatalogsApplicationBuilder{fxapp.NewApplicationBuilder()}
+func NewUserApplicationBuilder() *UserApplicationBuilder {
+    builder := &UserApplicationBuilder{fxapp.NewApplicationBuilder()}
 
-	return builder
+    return builder
 }
 
-func (a *CatalogsApplicationBuilder) Build() *CatalogsApplication {
-	return NewCatalogsApplication(
-		a.GetProvides(),
-		a.GetDecorates(),
-		a.Options(),
-		a.Logger(),
-		a.Environment(),
-	)
+func (a *UserApplicationBuilder) Build() *UserApplication {
+    return NewUserApplication(
+        a.GetProvides(),
+        a.GetDecorates(),
+        a.Options(),
+        a.Logger(),
+        a.Environment(),
+    )
 }

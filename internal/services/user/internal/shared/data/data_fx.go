@@ -13,6 +13,6 @@ var Module = fx.Module(
 	// - provide can have parameter and will resolve if registered
 	// - execute its func only if it requested
 	fx.Provide(
-		dbcontext.NewCatalogsDBContext,
+		dbcontext.NewUserDBContext,
 	),
 )

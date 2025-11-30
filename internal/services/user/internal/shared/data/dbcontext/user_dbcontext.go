@@ -12,7 +12,7 @@ type UserGormDBContext struct {
 	contracts.GormDBContext
 }
 
-func NewCatalogsDBContext(db *gorm.DB) *UserGormDBContext {
+func NewUserDBContext(db *gorm.DB) *UserGormDBContext {
 	// initialize base GormContext
 	c := &UserGormDBContext{GormDBContext: gormdbcontext.NewGormDBContext(db)}
 

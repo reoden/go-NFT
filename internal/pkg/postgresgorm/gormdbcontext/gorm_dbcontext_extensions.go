@@ -72,6 +72,53 @@ func FindModelByID[TDataModel interface{}, TModel interface{}](
 	return resultModel, nil
 }
 
+func FindModelByCond[TDataModel interface{}, TModel interface{}](
+	ctx context.Context,
+	dbContext contracts.GormDBContext,
+	conds map[string]any,
+) (TModel, error) {
+	var dataModel TDataModel
+
+	// https://gorm.io/docs/query.html#Retrieving-objects-with-primary-key
+	// https://gorm.io/docs/query.html#Struct-amp-Map-Conditions
+	// https://gorm.io/docs/query.html#Inline-Condition
+	// https://gorm.io/docs/advanced_query.html
+	// result := c.WithContext(ctx).First(&dataModel, "id = ?", id)
+	// result := c.WithContext(ctx).First(&TDataModel{Id: id})
+	// result := c.WithContext(ctx).Scopes(scopes.FilterByID(id)).First(&dataModel)
+
+	modelName := strcase.ToSnake(typeMapper.GetGenericNonePointerTypeNameByT[TModel]())
+	dataModelName := strcase.ToSnake(typeMapper.GetGenericNonePointerTypeNameByT[TDataModel]())
+
+	query := dbContext.DB().WithContext(ctx)
+	if len(conds) > 0 {
+		query = query.Where(conds)
+	}
+	result := query.First(&dataModel)
+	if result.Error != nil {
+		return *new(TModel), customErrors.NewNotFoundErrorWrap(
+			result.Error,
+			fmt.Sprintf(
+				"%s with conds `%s` not found in the database",
+				dataModelName,
+				conds,
+			),
+		)
+	}
+
+	defaultlogger.GetLogger().Infof("Number of affected rows are: %d", result.RowsAffected)
+
+	resultModel, err := mapper.Map[TModel](dataModel)
+	if err != nil {
+		return *new(TModel), customErrors.NewInternalServerErrorWrap(
+			err,
+			fmt.Sprintf("error in the mapping %s", modelName),
+		)
+	}
+
+	return resultModel, nil
+}
+
 func FindDataModelByID[TDataModel interface{}](
 	ctx context.Context,
 	dbContext contracts.GormDBContext,
@@ -97,6 +144,44 @@ func FindDataModelByID[TDataModel interface{}](
 				"%s with id `%s` not found in the database",
 				dataModelName,
 				id.String(),
+			),
+		)
+	}
+
+	defaultlogger.GetLogger().Infof("Number of affected rows are: %d", result.RowsAffected)
+
+	return dataModel, nil
+}
+
+func FindDataModelByCond[TDataModel interface{}](
+	ctx context.Context,
+	dbContext contracts.GormDBContext,
+	conds map[string]any,
+) (TDataModel, error) {
+	var dataModel TDataModel
+
+	// https://gorm.io/docs/query.html#Retrieving-objects-with-primary-key
+	// https://gorm.io/docs/query.html#Struct-amp-Map-Conditions
+	// https://gorm.io/docs/query.html#Inline-Condition
+	// https://gorm.io/docs/advanced_query.html
+	// result := c.WithContext(ctx).First(&dataModel, "id = ?", id)
+	// result := c.WithContext(ctx).First(&TDataModel{Id: id})
+	// result := c.WithContext(ctx).Scopes(scopes.FilterByID(id)).First(&dataModel)
+
+	dataModelName := strcase.ToSnake(typeMapper.GetGenericNonePointerTypeNameByT[TDataModel]())
+
+	query := dbContext.DB().WithContext(ctx)
+	if len(conds) > 0 {
+		query = query.Where(conds)
+	}
+	result := query.First(&dataModel)
+	if result.Error != nil {
+		return *new(TDataModel), customErrors.NewNotFoundErrorWrap(
+			result.Error,
+			fmt.Sprintf(
+				"%s with conds `%s` not found in the database",
+				dataModelName,
+				conds,
 			),
 		)
 	}

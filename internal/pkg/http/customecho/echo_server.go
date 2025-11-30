@@ -9,7 +9,6 @@ import (
 	"github.com/reoden/go-NFT/pkg/http/customecho/config"
 	"github.com/reoden/go-NFT/pkg/http/customecho/contracts"
 	hadnlers "github.com/reoden/go-NFT/pkg/http/customecho/hadnlers"
-	"github.com/reoden/go-NFT/pkg/http/customecho/middlewares/auth"
 	ipratelimit "github.com/reoden/go-NFT/pkg/http/customecho/middlewares/ip_ratelimit"
 	"github.com/reoden/go-NFT/pkg/http/customecho/middlewares/log"
 	otelMetrics "github.com/reoden/go-NFT/pkg/http/customecho/middlewares/otel_metrics"
@@ -147,18 +146,18 @@ func (s *echoHttpServer) SetupDefaultMiddlewares() {
 		Skipper: skipper,
 	}))
 
-	authSkipper := func(c echo.Context) bool {
-		return func(ec echo.Context) bool {
-			path := ec.Request().URL.Path
-			method := ec.Request().Method
-			if strings.HasPrefix(path, "/api/v1/products/") && method == echo.GET {
-				return true
-			}
-			return false
-		}(c)
-	}
-
-	s.echo.Use(auth.EchoAuth(authSkipper))
+	//authSkipper := func(c echo.Context) bool {
+	//	return func(ec echo.Context) bool {
+	//		path := ec.Request().URL.Path
+	//		method := ec.Request().Method
+	//		if strings.HasPrefix(path, "/api/v1/products/") && method == echo.GET {
+	//			return true
+	//		}
+	//		return false
+	//	}(c)
+	//}
+	//
+	//s.echo.Use(auth.EchoAuth(authSkipper))
 	// should be last middleware
 	s.echo.Use(problemdetail.ProblemDetail(problemdetail.WithSkipper(skipper)))
 }

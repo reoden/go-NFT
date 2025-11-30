@@ -1,9 +1,9 @@
 -- Create "products" table
-CREATE TABLE "public"."products" (
-  "id" text NOT NULL,
-  "name" text NULL,
-  "description" text NULL,
-  "price" numeric NULL,
+CREATE TABLE "public"."user" (
+    "id" uuid NOT NULL,
+  "user_id" text NOT NULL,
+  "nickname" text NULL,
+  "phone" text NULL,
   "created_at" timestamptz NULL,
   "updated_at" timestamptz NULL,
   "deleted_at" timestamptz NULL,

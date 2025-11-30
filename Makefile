@@ -6,6 +6,11 @@ install-tools:
 run-catalogs-service:
 	@./scripts/run.sh catalogs
 
+.PHONY: run-user-service
+run-user-service:
+	@./scripts/run.sh user
+
+
 .PHONY: build
 build:
 	@./scripts/build.sh  pkg
@@ -31,11 +36,13 @@ docker-compose-infra-down:
 .PHONY: openapi
 openapi:
 	@./scripts/openapi.sh catalogs
+	@./scripts/openapi.sh user
 
 # https://stackoverflow.com/questions/13616033/install-protocol-buffers-on-windows
 .PHONY: proto
 proto:
 	@./scripts/proto.sh catalogs
+	@./scripts/proto.sh user
 
 .PHONY: unit-test
 unit-test:
@@ -71,22 +78,33 @@ lint:
 # https://github.com/golang-migrate/migrate/tree/856ea12df9d230b0145e23d951b7dbd6b86621cb/cmd/migrate#usage
 .PHONY: go-migrate
 go-migrate:
-	@./scripts/go-migrate.sh -p ./internal/services/catalogs/db/migrations/go-migrate -c create -n create_product_table
-	@./scripts/go-migrate.sh -p ./internal/services/catalogs/db/migrations/go-migrate -c up -o postgres://postgres:123456@localhost:5432/catalogs?sslmode=disable
-	@./scripts/go-migrate.sh -p ./internal/services/catalogs/db/migrations/go-migrate -c down -o postgres://postgres:123456@localhost:5432/catalogs?sslmode=disable
+#	@./scripts/go-migrate.sh -p ./internal/services/user/db/migrations/go-migrate -c create -n create_product_table
+#	@./scripts/go-migrate.sh -p ./internal/services/user/db/migrations/go-migrate -c up -o postgres://postgres:123456@localhost:5432/user?sslmode=disable
+#	@./scripts/go-migrate.sh -p ./internal/services/user/db/migrations/go-migrate -c down -o postgres://postgres:123456@localhost:5432/user?sslmode=disable
+
+	@./scripts/go-migrate.sh -p ./internal/services/user/db/migrations/go-migrate -c create -n create_user_table
+	@./scripts/go-migrate.sh -p ./internal/services/user/db/migrations/go-migrate -c up -o postgres://postgres:123456@localhost:5432/nft-user?sslmode=disable
+	@./scripts/go-migrate.sh -p ./internal/services/user/db/migrations/go-migrate -c down -o postgres://postgres:123456@localhost:5432/nft-user?sslmode=disable
 
 # https://github.com/pressly/goose#usage
 .PHONY: goose-migrate
 goose-migrate:
-	@./scripts/goose-migrate.sh -p ./internal/services/catalogs/db/migrations/goose-migrate -c create -n create_product_table
-	@./scripts/goose-migrate.sh -p ./internal/services/catalogs/db/migrations/goose-migrate -c up -o "user=postgres password=123456 dbname=catalogs sslmode=disable"
-	@./scripts/goose-migrate.sh -p ./internal/services/catalogs/db/migrations/goose-migrate -c down -o "user=postgres password=123456 dbname=catalogs sslmode=disable"
+#	@./scripts/goose-migrate.sh -p ./internal/services/user/db/migrations/goose-migrate -c create -n create_product_table
+#	@./scripts/goose-migrate.sh -p ./internal/services/user/db/migrations/goose-migrate -c up -o "user=postgres password=123456 dbname=user sslmode=disable"
+#	@./scripts/goose-migrate.sh -p ./internal/services/user/db/migrations/goose-migrate -c down -o "user=postgres password=123456 dbname=user sslmode=disable"
+
+	@./scripts/goose-migrate.sh -p ./internal/services/user/db/migrations/goose-migrate -c create -n create_user_table
+	@./scripts/goose-migrate.sh -p ./internal/services/user/db/migrations/goose-migrate -c up -o "user=postgres password=123456 dbname=nft-user sslmode=disable"
+	@./scripts/goose-migrate.sh -p ./internal/services/user/db/migrations/goose-migrate -c down -o "user=postgres password=123456 dbname=nft-user sslmode=disable"
 
 # https://atlasgo.io/guides/orms/gorm
 .PHONY: atlas
 atlas:
-	@./scripts/atlas-migrate.sh -c gorm-sync -p "./internal/services/catalogs"
-	@./scripts/atlas-migrate.sh -c apply -p "./internal/services/catalogs" -o "postgres://postgres:123456@localhost:5432/catalogs?sslmode=disable"
+#	@./scripts/atlas-migrate.sh -c gorm-sync -p "./internal/services/user"
+#	@./scripts/atlas-migrate.sh -c apply -p "./internal/services/user" -o "postgres://postgres:123456@localhost:5432/user?sslmode=disable"
+
+	@./scripts/atlas-migrate.sh -c gorm-sync -p "./internal/services/user"
+	@./scripts/atlas-migrate.sh -c apply -p "./internal/services/user" -o "postgres://postgres:123456@localhost:5432/nft-user?sslmode=disable"
 
 .PHONY: cycle-check
 cycle-check:

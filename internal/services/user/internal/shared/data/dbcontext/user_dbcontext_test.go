@@ -190,7 +190,7 @@ func (s *DBContextTestSuite) Test_UpdateProduct() {
 // TestSuite Hooks
 
 func (s *DBContextTestSuite) SetupTest() {
-	err := mappings.ConfigureProductsMappings()
+	err := mappings.ConfigureUserMappings()
 	s.Require().NoError(err)
 
 	var gormDBContext *UserGormDBContext

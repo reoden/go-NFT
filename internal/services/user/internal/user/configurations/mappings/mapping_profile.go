@@ -2,7 +2,7 @@ package mappings
 
 import (
 	"github.com/reoden/go-NFT/pkg/mapper"
-	productsService "github.com/reoden/go-NFT/user/internal/shared/grpc/genproto"
+	userService "github.com/reoden/go-NFT/user/internal/shared/grpc/genproto"
 	datamodel "github.com/reoden/go-NFT/user/internal/user/data/datamodels"
 	dtoV1 "github.com/reoden/go-NFT/user/internal/user/dtos/v1"
 	"github.com/reoden/go-NFT/user/internal/user/models"
@@ -10,39 +10,39 @@ import (
 	"google.golang.org/protobuf/types/known/timestamppb"
 )
 
-func ConfigureProductsMappings() error {
-	err := mapper.CreateMap[*models.Product, *dtoV1.ProductDto]()
+func ConfigureUserMappings() error {
+	err := mapper.CreateMap[*models.User, *dtoV1.UserDto]()
 	if err != nil {
 		return err
 	}
 
-	err = mapper.CreateMap[*dtoV1.ProductDto, *models.Product]()
+	err = mapper.CreateMap[*dtoV1.UserDto, *models.User]()
 	if err != nil {
 		return err
 	}
 
-	err = mapper.CreateMap[*datamodel.ProductDataModel, *models.Product]()
+	err = mapper.CreateMap[*datamodel.UserDataModel, *models.User]()
 	if err != nil {
 		return err
 	}
 
-	err = mapper.CreateMap[*models.Product, *datamodel.ProductDataModel]()
+	err = mapper.CreateMap[*models.User, *datamodel.UserDataModel]()
 	if err != nil {
 		return err
 	}
 
-	err = mapper.CreateCustomMap[*dtoV1.ProductDto, *productsService.Product](
-		func(product *dtoV1.ProductDto) *productsService.Product {
-			if product == nil {
+	err = mapper.CreateCustomMap[*dtoV1.UserDto, *userService.User](
+		func(user *dtoV1.UserDto) *userService.User {
+			if user == nil {
 				return nil
 			}
-			return &productsService.Product{
-				ProductId:   product.Id.String(),
-				Name:        product.Name,
-				Description: product.Description,
-				Price:       product.Price,
-				CreatedAt:   timestamppb.New(product.CreatedAt),
-				UpdatedAt:   timestamppb.New(product.UpdatedAt),
+			return &userService.User{
+				Id:        user.Id,
+				UserId:    user.UserId.String(),
+				Nickname:  user.Nickname,
+				Phone:     user.Phone,
+				CreatedAt: timestamppb.New(user.CreatedAt),
+				UpdatedAt: timestamppb.New(user.UpdatedAt),
 			}
 		},
 	)
@@ -51,14 +51,14 @@ func ConfigureProductsMappings() error {
 	}
 
 	err = mapper.CreateCustomMap(
-		func(product *models.Product) *productsService.Product {
-			return &productsService.Product{
-				ProductId:   product.Id.String(),
-				Name:        product.Name,
-				Description: product.Description,
-				Price:       product.Price,
-				CreatedAt:   timestamppb.New(product.CreatedAt),
-				UpdatedAt:   timestamppb.New(product.UpdatedAt),
+		func(user *models.User) *userService.User {
+			return &userService.User{
+				Id:        user.Id,
+				UserId:    user.UserId.String(),
+				Nickname:  user.Nickname,
+				Phone:     user.Phone,
+				CreatedAt: timestamppb.New(user.CreatedAt),
+				UpdatedAt: timestamppb.New(user.UpdatedAt),
 			}
 		},
 	)

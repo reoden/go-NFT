@@ -179,6 +179,8 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/dtos.GetProductByIdResponseDto'
+      security:
+      - BearerAuth: []
       summary: Get product by id
       tags:
       - Products

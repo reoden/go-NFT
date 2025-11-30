@@ -104,7 +104,7 @@
 # Enable ping
 [ping]
 
-  # Name of the related entry point
+  # Nickname of the related entry point
   #
   # Optional
   # Default: "traefik"
@@ -128,9 +128,9 @@
   # Default host rule.
   #
   # Optional
-  # Default: "Host(`{{ normalize .Name }}`)"
+  # Default: "Host(`{{ normalize .Nickname }}`)"
   #
-  # defaultRule = "Host(`{{ normalize .Name }}.docker.localhost`)"
+  # defaultRule = "Host(`{{ normalize .Nickname }}.docker.localhost`)"
 
   # Expose containers by default in traefik
   #
@@ -188,7 +188,7 @@
     #
     localAgentHostPort = "jaeger-agent:6831"
 
-    # Trace Context Header Name is the http header name used to propagate tracing context.
+    # Trace Context Header Nickname is the http header name used to propagate tracing context.
     # This must be in lower-case to avoid mismatches when decoding incoming headers.
     #
     # Default: "uber-trace-id"

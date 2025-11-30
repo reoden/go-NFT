@@ -29,8 +29,8 @@ var rootCmd = &cobra.Command{
 // @description User Service Api.
 func main() {
 	pterm.DefaultBigText.WithLetters(
-		putils.LettersFromStringWithStyle("Catalogs", pterm.FgLightGreen.ToStyle()),
-		putils.LettersFromStringWithStyle(" Write Service", pterm.FgLightMagenta.ToStyle())).
+		putils.LettersFromStringWithStyle("User", pterm.FgLightGreen.ToStyle()),
+		putils.LettersFromStringWithStyle("Service", pterm.FgLightMagenta.ToStyle())).
 		Render()
 
 	err := rootCmd.Execute()

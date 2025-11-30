@@ -1,22 +1,22 @@
 {
   "appOptions": {
-    "serviceName": "orderservice",
+    "serviceName": "userservice",
     "deliveryType": "http"
   },
   "grpcOptions": {
-    "name": "orderservice",
+    "name": "userservice",
     "port": ":6005",
     "host": "localhost",
     "development": true
   },
   "echoHttpOptions": {
-    "name": "orderservice",
-    "port": ":8000",
+    "name": "userservice",
+    "port": ":8001",
     "development": true,
     "timeout": 30,
     "basePath": "/api/v1",
     "host": "http://localhost",
-    "ordersPath": "orders",
+    "ordersPath": "users",
     "debugHeaders": true,
     "httpClientDebug": true,
     "debugErrorsResponse": true,
@@ -34,15 +34,22 @@
     "port": 5432,
     "user": "postgres",
     "password": "123456",
-    "dbName": "catalogs",
+    "dbName": "nft-user",
     "sslMode": false
+  },
+  "redisOptions": {
+    "host": "localhost",
+    "port": 6379,
+    "password": "",
+    "database": 0,
+    "poolSize": 300
   },
   "mongoDbOptions": {
     "host": "localhost",
     "port": 27017,
     "user": "admin",
     "password": "admin",
-    "database": "orders_service",
+    "database": "user_service",
     "useAuth": true
   },
   "rabbitmqOptions": {
@@ -58,8 +65,8 @@
   },
   "tracingOptions": {
     "enable": true,
-    "serviceName": "orders-service",
-    "instrumentationName": "io.opentelemetry.traces.orders-service",
+    "serviceName": "user-service",
+    "instrumentationName": "io.opentelemetry.traces.user-service",
     "id": 1,
     "useStdout": false,
     "alwaysOnSampler": true,
@@ -91,7 +98,7 @@
   },
   "metricsOptions": {
     "metricsRoutePath": "/metrics",
-    "serviceName": "orders-service",
+    "serviceName": "user-service",
     "instrumentationName": "io.opentelemetry.metrics.orders-service"
   },
   "eventStoreDbOptions": {
@@ -99,8 +106,8 @@
     "httpPort": 2113,
     "tcpPort": 1113 ,
     "subscription": {
-      "subscriptionId": "orders-subscription",
-      "prefix": ["order-"]
+      "subscriptionId": "user-subscription",
+      "prefix": ["user-"]
     }
   },
   "migrationOptions": {
@@ -108,9 +115,9 @@
     "port": 5432,
     "user": "postgres",
     "password": "123456",
-    "dbName": "catalogs",
+    "dbName": "nft-user",
     "sslMode": false,
-    "migrationsDir": "E:\\fech\\go-echo-template\\internal\\services\\catalogs\\db\\migrations\\goose-migrate",
+    "migrationsDir": "E:\\fech\\go-NFT\\internal\\services\\user\\db\\migrations\\goose-migrate",
     "skipMigration": false
   }
 }

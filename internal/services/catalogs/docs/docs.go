@@ -122,6 +122,11 @@ const docTemplate = `{
         },
         "/api/v1/products/{id}": {
             "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Get product by id",
                 "consumes": [
                     "application/json"

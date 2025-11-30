@@ -1,19 +1,13 @@
 package user
 
 import (
-	"github.com/reoden/go-NFT/pkg/core/cqrs"
+	"github.com/labstack/echo/v4"
 	"github.com/reoden/go-NFT/pkg/core/web/route"
 	"github.com/reoden/go-NFT/pkg/http/customecho/contracts"
 	"github.com/reoden/go-NFT/user/internal/shared/grpc"
+	userConstracts "github.com/reoden/go-NFT/user/internal/user/contracts"
 	"github.com/reoden/go-NFT/user/internal/user/data/repositories"
-	creatingproductv1 "github.com/reoden/go-NFT/user/internal/user/features/creatingproduct/v1"
-	deletingproductv1 "github.com/reoden/go-NFT/user/internal/user/features/deletingproduct/v1"
-	gettingproductbyidv1 "github.com/reoden/go-NFT/user/internal/user/features/gettingproductbyid/v1"
-	gettingproductsv1 "github.com/reoden/go-NFT/user/internal/user/features/gettingproducts/v1"
-	searchingproductsv1 "github.com/reoden/go-NFT/user/internal/user/features/searchingproduct/v1"
-	updatingoroductsv1 "github.com/reoden/go-NFT/user/internal/user/features/updatingproduct/v1"
-
-	"github.com/labstack/echo/v4"
+	"github.com/reoden/go-NFT/user/internal/user/features/creatinguser/v1/endpoints"
 	"go.uber.org/fx"
 )
 
@@ -22,74 +16,79 @@ var Module = fx.Module(
 
 	// Other provides
 	fx.Provide(repositories.NewPostgresUserRepository),
-	fx.Provide(grpc.NewProductGrpcService),
+	fx.Provide(
+		fx.Annotate(
+			repositories.NewRedisUserRepository,
+			fx.As(new(userConstracts.UserCacheRepository)),
+		)),
+	fx.Provide(grpc.NewUserGrpcService),
 
 	fx.Provide(
 		fx.Annotate(func(userServer contracts.EchoHttpServer) *echo.Group {
 			var g *echo.Group
 			userServer.RouteBuilder().
 				RegisterGroupFunc("/api/v1", func(v1 *echo.Group) {
-					group := v1.Group("/products")
+					group := v1.Group("/user")
 					g = group
 				})
 
 			return g
-		}, fx.ResultTags(`name:"product-echo-group"`)),
+		}, fx.ResultTags(`name:"user-echo-group"`)),
 	),
 
 	// add cqrs handlers to DI
-	fx.Provide(
-		cqrs.AsHandler(
-			creatingproductv1.NewCreateProductHandler,
-			"product-handlers",
-		),
-		cqrs.AsHandler(
-			gettingproductsv1.NewGetProductsHandler,
-			"product-handlers",
-		),
-		cqrs.AsHandler(
-			deletingproductv1.NewDeleteProductHandler,
-			"product-handlers",
-		),
-		cqrs.AsHandler(
-			gettingproductbyidv1.NewGetProductByIDHandler,
-			"product-handlers",
-		),
-		cqrs.AsHandler(
-			searchingproductsv1.NewSearchProductsHandler,
-			"product-handlers",
-		),
-		cqrs.AsHandler(
-			updatingoroductsv1.NewUpdateProductHandler,
-			"product-handlers",
-		),
-	),
+	//fx.Provide(
+	//	cqrs.AsHandler(
+	//		creatinguserv1.NewCreateProductHandler,
+	//		"user-handlers",
+	//	),
+	//	cqrs.AsHandler(
+	//		gettingproductsv1.NewGetProductsHandler,
+	//		"product-handlers",
+	//	),
+	//	cqrs.AsHandler(
+	//		deletingproductv1.NewDeleteProductHandler,
+	//		"product-handlers",
+	//	),
+	//	cqrs.AsHandler(
+	//		gettingproductbyidv1.NewGetProductByIDHandler,
+	//		"product-handlers",
+	//	),
+	//	cqrs.AsHandler(
+	//		searchingproductsv1.NewSearchProductsHandler,
+	//		"product-handlers",
+	//	),
+	//	cqrs.AsHandler(
+	//		updatingoroductsv1.NewUpdateProductHandler,
+	//		"product-handlers",
+	//	),
+	//),
 
 	// add endpoints to DI
 	fx.Provide(
 		route.AsRoute(
-			creatingproductv1.NewCreteProductEndpoint,
-			"product-routes",
+			endpoints.NewCreateUserEndpoint,
+			"user-routes",
 		),
-		route.AsRoute(
-			updatingoroductsv1.NewUpdateProductEndpoint,
-			"product-routes",
-		),
-		route.AsRoute(
-			gettingproductsv1.NewGetProductsEndpoint,
-			"product-routes",
-		),
-		route.AsRoute(
-			searchingproductsv1.NewSearchProductsEndpoint,
-			"product-routes",
-		),
-		route.AsRoute(
-			gettingproductbyidv1.NewGetProductByIdEndpoint,
-			"product-routes",
-		),
-		route.AsRoute(
-			deletingproductv1.NewDeleteProductEndpoint,
-			"product-routes",
-		),
+		//route.AsRoute(
+		//	updatingoroductsv1.NewUpdateProductEndpoint,
+		//	"product-routes",
+		//),
+		//route.AsRoute(
+		//	gettingproductsv1.NewGetProductsEndpoint,
+		//	"product-routes",
+		//),
+		//route.AsRoute(
+		//	searchingproductsv1.NewSearchProductsEndpoint,
+		//	"product-routes",
+		//),
+		//route.AsRoute(
+		//	gettingproductbyidv1.NewGetProductByIdEndpoint,
+		//	"product-routes",
+		//),
+		//route.AsRoute(
+		//	deletingproductv1.NewDeleteProductEndpoint,
+		//	"product-routes",
+		//),
 	),
 )

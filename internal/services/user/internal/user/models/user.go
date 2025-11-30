@@ -11,7 +11,6 @@ type User struct {
 	Id        int64
 	UserId    uuid.UUID
 	Nickname  string
-	Password  string
 	Phone     string
 	CreatedAt time.Time
 	UpdatedAt time.Time

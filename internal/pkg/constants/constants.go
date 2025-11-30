@@ -1,6 +1,8 @@
 package constants
 
-import "time"
+import (
+	"time"
+)
 
 const (
 	ConfigPath           = "CONFIG_PATH"
@@ -38,4 +40,10 @@ const (
 	ErrDomainTitle              = "Domain Model Error"
 	ErrApplicationTitle         = "Application Service Error"
 	ErrApiTitle                 = "Api Error"
+	ErrJWTTokenInvalid          = "JWT Token Missing or Invalid"
+	ErrJWTTokenFailedCastClaim  = "Failed To Cast Claims As jwt.MapClaims"
+)
+
+const (
+	DEFAULT_NICK_NAME_PREFIX = "藏家_"
 )

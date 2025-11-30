@@ -12,8 +12,10 @@ require (
 	github.com/goccy/go-json v0.10.5
 	github.com/iancoleman/strcase v0.3.0
 	github.com/labstack/echo/v4 v4.13.4
+	github.com/labstack/gommon v0.4.2
 	github.com/mehdihadeli/go-mediatr v1.4.0
 	github.com/pterm/pterm v0.12.82
+	github.com/redis/go-redis/v9 v9.17.0
 	github.com/reoden/go-NFT/pkg v0.0.0-00010101000000-000000000000
 	github.com/satori/go.uuid v1.2.0
 	github.com/spf13/cobra v1.10.1
@@ -42,13 +44,13 @@ require (
 	github.com/ahmetb/go-linq/v3 v3.2.0 // indirect
 	github.com/andybalholm/brotli v1.2.0 // indirect
 	github.com/asaskevich/govalidator v0.0.0-20230301143203-a9d515a09cc2 // indirect
-	github.com/avast/retry-go v3.0.0+incompatible // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/caarlos0/env/v8 v8.0.0 // indirect
 	github.com/cenkalti/backoff/v5 v5.0.3 // indirect
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect
 	github.com/containerd/console v1.0.5 // indirect
 	github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc // indirect
+	github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f // indirect
 	github.com/dustin/go-humanize v1.0.1 // indirect
 	github.com/ebitengine/purego v0.8.4 // indirect
 	github.com/fatih/color v1.18.0 // indirect
@@ -90,7 +92,6 @@ require (
 	github.com/josharian/intern v1.0.0 // indirect
 	github.com/klauspost/compress v1.18.0 // indirect
 	github.com/labstack/echo-jwt/v4 v4.4.0 // indirect
-	github.com/labstack/gommon v0.4.2 // indirect
 	github.com/leodido/go-urn v1.2.1 // indirect
 	github.com/lithammer/fuzzysearch v1.1.8 // indirect
 	github.com/lufia/plan9stats v0.0.0-20250827001030-24949be3fa54 // indirect
@@ -117,7 +118,8 @@ require (
 	github.com/prometheus/common v0.66.1 // indirect
 	github.com/prometheus/otlptranslator v0.0.2 // indirect
 	github.com/prometheus/procfs v0.17.0 // indirect
-	github.com/rabbitmq/amqp091-go v1.10.0 // indirect
+	github.com/redis/go-redis/extra/rediscmd/v9 v9.17.0 // indirect
+	github.com/redis/go-redis/extra/redisotel/v9 v9.17.0 // indirect
 	github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/sagikazarmark/locafero v0.11.0 // indirect

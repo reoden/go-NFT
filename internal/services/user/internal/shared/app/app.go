@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"github.com/reoden/go-NFT/pkg/otel/tracing"
-	"github.com/reoden/go-NFT/user/internal/shared/configurations/catalogs"
+	"github.com/reoden/go-NFT/user/internal/shared/configurations/user"
 )
 
 type App struct{}
@@ -15,23 +15,17 @@ func NewApp() *App {
 
 func (a *App) Run() {
 	// configure dependencies
-	appBuilder := NewCatalogsWriteApplicationBuilder()
-	appBuilder.ProvideModule(catalogs.CatalogsServiceModule)
+	appBuilder := NewUserApplicationBuilder()
+	appBuilder.ProvideModule(user.UserServiceModule)
 
 	app := appBuilder.Build()
 
 	// configure application
-	err := app.ConfigureCatalogs()
-	if err != nil {
-		app.Logger().Fatalf("Error in ConfigureCatalogs", err)
-	}
+	app.ConfigureUser()
 
-	err = app.MapCatalogsEndpoints()
-	if err != nil {
-		app.Logger().Fatalf("Error in MapCatalogsEndpoints", err)
-	}
+	app.MapUserEndpoints()
 
-	app.Logger().Info("Starting catalog_service application")
+	app.Logger().Info("Starting user_service application")
 	app.ResolveFunc(func(tracer tracing.AppTracer) {
 		_, span := tracer.Start(context.Background(), "Application started")
 		span.End()
