@@ -15,7 +15,7 @@ import (
 // 	gmp := runtime.GOMAXPROCS(2)
 // 	defer runtime.GOMAXPROCS(gmp)
 //
-// 	f := New(1000, 4)
+// 	f := NewBloomFilter(1000, 4)
 // 	n1 := []byte("Bess")
 // 	n2 := []byte("Jane")
 // 	f.Add(n1)
@@ -60,7 +60,7 @@ import (
 // }
 
 func TestBasic(t *testing.T) {
-	f := New(1000, 4, "bloom_basic")
+	f := NewBloomFilter(1000, 4, "bloom_basic")
 	f.ClearAll()
 	n1 := []byte("Bess")
 	n2 := []byte("Jane")
@@ -85,7 +85,7 @@ func TestBasic(t *testing.T) {
 }
 
 func TestBasicUint32(t *testing.T) {
-	f := New(1000, 4, "bloom_basic_uint32")
+	f := NewBloomFilter(1000, 4, "bloom_basic_uint32")
 	f.ClearAll()
 	n1 := make([]byte, 4)
 	n2 := make([]byte, 4)
@@ -126,7 +126,7 @@ func TestBasicUint32(t *testing.T) {
 }
 
 func TestNewWithLowNumbers(t *testing.T) {
-	f := New(0, 0, "bloom_new_with_low_nums")
+	f := NewBloomFilter(0, 0, "bloom_new_with_low_nums")
 	f.ClearAll()
 	if f.k != 1 {
 		t.Errorf("%v should be 1", f.k)
@@ -228,7 +228,7 @@ func min(a, b uint) uint {
 // test, comparing the result histogram with the uniform distribition.
 // This yields a test statistic with degrees-of-freedom of m-1.
 func chiTestBloom(m, k, rounds uint, elements [][]byte) (succeeds bool) {
-	f := New(m, k, "bloom_chi")
+	f := NewBloomFilter(m, k, "bloom_chi")
 	f.ClearAll()
 	results := make([]uint, m)
 	chi := make([]float64, m)
@@ -289,7 +289,7 @@ func TestLocation(t *testing.T) {
 }
 
 func TestCap(t *testing.T) {
-	f := New(1000, 4, "bloom_cap")
+	f := NewBloomFilter(1000, 4, "bloom_cap")
 	f.ClearAll()
 	if f.Cap() != f.m {
 		t.Error("not accessing Cap() correctly")
@@ -297,7 +297,7 @@ func TestCap(t *testing.T) {
 }
 
 func TestK(t *testing.T) {
-	f := New(1000, 4, "bloom_K")
+	f := NewBloomFilter(1000, 4, "bloom_K")
 	f.ClearAll()
 	if f.K() != f.k {
 		t.Error("not accessing K() correctly")
@@ -305,11 +305,11 @@ func TestK(t *testing.T) {
 }
 
 func TestEqual(t *testing.T) {
-	f := New(1000, 4, "bloom_eq_1")
-	f1 := New(1000, 4, "bloom_eq_1")
-	g := New(1000, 20, "bloom_eq_2")
-	h := New(10, 20, "bloom_eq_2")
-	p := New(1000, 20, "bloom_eq_3")
+	f := NewBloomFilter(1000, 4, "bloom_eq_1")
+	f1 := NewBloomFilter(1000, 4, "bloom_eq_1")
+	g := NewBloomFilter(1000, 20, "bloom_eq_2")
+	h := NewBloomFilter(10, 20, "bloom_eq_2")
+	p := NewBloomFilter(1000, 20, "bloom_eq_3")
 	n1 := []byte("Bess")
 	f1.Add(n1)
 	if !f.Equal(f) {
@@ -362,22 +362,22 @@ func BenchmarkCombinedTestAndAdd(b *testing.B) {
 }
 
 func TestMerge(t *testing.T) {
-	f := New(1000, 4, "bloom_merge_f")
+	f := NewBloomFilter(1000, 4, "bloom_merge_f")
 	f.ClearAll()
 	n1 := []byte("f")
 	f.Add(n1)
 
-	g := New(1000, 4, "bloom_merge_g")
+	g := NewBloomFilter(1000, 4, "bloom_merge_g")
 	g.ClearAll()
 	n2 := []byte("g")
 	g.Add(n2)
 
-	h := New(999, 4, "bloom_merge_h")
+	h := NewBloomFilter(999, 4, "bloom_merge_h")
 	h.ClearAll()
 	n3 := []byte("h")
 	h.Add(n3)
 
-	j := New(1000, 5, "bloom_merge_j")
+	j := NewBloomFilter(1000, 5, "bloom_merge_j")
 	j.ClearAll()
 	n4 := []byte("j")
 	j.Add(n4)
@@ -414,12 +414,12 @@ func TestMerge(t *testing.T) {
 }
 
 func TestCopy(t *testing.T) {
-	f := New(1000, 4, "bloom_copy")
+	f := NewBloomFilter(1000, 4, "bloom_copy")
 	f.ClearAll()
 	n1 := []byte("f")
 	f.Add(n1)
 
-	// copy here instead of New
+	// copy here instead of NewBloomFilter
 	g := f.Copy()
 	n2 := []byte("g")
 	g.Add(n2)
@@ -452,7 +452,7 @@ func TestFrom(t *testing.T) {
 		test = []byte("test")
 	)
 
-	bf := From(data, k, "bloom_from")
+	bf := BloomFilterFrom(data, k, "bloom_from")
 	if bf.K() != k {
 		t.Errorf("Constant k does not match the expected value")
 	}
@@ -471,7 +471,7 @@ func TestFrom(t *testing.T) {
 	}
 
 	// create a new Bloom filter from an existing (populated) data slice.
-	bf = From(data, k, "bloom_from")
+	bf = BloomFilterFrom(data, k, "bloom_from")
 	if !bf.Test(test) {
 		t.Errorf("Bloom filter should contain the value")
 	}
@@ -542,7 +542,7 @@ func TestApproximatedSize(t *testing.T) {
 //}
 //
 //func TestEncodeDecodeBinary(t *testing.T) {
-//	f := New(1000, 4)
+//	f := NewBloomFilter(1000, 4)
 //	f.Add([]byte("one"))
 //	f.Add([]byte("two"))
 //	f.Add([]byte("three"))
