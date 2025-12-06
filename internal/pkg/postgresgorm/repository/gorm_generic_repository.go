@@ -226,7 +226,50 @@ func (r *gormGenericRepository[TDataModel, TEntity]) FirstOrDefault(
 	ctx context.Context,
 	filters map[string]interface{},
 ) (TEntity, error) {
-	return *new(TEntity), nil
+	dataModelType := typeMapper.GetGenericTypeByT[TDataModel]()
+	modelType := typeMapper.GetGenericTypeByT[TEntity]()
+
+	if modelType == dataModelType {
+		var model TEntity
+		query := r.db.WithContext(ctx).Where(filters)
+		if err := query.First(&model).Error; err != nil {
+			if errors.Is(err, gorm.ErrRecordNotFound) {
+				return *new(TEntity), customErrors.NewNotFoundErrorWrap(
+					err,
+					fmt.Sprintf(
+						"can't find the entity with filters %s into the database.",
+						filters,
+					),
+				)
+			}
+
+			return *new(TEntity), errors.WrapIf(
+				err,
+				fmt.Sprintf(
+					"can't find the entity with filters %s into the database.",
+					filters,
+				),
+			)
+		}
+
+		return model, nil
+	} else {
+		var dataModel TDataModel
+		query := r.db.WithContext(ctx).Where(filters)
+		if err := query.First(&dataModel).Error; err != nil {
+			if errors.Is(err, gorm.ErrRecordNotFound) {
+				return *new(TEntity), customErrors.NewNotFoundErrorWrap(err, fmt.Sprintf("can't find the entity with filters %s into the database.", filters))
+			}
+
+			return *new(TEntity), errors.WrapIf(err, fmt.Sprintf("can't find the entity with filters %s into the database.", filters))
+		}
+		entity, err := mapper.Map[TEntity](dataModel)
+		if err != nil {
+			return *new(TEntity), err
+		}
+
+		return entity, nil
+	}
 }
 
 func (r *gormGenericRepository[TDataModel, TEntity]) Update(

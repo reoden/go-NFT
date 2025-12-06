@@ -12,6 +12,7 @@ import (
 	"github.com/reoden/go-NFT/pkg/postgresgorm/repository"
 	data2 "github.com/reoden/go-NFT/user/internal/user/contracts"
 	"github.com/reoden/go-NFT/user/internal/user/models"
+	uuid "github.com/satori/go.uuid"
 
 	"emperror.dev/errors"
 	"gorm.io/gorm"
@@ -67,9 +68,42 @@ func (p *postgresUserRepository) CreateUser(
 	return user, nil
 }
 
-func (p *postgresUserRepository) FindUserByTelephone(ctx context.Context, phone string) (*models.User, error) {
-	//TODO implement me
-	panic("implement me")
+func (p *postgresUserRepository) FindUserById(
+	ctx context.Context,
+	userId uuid.UUID,
+) (*models.User, error) {
+	ctx, span := p.tracer.Start(ctx, "postgresUserRepository.FindUserById")
+	defer span.End()
+
+	user, err := p.gormGenericRepository.FirstOrDefault(ctx, map[string]interface{}{
+		"user_id": userId.String(),
+	})
+	err = utils2.TraceStatusFromSpan(
+		span,
+		errors.WrapIf(
+			err,
+			"error in the finding user into the database.",
+		),
+	)
+	if err != nil {
+		return nil, err
+	}
+
+	span.SetAttributes(attribute.Object("User", user))
+	p.log.Infow(
+		fmt.Sprintf(
+			"user with user_id '%s' found",
+			userId.String(),
+		),
+		logger.Fields{
+			"User":   user,
+			"UserId": user.UserId,
+			"Id":     user.Id,
+			"Phone":  user.Phone,
+		},
+	)
+
+	return user, nil
 }
 
 //func (p *postgresUserRepository) GetAllUsers(

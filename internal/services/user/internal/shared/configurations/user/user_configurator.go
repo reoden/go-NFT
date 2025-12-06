@@ -80,6 +80,9 @@ func (ic *UserServiceConfigurator) MapUserEndpoints() {
 					if strings.HasPrefix(path, "/api/v1/user") && method == echo.POST {
 						return true
 					}
+					if strings.HasPrefix(path, "/api/v1/user/") && method == echo.GET {
+						return true
+					}
 					return false
 				}(c)
 			}

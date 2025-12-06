@@ -9,6 +9,8 @@ import (
 	"github.com/reoden/go-NFT/user/internal/user/contracts"
 	creatingUserCommondV1 "github.com/reoden/go-NFT/user/internal/user/features/creatinguser/v1/commonds"
 	createUserDtosV1 "github.com/reoden/go-NFT/user/internal/user/features/creatinguser/v1/dtos"
+	findUserByIdDtosV1 "github.com/reoden/go-NFT/user/internal/user/features/finduserbyId/v1/dtos"
+	findUserByIdQueryV1 "github.com/reoden/go-NFT/user/internal/user/features/finduserbyId/v1/queries"
 )
 
 func ConfigUserMediator(
@@ -27,12 +29,12 @@ func ConfigUserMediator(
 		return err
 	}
 
-	//err = mediatr.RegisterRequestHandler[*getOrderByIdQueryV1.GetOrderById, *getOrderByIdDtosV1.GetOrderByIdResponseDto](
-	//	getOrderByIdQueryV1.NewGetOrderByIdHandler(logger, mongoOrderReadRepository, tracer),
-	//)
-	//if err != nil {
-	//	return err
-	//}
+	err = mediatr.RegisterRequestHandler[*findUserByIdQueryV1.FindUserById, *findUserByIdDtosV1.FindUserByIdResponseDto](
+		findUserByIdQueryV1.NewFindUserByIdHandler(logger, userDBContext, userRepository, cacheUserRepository, tracer),
+	)
+	if err != nil {
+		return err
+	}
 	//
 	//err = mediatr.RegisterRequestHandler[*getOrdersQueryV1.GetOrders, *getOrdersDtosV1.GetOrdersResponseDto](
 	//	getOrdersQueryV1.NewGetOrdersHandler(logger, mongoOrderReadRepository, tracer),

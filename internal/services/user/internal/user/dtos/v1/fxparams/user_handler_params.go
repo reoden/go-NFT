@@ -16,3 +16,11 @@ type CreateUserHandlerParams struct {
 	BloomFilter     *bloom.BloomFilterFactory
 	Tracer          tracing.AppTracer
 }
+
+type FindUserByIdHandlerParams struct {
+	Log             logger.Logger
+	UserDBContext   *dbcontext.UserGormDBContext
+	UserRepository  contracts.UserRepository
+	RedisRepository contracts.UserCacheRepository
+	Tracer          tracing.AppTracer
+}

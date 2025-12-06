@@ -19,7 +19,6 @@ import (
 	dtosv1 "github.com/reoden/go-NFT/user/internal/user/dtos/v1"
 	"github.com/reoden/go-NFT/user/internal/user/dtos/v1/fxparams"
 	"github.com/reoden/go-NFT/user/internal/user/features/creatinguser/v1/dtos"
-	"github.com/reoden/go-NFT/user/internal/user/features/creatinguser/v1/events/integrationevents"
 	"github.com/reoden/go-NFT/user/internal/user/models"
 
 	"github.com/mehdihadeli/go-mediatr"
@@ -151,19 +150,8 @@ func (c *createUserHandler) Handle(
 		)
 	}
 
-	userCreated := integrationevents.NewUserCreatedV1(
-		userDto,
-	)
-
-	c.Log.Infow(
-		fmt.Sprintf(
-			"UserCreated message with messageId `%s` published to the rabbitmq broker",
-			userCreated.MessageId,
-		),
-		logger.Fields{"MessageId": userCreated.MessageId},
-	)
-
-	c.addNickname(ctx, user.Nickname)
+	c.addNickname(ctx, userDto.Nickname)
+	_ = c.RedisRepository.PutUser(ctx, userDto.UserId.String(), user)
 
 	createUserResult = &dtos.CreateUserResponseDto{
 		UserID: user.UserId,
@@ -175,8 +163,7 @@ func (c *createUserHandler) Handle(
 			command.UserId,
 		),
 		logger.Fields{
-			"UserId":    command.UserId,
-			"MessageId": userCreated.MessageId,
+			"UserId": command.UserId,
 		},
 	)
 

@@ -7,7 +7,8 @@ import (
 	"github.com/reoden/go-NFT/user/internal/shared/grpc"
 	userConstracts "github.com/reoden/go-NFT/user/internal/user/contracts"
 	"github.com/reoden/go-NFT/user/internal/user/data/repositories"
-	"github.com/reoden/go-NFT/user/internal/user/features/creatinguser/v1/endpoints"
+	creatingUserV1 "github.com/reoden/go-NFT/user/internal/user/features/creatinguser/v1/endpoints"
+	findUserByIdV1 "github.com/reoden/go-NFT/user/internal/user/features/findUserById/v1/endpoints"
 	"go.uber.org/fx"
 )
 
@@ -67,7 +68,11 @@ var Module = fx.Module(
 	// add endpoints to DI
 	fx.Provide(
 		route.AsRoute(
-			endpoints.NewCreateUserEndpoint,
+			creatingUserV1.NewCreateUserEndpoint,
+			"user-routes",
+		),
+		route.AsRoute(
+			findUserByIdV1.NewFindUserByIdEndpoint,
 			"user-routes",
 		),
 		//route.AsRoute(

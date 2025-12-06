@@ -188,8 +188,53 @@ func (r *redisUserRepository) PutUser(
 }
 
 func (r *redisUserRepository) GetUserById(ctx context.Context, key string) (*models.User, error) {
-	//TODO implement me
-	panic("implement me")
+	ctx, span := r.tracer.Start(ctx, "redisRepository.GetUserById")
+	span.SetAttributes(
+		attribute2.String("PrefixKey", r.getRedisUserMainPrefixKey()),
+	)
+	span.SetAttributes(attribute2.String("Key", key))
+	defer span.End()
+
+	userBytes, err := r.redisClient.HGet(ctx, r.getRedisUserMainPrefixKey(), key).Bytes()
+	if err != nil {
+		if errors.Is(err, redis.Nil) {
+			return nil, nil
+		}
+
+		return nil, utils.TraceErrStatusFromSpan(
+			span,
+			errors.WrapIf(
+				err,
+				fmt.Sprintf(
+					"error in getting User with Key %s from database",
+					key,
+				),
+			),
+		)
+	}
+
+	var user models.User
+	if err := json.Unmarshal(userBytes, &user); err != nil {
+		return nil, utils.TraceErrStatusFromSpan(span, err)
+	}
+
+	span.SetAttributes(attribute.Object("User", user))
+
+	r.log.Infow(
+		fmt.Sprintf(
+			"user with with key '%s', prefix '%s' laoded",
+			key,
+			r.getRedisUserMainPrefixKey(),
+		),
+		logger.Fields{
+			"User":      user,
+			"UserId":    user.UserId,
+			"Key":       key,
+			"PrefixKey": r.getRedisUserMainPrefixKey(),
+		},
+	)
+
+	return &user, nil
 }
 
 func (r *redisUserRepository) DeleteUser(ctx context.Context, key string) error {
