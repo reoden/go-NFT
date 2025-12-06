@@ -49,7 +49,7 @@ func (s *UserGrpcServiceServer) CreateUser(
 
 	command, err := createUserCommandV1.NewCreateUserWithValidation(
 		req.GetPhone(),
-		req.GetInviteCode(),
+		req.GetCaptcha(),
 	)
 	if err != nil {
 		validationErr := customErrors.NewValidationErrorWrap(

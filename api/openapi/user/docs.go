@@ -57,7 +57,7 @@ const docTemplate = `{
         "dtos.CreateUserRequestDto": {
             "type": "object",
             "properties": {
-                "invite_code": {
+                "captcha": {
                     "type": "string"
                 },
                 "phone": {

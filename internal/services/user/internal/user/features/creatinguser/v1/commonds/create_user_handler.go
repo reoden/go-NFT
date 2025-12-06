@@ -5,7 +5,7 @@ import (
 	"fmt"
 
 	"github.com/labstack/gommon/random"
-	bloom "github.com/reoden/go-NFT/pkg/bloomfilter"
+	"github.com/reoden/go-NFT/pkg/bloom"
 	"github.com/reoden/go-NFT/pkg/constants"
 	"github.com/reoden/go-NFT/pkg/core/cqrs"
 	customErrors "github.com/reoden/go-NFT/pkg/http/httperrors/customerrors"
@@ -86,26 +86,26 @@ func (c *createUserHandler) Handle(
 		)
 	}
 
-	inviteCode, err := c.RedisRepository.GetCaptcha(ctx, command.Phone)
+	captcha, err := c.RedisRepository.GetCaptcha(ctx, command.Phone)
 	if err != nil {
 		return nil, customErrors.NewApplicationErrorWrap(
 			err,
-			fmt.Sprintf("[Create_User_Handler] get invite_code telephone=%s from redis err=%+v", command.Phone, err),
+			fmt.Sprintf("[Create_User_Handler] get captcha telephone=%s from redis err=%+v", command.Phone, err),
 		)
 	}
 
 	c.Log.Infow(
 		fmt.Sprintf(
-			"[Create_User_Handler] get invite_code from redis = `%s`",
-			inviteCode,
+			"[Create_User_Handler] get captcha from redis = `%s`",
+			captcha,
 		),
 		logger.Fields{"telephone": command.Phone},
 	)
 
-	if inviteCode != command.InviteCode {
+	if captcha != command.Captcha {
 		return nil, customErrors.NewApplicationErrorWrap(
 			nil,
-			fmt.Sprintf("[Create_User_Handler] get invite_code=%s but need invite_code = %s", command.InviteCode, inviteCode),
+			fmt.Sprintf("[Create_User_Handler] get captcha=%s but need captcha = %s", command.Captcha, captcha),
 		)
 	}
 
@@ -137,7 +137,7 @@ func (c *createUserHandler) Handle(
 		CreatedAt: command.CreatedAt,
 	}
 
-	var createProductResult *dtos.CreateUserResponseDto
+	var createUserResult *dtos.CreateUserResponseDto
 	result, err := c.UserRepository.CreateUser(ctx, user)
 	if err != nil {
 		return nil, err
@@ -147,7 +147,7 @@ func (c *createUserHandler) Handle(
 	if err != nil {
 		return nil, customErrors.NewApplicationErrorWrap(
 			err,
-			"error in the mapping ProductDto",
+			"error in the mapping UserDto",
 		)
 	}
 
@@ -165,7 +165,7 @@ func (c *createUserHandler) Handle(
 
 	c.addNickname(ctx, user.Nickname)
 
-	createProductResult = &dtos.CreateUserResponseDto{
+	createUserResult = &dtos.CreateUserResponseDto{
 		UserID: user.UserId,
 	}
 
@@ -180,7 +180,7 @@ func (c *createUserHandler) Handle(
 		},
 	)
 
-	return createProductResult, err
+	return createUserResult, err
 }
 
 func (c *createUserHandler) ExistsNickName(ctx context.Context, nickName string) (bool, error) {

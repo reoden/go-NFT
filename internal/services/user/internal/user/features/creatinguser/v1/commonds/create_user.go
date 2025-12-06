@@ -16,23 +16,23 @@ import (
 
 type CreateUser struct {
 	cqrs.Command
-	UserId     uuid.UUID
-	InviteCode string
-	Phone      string
-	CreatedAt  time.Time
+	UserId    uuid.UUID
+	Captcha   string
+	Phone     string
+	CreatedAt time.Time
 }
 
 // NewCreateUser Create a new user
 func NewCreateUser(
 	phone string,
-	inviteCode string,
+	captcha string,
 ) *CreateUser {
 	command := &CreateUser{
-		Command:    cqrs.NewCommandByT[CreateUser](),
-		UserId:     uuid.NewV4(),
-		InviteCode: inviteCode,
-		Phone:      phone,
-		CreatedAt:  time.Now(),
+		Command:   cqrs.NewCommandByT[CreateUser](),
+		UserId:    uuid.NewV4(),
+		Captcha:   captcha,
+		Phone:     phone,
+		CreatedAt: time.Now(),
 	}
 
 	return command
@@ -41,9 +41,9 @@ func NewCreateUser(
 // NewCreateUserWithValidation Create a new user with inline validation - for defensive programming and ensuring validation even without using middleware
 func NewCreateUserWithValidation(
 	phone string,
-	inviteCode string,
+	captcha string,
 ) (*CreateUser, error) {
-	command := NewCreateUser(phone, inviteCode)
+	command := NewCreateUser(phone, captcha)
 	err := command.Validate()
 
 	return command, err
@@ -57,7 +57,7 @@ func (c *CreateUser) Validate() error {
 		c,
 		validation.Field(&c.UserId, validation.Required),
 		validation.Field(
-			&c.InviteCode,
+			&c.Captcha,
 			validation.Required,
 			validation.Length(0, 6),
 		),

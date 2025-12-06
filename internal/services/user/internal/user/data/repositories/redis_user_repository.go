@@ -17,8 +17,8 @@ import (
 )
 
 const (
-	redisUserMainPrefixKey       = "user_main_service"
-	redisUserInviteCodePrefixKey = "user_invite_code_service_telephone"
+	redisUserMainPrefixKey    = "user_main_service"
+	redisUserCaptchaPrefixKey = "user_captcha_service_telephone"
 )
 
 type redisUserRepository struct {
@@ -42,12 +42,12 @@ func NewRedisUserRepository(
 func (r *redisUserRepository) GetCaptcha(ctx context.Context, key string) (string, error) {
 	ctx, span := r.tracer.Start(ctx, "redisRepository.GetCaptcha")
 	span.SetAttributes(
-		attribute2.String("PrefixKey", r.getRedisUserInviteCodePrefixKey()),
+		attribute2.String("PrefixKey", r.getRedisUserCaptchaPrefixKey()),
 	)
 	span.SetAttributes(attribute2.String("Key", key))
 	defer span.End()
 
-	redisKey := fmt.Sprintf("%s#%s", r.getRedisUserInviteCodePrefixKey(), key)
+	redisKey := fmt.Sprintf("%s#%s", r.getRedisUserCaptchaPrefixKey(), key)
 	captchaBytes, err := r.redisClient.Get(ctx, redisKey).Bytes()
 	if err != nil {
 		if errors.Is(err, redis.Nil) {
@@ -66,66 +66,66 @@ func (r *redisUserRepository) GetCaptcha(ctx context.Context, key string) (strin
 		)
 	}
 
-	inviteCode := string(captchaBytes)
+	captcha := string(captchaBytes)
 
-	span.SetAttributes(attribute.Object("invite_code", inviteCode))
+	span.SetAttributes(attribute.Object("captcha", captcha))
 
 	r.log.Infow(
 		fmt.Sprintf(
-			"invite_code with with key '%s', prefix '%s' laoded",
+			"captcha with with key '%s', prefix '%s' laoded",
 			redisKey,
-			r.getRedisUserInviteCodePrefixKey(),
+			r.getRedisUserCaptchaPrefixKey(),
 		),
 		logger.Fields{
-			"telephone":  key,
-			"inviteCode": inviteCode,
-			"Key":        redisKey,
-			"PrefixKey":  r.getRedisUserInviteCodePrefixKey(),
+			"telephone": key,
+			"captcha":   captcha,
+			"Key":       redisKey,
+			"PrefixKey": r.getRedisUserCaptchaPrefixKey(),
 		},
 	)
 
-	return inviteCode, nil
+	return captcha, nil
 }
 
-func (r *redisUserRepository) PutInviteCode(
+func (r *redisUserRepository) PutCaptcha(
 	ctx context.Context,
 	key string,
-	inviteCode string,
+	captcha string,
 ) error {
-	ctx, span := r.tracer.Start(ctx, "redisUserRepository.PutInviteCode")
+	ctx, span := r.tracer.Start(ctx, "redisUserRepository.PutCaptcha")
 	span.SetAttributes(
-		attribute2.String("PrefixKey", r.getRedisUserInviteCodePrefixKey()),
+		attribute2.String("PrefixKey", r.getRedisUserCaptchaPrefixKey()),
 	)
 	span.SetAttributes(attribute2.String("Key", key))
 	defer span.End()
 
-	redisKey := fmt.Sprintf("%s#%s", r.getRedisUserInviteCodePrefixKey(), key)
-	if err := r.redisClient.SetNX(ctx, redisKey, inviteCode, time.Minute*time.Duration(5)).Err(); err != nil {
+	redisKey := fmt.Sprintf("%s#%s", r.getRedisUserCaptchaPrefixKey(), key)
+	if err := r.redisClient.SetNX(ctx, redisKey, captcha, time.Minute*time.Duration(5)).Err(); err != nil {
 		return utils.TraceErrStatusFromSpan(
 			span,
 			errors.WrapIf(
 				err,
 				fmt.Sprintf(
-					"error in updating inviteCode with key %s",
+					"error in updating captcha with key %s",
 					redisKey,
 				),
 			),
 		)
 	}
 
-	span.SetAttributes(attribute.Object(fmt.Sprintf("telephone#%s", key), inviteCode))
+	span.SetAttributes(attribute.Object(fmt.Sprintf("telephone#%s", key), captcha))
 
 	r.log.Infow(
 		fmt.Sprintf(
-			"invite_code with key '%s', prefix '%s'  updated successfully",
+			"captcha with key '%s', prefix '%s'  updated successfully",
 			redisKey,
-			r.getRedisUserMainPrefixKey(),
+			r.getRedisUserCaptchaPrefixKey(),
 		),
 		logger.Fields{
-			"Phone":      key,
-			"InviteCode": inviteCode,
-			"Key":        redisKey,
-			"PrefixKey":  r.getRedisUserMainPrefixKey(),
+			"Phone":     key,
+			"Captcha":   captcha,
+			"Key":       redisKey,
+			"PrefixKey": r.getRedisUserCaptchaPrefixKey(),
 		},
 	)
 
@@ -206,6 +206,6 @@ func (r *redisUserRepository) getRedisUserMainPrefixKey() string {
 	return redisUserMainPrefixKey
 }
 
-func (r *redisUserRepository) getRedisUserInviteCodePrefixKey() string {
-	return redisUserInviteCodePrefixKey
+func (r *redisUserRepository) getRedisUserCaptchaPrefixKey() string {
+	return redisUserCaptchaPrefixKey
 }

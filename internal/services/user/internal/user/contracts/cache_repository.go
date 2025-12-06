@@ -11,6 +11,6 @@ type UserCacheRepository interface {
 	GetUserById(ctx context.Context, key string) (*models.User, error)
 	DeleteUser(ctx context.Context, key string) error
 	DeleteAllUsers(ctx context.Context) error
-	PutInviteCode(ctx context.Context, key string, inviteCode string) error
+	PutCaptcha(ctx context.Context, key string, inviteCode string) error
 	GetCaptcha(ctx context.Context, key string) (string, error)
 }

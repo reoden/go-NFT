@@ -109,7 +109,7 @@ func (x *User) GetUpdatedAt() *timestamppb.Timestamp {
 type CreateUserReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Phone         string                 `protobuf:"bytes,1,opt,name=Phone,proto3" json:"Phone,omitempty"`
-	InviteCode    string                 `protobuf:"bytes,2,opt,name=InviteCode,proto3" json:"InviteCode,omitempty"`
+	Captcha       string                 `protobuf:"bytes,2,opt,name=Captcha,proto3" json:"Captcha,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -151,9 +151,9 @@ func (x *CreateUserReq) GetPhone() string {
 	return ""
 }
 
-func (x *CreateUserReq) GetInviteCode() string {
+func (x *CreateUserReq) GetCaptcha() string {
 	if x != nil {
-		return x.InviteCode
+		return x.Captcha
 	}
 	return ""
 }
@@ -214,12 +214,10 @@ const file_user_proto_rawDesc = "" +
 	"\bNickname\x18\x03 \x01(\tR\bNickname\x12\x14\n" +
 	"\x05Phone\x18\x04 \x01(\tR\x05Phone\x128\n" +
 	"\tCreatedAt\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tCreatedAt\x128\n" +
-	"\tUpdatedAt\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tUpdatedAt\"E\n" +
+	"\tUpdatedAt\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tUpdatedAt\"?\n" +
 	"\rCreateUserReq\x12\x14\n" +
-	"\x05Phone\x18\x01 \x01(\tR\x05Phone\x12\x1e\n" +
-	"\n" +
-	"InviteCode\x18\x02 \x01(\tR\n" +
-	"InviteCode\"'\n" +
+	"\x05Phone\x18\x01 \x01(\tR\x05Phone\x12\x18\n" +
+	"\aCaptcha\x18\x02 \x01(\tR\aCaptcha\"'\n" +
 	"\rCreateUserRes\x12\x16\n" +
 	"\x06UserId\x18\x01 \x01(\tR\x06UserId2U\n" +
 	"\vUserService\x12F\n" +

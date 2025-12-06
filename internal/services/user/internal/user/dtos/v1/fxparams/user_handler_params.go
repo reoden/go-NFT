@@ -1,7 +1,7 @@
 package fxparams
 
 import (
-	bloom "github.com/reoden/go-NFT/pkg/bloomfilter"
+	"github.com/reoden/go-NFT/pkg/bloom"
 	"github.com/reoden/go-NFT/pkg/logger"
 	"github.com/reoden/go-NFT/pkg/otel/tracing"
 	"github.com/reoden/go-NFT/user/internal/shared/data/dbcontext"

@@ -2,7 +2,7 @@ package infrastructure
 
 import (
 	"github.com/go-playground/validator"
-	bloom "github.com/reoden/go-NFT/pkg/bloomfilter"
+	"github.com/reoden/go-NFT/pkg/bloom"
 	"github.com/reoden/go-NFT/pkg/core"
 	"github.com/reoden/go-NFT/pkg/grpc"
 	"github.com/reoden/go-NFT/pkg/health"

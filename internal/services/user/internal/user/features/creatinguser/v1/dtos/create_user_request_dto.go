@@ -6,6 +6,6 @@ package dtos
 
 // CreateUserRequestDto validation will handle in command level
 type CreateUserRequestDto struct {
-	Phone      string `json:"phone"`
-	InviteCode string `json:"invite_code"`
+	Phone   string `json:"phone"`
+	Captcha string `json:"captcha"`
 }

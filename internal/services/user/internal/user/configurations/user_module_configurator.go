@@ -1,7 +1,7 @@
 package configurations
 
 import (
-	bloom "github.com/reoden/go-NFT/pkg/bloomfilter"
+	"github.com/reoden/go-NFT/pkg/bloom"
 	fxcontracts "github.com/reoden/go-NFT/pkg/fxapp/contracts"
 	grpcServer "github.com/reoden/go-NFT/pkg/grpc"
 	"github.com/reoden/go-NFT/pkg/logger"

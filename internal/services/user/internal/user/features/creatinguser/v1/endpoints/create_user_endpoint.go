@@ -53,7 +53,7 @@ func (ep *createUserEndpoint) handler() echo.HandlerFunc {
 
 		command, err := commonds.NewCreateUserWithValidation(
 			request.Phone,
-			request.InviteCode,
+			request.Captcha,
 		)
 		if err != nil {
 			return err

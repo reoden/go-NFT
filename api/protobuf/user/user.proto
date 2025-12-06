@@ -21,7 +21,7 @@ message User {
 
 message CreateUserReq {
   string Phone = 1;
-  string InviteCode = 2;
+  string Captcha = 2;
 }
 
 message CreateUserRes {

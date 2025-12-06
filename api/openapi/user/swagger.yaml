@@ -1,7 +1,7 @@
 definitions:
   dtos.CreateUserRequestDto:
     properties:
-      invite_code:
+      captcha:
         type: string
       phone:
         type: string
