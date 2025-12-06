@@ -28,7 +28,7 @@ import (
 // 	wg.Add(1)
 // 	go func() {
 // 		for i := 0; i < try; i++ {
-// 			n1b := f.Test(n1)
+// 			n1b := f.Exists(n1)
 // 			if !n1b {
 // 				err1 = fmt.Errorf("%v should be in", n1)
 // 				break
@@ -40,7 +40,7 @@ import (
 // 	wg.Add(1)
 // 	go func() {
 // 		for i := 0; i < try; i++ {
-// 			n2b := f.Test(n2)
+// 			n2b := f.Exists(n2)
 // 			if !n2b {
 // 				err2 = fmt.Errorf("%v should be in", n2)
 // 				break
@@ -67,9 +67,9 @@ func TestBasic(t *testing.T) {
 	n3 := []byte("Emma")
 	f.Add(n1)
 	n3a := f.TestAndAdd(n3)
-	n1b := f.Test(n1)
-	n2b := f.Test(n2)
-	n3b := f.Test(n3)
+	n1b := f.Exists(n1)
+	n2b := f.Exists(n2)
+	n3b := f.Exists(n3)
 	if !n1b {
 		t.Errorf("%v should be in.", n1)
 	}
@@ -99,12 +99,12 @@ func TestBasicUint32(t *testing.T) {
 	binary.BigEndian.PutUint32(n5, 104)
 	f.Add(n1)
 	n3a := f.TestAndAdd(n3)
-	n1b := f.Test(n1)
-	n2b := f.Test(n2)
-	n3b := f.Test(n3)
+	n1b := f.Exists(n1)
+	n2b := f.Exists(n2)
+	n3b := f.Exists(n3)
 	n5a := f.TestOrAdd(n5)
-	n5b := f.Test(n5)
-	f.Test(n4)
+	n5b := f.Exists(n5)
+	f.Exists(n4)
 	if !n1b {
 		t.Errorf("%v should be in.", n1)
 	}
@@ -146,12 +146,12 @@ func TestString(t *testing.T) {
 	n5 := "blooms"
 	f.AddString(n1)
 	n3a := f.TestAndAddString(n3)
-	n1b := f.TestString(n1)
-	n2b := f.TestString(n2)
-	n3b := f.TestString(n3)
+	n1b := f.ExistsString(n1)
+	n2b := f.ExistsString(n2)
+	n3b := f.ExistsString(n3)
 	n5a := f.TestOrAddString(n5)
-	n5b := f.TestString(n5)
-	f.TestString(n4)
+	n5b := f.ExistsString(n5)
+	f.ExistsString(n4)
 	if !n1b {
 		t.Errorf("%v should be in.", n1)
 	}
@@ -346,7 +346,7 @@ func BenchmarkSeparateTestAndAdd(b *testing.B) {
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		binary.BigEndian.PutUint32(key, uint32(i))
-		f.Test(key)
+		f.Exists(key)
 		f.Add(key)
 	}
 }
@@ -397,17 +397,17 @@ func TestMerge(t *testing.T) {
 		t.Errorf("There should be an error when merging filters with mismatched k")
 	}
 
-	n2b := f.Test(n2)
+	n2b := f.Exists(n2)
 	if !n2b {
 		t.Errorf("The value doesn't exist after a valid merge")
 	}
 
-	n3b := f.Test(n3)
+	n3b := f.Exists(n3)
 	if n3b {
 		t.Errorf("The value exists after an invalid merge")
 	}
 
-	n4b := f.Test(n4)
+	n4b := f.Exists(n4)
 	if n4b {
 		t.Errorf("The value exists after an invalid merge")
 	}
@@ -424,22 +424,22 @@ func TestCopy(t *testing.T) {
 	n2 := []byte("g")
 	g.Add(n2)
 
-	n1fb := f.Test(n1)
+	n1fb := f.Exists(n1)
 	if !n1fb {
 		t.Errorf("The value doesn't exist in original after making a copy")
 	}
 
-	n1gb := g.Test(n1)
+	n1gb := g.Exists(n1)
 	if !n1gb {
 		t.Errorf("The value doesn't exist in the copy")
 	}
 
-	n2fb := f.Test(n2)
+	n2fb := f.Exists(n2)
 	if n2fb {
 		t.Errorf("The value exists in the original, it should only exist in copy")
 	}
 
-	n2gb := g.Test(n2)
+	n2gb := g.Exists(n2)
 	if !n2gb {
 		t.Errorf("The value doesn't exist in copy after Add()")
 	}
@@ -461,18 +461,18 @@ func TestFrom(t *testing.T) {
 		t.Errorf("Capacity does not match the expected value")
 	}
 
-	if bf.Test(test) {
+	if bf.Exists(test) {
 		t.Errorf("Bloom filter should not contain the value")
 	}
 
 	bf.Add(test)
-	if !bf.Test(test) {
+	if !bf.Exists(test) {
 		t.Errorf("Bloom filter should contain the value")
 	}
 
 	// create a new Bloom filter from an existing (populated) data slice.
 	bf = BloomFilterFrom(data, k, "bloom_from")
-	if !bf.Test(test) {
+	if !bf.Exists(test) {
 		t.Errorf("Bloom filter should contain the value")
 	}
 }
@@ -532,7 +532,7 @@ func TestApproximatedSize(t *testing.T) {
 //	for i := uint32(0); i < 1000; i++ {
 //		n := make([]byte, 4)
 //		binary.BigEndian.PutUint32(n, i+1000)
-//		if f.Test(n) {
+//		if f.Exists(n) {
 //			count += 1
 //		}
 //	}
@@ -568,13 +568,13 @@ func TestApproximatedSize(t *testing.T) {
 //	if !g.b.Equal(f.b) {
 //		t.Error("bitsets are not equal")
 //	}
-//	if !g.Test([]byte("three")) {
+//	if !g.Exists([]byte("three")) {
 //		t.Errorf("missing value 'three'")
 //	}
-//	if !g.Test([]byte("two")) {
+//	if !g.Exists([]byte("two")) {
 //		t.Errorf("missing value 'two'")
 //	}
-//	if !g.Test([]byte("one")) {
+//	if !g.Exists([]byte("one")) {
 //		t.Errorf("missing value 'one'")
 //	}
 //}

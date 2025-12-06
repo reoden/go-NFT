@@ -39,8 +39,8 @@ func NewRedisUserRepository(
 	}
 }
 
-func (r *redisUserRepository) GetInviteCode(ctx context.Context, key string) (string, error) {
-	ctx, span := r.tracer.Start(ctx, "redisRepository.GetInviteCode")
+func (r *redisUserRepository) GetCaptcha(ctx context.Context, key string) (string, error) {
+	ctx, span := r.tracer.Start(ctx, "redisRepository.GetCaptcha")
 	span.SetAttributes(
 		attribute2.String("PrefixKey", r.getRedisUserInviteCodePrefixKey()),
 	)
@@ -48,7 +48,7 @@ func (r *redisUserRepository) GetInviteCode(ctx context.Context, key string) (st
 	defer span.End()
 
 	redisKey := fmt.Sprintf("%s#%s", r.getRedisUserInviteCodePrefixKey(), key)
-	inviteCodeBytes, err := r.redisClient.Get(ctx, redisKey).Bytes()
+	captchaBytes, err := r.redisClient.Get(ctx, redisKey).Bytes()
 	if err != nil {
 		if errors.Is(err, redis.Nil) {
 			return "", nil
@@ -59,14 +59,14 @@ func (r *redisUserRepository) GetInviteCode(ctx context.Context, key string) (st
 			errors.WrapIf(
 				err,
 				fmt.Sprintf(
-					"error in getting inviteCode with Key %s from database",
+					"error in getting Captcha with Key %s from database",
 					redisKey,
 				),
 			),
 		)
 	}
 
-	inviteCode := string(inviteCodeBytes)
+	inviteCode := string(captchaBytes)
 
 	span.SetAttributes(attribute.Object("invite_code", inviteCode))
 

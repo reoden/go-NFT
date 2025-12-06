@@ -5,6 +5,7 @@ import (
 	"fmt"
 
 	"github.com/labstack/gommon/random"
+	bloom "github.com/reoden/go-NFT/pkg/bloomfilter"
 	"github.com/reoden/go-NFT/pkg/constants"
 	"github.com/reoden/go-NFT/pkg/core/cqrs"
 	customErrors "github.com/reoden/go-NFT/pkg/http/httperrors/customerrors"
@@ -26,13 +27,17 @@ import (
 
 type createUserHandler struct {
 	fxparams.CreateUserHandlerParams
+
+	nickNameBloomFilter   *bloom.BloomFilter
+	inviteCodeBloomFilter *bloom.BloomFilter
 }
 
-func NewCreateProductHandler(
+func NewCreateUserHandler(
 	logger logger.Logger,
 	userDBContext *dbcontext.UserGormDBContext,
 	userRepository contracts.UserRepository,
 	cacheUserRepository contracts.UserCacheRepository,
+	bloomFilter *bloom.BloomFilterFactory,
 	tracer tracing.AppTracer,
 ) cqrs.RequestHandlerWithRegisterer[*CreateUser, *dtos.CreateUserResponseDto] {
 	return &createUserHandler{
@@ -41,8 +46,11 @@ func NewCreateProductHandler(
 			UserDBContext:   userDBContext,
 			UserRepository:  userRepository,
 			RedisRepository: cacheUserRepository,
+			BloomFilter:     bloomFilter,
 			Tracer:          tracer,
 		},
+		nickNameBloomFilter:   bloomFilter.NewWithEstimates(1000000, 0.01, "nickname"),
+		inviteCodeBloomFilter: bloomFilter.NewWithEstimates(1000000, 0.01, "inviteCode"),
 	}
 }
 
@@ -78,7 +86,7 @@ func (c *createUserHandler) Handle(
 		)
 	}
 
-	inviteCode, err := c.RedisRepository.GetInviteCode(ctx, command.Phone)
+	inviteCode, err := c.RedisRepository.GetCaptcha(ctx, command.Phone)
 	if err != nil {
 		return nil, customErrors.NewApplicationErrorWrap(
 			err,
@@ -102,8 +110,26 @@ func (c *createUserHandler) Handle(
 	}
 
 	phone := command.Phone
-	randomString := random.String(6)
-	defaultNickName := constants.DEFAULT_NICK_NAME_PREFIX + randomString + phone[7:11]
+	var (
+		randomString    string
+		defaultNickName string
+	)
+	for {
+		randomString = random.String(6)
+		defaultNickName = constants.DEFAULT_NICK_NAME_PREFIX + randomString + phone[7:11]
+		ok, err := c.ExistsNickName(ctx, defaultNickName)
+		if err != nil {
+			return nil, customErrors.NewApplicationErrorWrap(
+				err,
+				fmt.Sprintf("[Create_User_Handler] check nickname=%s err=%+v", defaultNickName, err),
+			)
+		}
+
+		if !ok {
+			break
+		}
+	}
+
 	user := &models.User{
 		UserId:    command.UserId,
 		Nickname:  defaultNickName,
@@ -112,12 +138,6 @@ func (c *createUserHandler) Handle(
 	}
 
 	var createProductResult *dtos.CreateUserResponseDto
-
-	//result, err := gormdbcontext.AddModel[*datamodel.UserDataModel, *models.User](
-	//	ctx,
-	//	c.UserDBContext,
-	//	user,
-	//)
 	result, err := c.UserRepository.CreateUser(ctx, user)
 	if err != nil {
 		return nil, err
@@ -143,6 +163,8 @@ func (c *createUserHandler) Handle(
 		logger.Fields{"MessageId": userCreated.MessageId},
 	)
 
+	c.addNickname(ctx, user.Nickname)
+
 	createProductResult = &dtos.CreateUserResponseDto{
 		UserID: user.UserId,
 	}
@@ -159,4 +181,26 @@ func (c *createUserHandler) Handle(
 	)
 
 	return createProductResult, err
+}
+
+func (c *createUserHandler) ExistsNickName(ctx context.Context, nickName string) (bool, error) {
+	if c.nickNameBloomFilter != nil && c.nickNameBloomFilter.ExistsString(ctx, nickName) {
+		_, err := gormdbcontext.FindDataModelByCond[*datamodel.UserDataModel](
+			ctx,
+			c.UserDBContext,
+			map[string]any{
+				"nickname": nickName,
+			},
+		)
+
+		if err != nil && customErrors.IsNotFoundError(err) {
+			return true, nil
+		}
+		return false, err
+	}
+	return false, nil
+}
+
+func (c *createUserHandler) addNickname(ctx context.Context, nickName string) {
+	c.nickNameBloomFilter.AddString(ctx, nickName)
 }

@@ -2,6 +2,7 @@ package mediator
 
 import (
 	"github.com/mehdihadeli/go-mediatr"
+	bloom "github.com/reoden/go-NFT/pkg/bloomfilter"
 	"github.com/reoden/go-NFT/pkg/logger"
 	"github.com/reoden/go-NFT/pkg/otel/tracing"
 	"github.com/reoden/go-NFT/user/internal/shared/data/dbcontext"
@@ -15,11 +16,12 @@ func ConfigUserMediator(
 	userDBContext *dbcontext.UserGormDBContext,
 	userRepository contracts.UserRepository,
 	cacheUserRepository contracts.UserCacheRepository,
+	bloomFilter *bloom.BloomFilterFactory,
 	tracer tracing.AppTracer,
 ) error {
 	// https://stackoverflow.com/questions/72034479/how-to-implement-generic-interfaces
 	err := mediatr.RegisterRequestHandler[*creatingUserCommondV1.CreateUser, *createUserDtosV1.CreateUserResponseDto](
-		creatingUserCommondV1.NewCreateProductHandler(logger, userDBContext, userRepository, cacheUserRepository, tracer),
+		creatingUserCommondV1.NewCreateUserHandler(logger, userDBContext, userRepository, cacheUserRepository, bloomFilter, tracer),
 	)
 	if err != nil {
 		return err

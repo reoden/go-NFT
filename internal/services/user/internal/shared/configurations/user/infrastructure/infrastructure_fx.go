@@ -2,6 +2,7 @@ package infrastructure
 
 import (
 	"github.com/go-playground/validator"
+	bloom "github.com/reoden/go-NFT/pkg/bloomfilter"
 	"github.com/reoden/go-NFT/pkg/core"
 	"github.com/reoden/go-NFT/pkg/grpc"
 	"github.com/reoden/go-NFT/pkg/health"
@@ -29,6 +30,7 @@ var Module = fx.Module(
 	health.Module,
 	tracing.Module,
 	metrics.Module,
+	bloom.Module,
 
 	// Other provides
 	fx.Provide(validator.New),

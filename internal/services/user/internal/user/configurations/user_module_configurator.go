@@ -1,6 +1,7 @@
 package configurations
 
 import (
+	bloom "github.com/reoden/go-NFT/pkg/bloomfilter"
 	fxcontracts "github.com/reoden/go-NFT/pkg/fxapp/contracts"
 	grpcServer "github.com/reoden/go-NFT/pkg/grpc"
 	"github.com/reoden/go-NFT/pkg/logger"
@@ -20,7 +21,7 @@ type UserModuleConfigurator struct {
 	fxcontracts.Application
 }
 
-func NewProductsModuleConfigurator(
+func NewUserModuleConfigurator(
 	fxapp fxcontracts.Application,
 ) *UserModuleConfigurator {
 	return &UserModuleConfigurator{
@@ -34,10 +35,11 @@ func (c *UserModuleConfigurator) ConfigureUserModule() {
 			userDBContext *dbcontext.UserGormDBContext,
 			userRepository contracts.UserRepository,
 			cacheRepository contracts.UserCacheRepository,
+			bloomFilter *bloom.BloomFilterFactory,
 			tracer tracing.AppTracer,
 		) error {
 			// config User Mediators
-			err := mediator.ConfigUserMediator(logger, userDBContext, userRepository, cacheRepository, tracer)
+			err := mediator.ConfigUserMediator(logger, userDBContext, userRepository, cacheRepository, bloomFilter, tracer)
 			if err != nil {
 				return err
 			}
