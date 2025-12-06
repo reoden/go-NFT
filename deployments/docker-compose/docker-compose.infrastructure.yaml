@@ -75,8 +75,8 @@ services:
     depends_on:
       prometheus:
         condition: service_healthy
-      tempo:
-        condition: service_healthy
+#      tempo:
+#        condition: service_healthy
     networks:
       - go-echo-template
 
@@ -96,10 +96,10 @@ services:
       - "4322:4317"   # otlp grpc
       - "9411"        # zipkin - export zipkin traces to tempo
       - "14268"       # jaeger - export jaeger traces to tempo
-    healthcheck:
-      interval: 5s
-      retries: 10
-      test: wget --no-verbose --tries=1 --spider http://localhost:3200/status || exit 1
+#    healthcheck:
+#      interval: 5s
+#      retries: 10
+#      test: wget --no-verbose --tries=1 --spider http://localhost:3200/status || exit 1
     networks:
       - go-echo-template
 
