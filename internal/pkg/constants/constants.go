@@ -27,6 +27,7 @@ const (
 	Dev                  = "development"
 	Test                 = "test"
 	Production           = "production"
+	TokenExpireDuration  = 24 * time.Hour
 )
 
 const (

@@ -77,12 +77,18 @@ func (ic *UserServiceConfigurator) MapUserEndpoints() {
 				return func(ec echo.Context) bool {
 					path := ec.Request().URL.Path
 					method := ec.Request().Method
-					if strings.HasPrefix(path, "/api/v1/user") && method == echo.POST {
+					if strings.HasPrefix(path, "/api/v1/user/register") && method == echo.POST {
 						return true
 					}
-					if strings.HasPrefix(path, "/api/v1/user/") && method == echo.GET {
+					if strings.HasPrefix(path, "/api/v1/user/login") && method == echo.POST {
 						return true
 					}
+					if strings.HasPrefix(path, "/api/v1/user/captcha") && method == echo.POST {
+						return true
+					}
+					//if strings.HasPrefix(path, "/api/v1/user/") && method == echo.GET {
+					//	return true
+					//}
 					return false
 				}(c)
 			}

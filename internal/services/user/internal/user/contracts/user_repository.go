@@ -10,4 +10,6 @@ import (
 type UserRepository interface {
 	CreateUser(ctx context.Context, user *models.User) (*models.User, error)
 	FindUserById(ctx context.Context, userId uuid.UUID) (*models.User, error)
+	UserLogin(ctx context.Context, telephone string) error
+	SendCaptcha(ctx context.Context, telephone string) error
 }

@@ -14,7 +14,7 @@ import (
 func GenJWTToken(userId uuid.UUID) (string, error) {
 	claims := jwt.MapClaims{
 		"userId": userId.String(),
-		"exp":    time.Now().Add(time.Hour * 24).Unix(),
+		"exp":    time.Now().Add(constants.TokenExpireDuration).Unix(),
 		"iat":    time.Now().Unix(),
 	}
 

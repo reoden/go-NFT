@@ -10,7 +10,75 @@
         "version": "1.0"
     },
     "paths": {
-        "/api/v1/user": {
+        "/api/v1/user/captcha": {
+            "post": {
+                "description": "send user captcha",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "send user captcha",
+                "parameters": [
+                    {
+                        "description": "User data",
+                        "name": "SendCaptchaRequestDto",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dtos.SendCaptchaRequestDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dtos.SendCaptchaResponseDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/user/loginuser": {
+            "post": {
+                "description": "user loginuser check",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "user loginuser",
+                "parameters": [
+                    {
+                        "description": "User data",
+                        "name": "LoginUserRequestDto",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dtos.LoginUserRequestDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dtos.LoginUserResponseDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/user/register": {
             "post": {
                 "description": "Create new user item",
                 "consumes": [
@@ -43,6 +111,40 @@
                     }
                 }
             }
+        },
+        "/api/v1/user/{user_id}": {
+            "get": {
+                "description": "Find user item by UserId",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "Find user By UserId",
+                "parameters": [
+                    {
+                        "description": "User data",
+                        "name": "FindUserByIdRequestDto",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dtos.FindUserByIdRequestDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/dtos.FindUserByIdResponseDto"
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -61,6 +163,75 @@
             "type": "object",
             "properties": {
                 "userID": {
+                    "type": "string"
+                }
+            }
+        },
+        "dtos.FindUserByIdRequestDto": {
+            "type": "object",
+            "properties": {
+                "user_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "dtos.FindUserByIdResponseDto": {
+            "type": "object",
+            "properties": {
+                "user": {
+                    "$ref": "#/definitions/v1.UserDto"
+                }
+            }
+        },
+        "dtos.LoginUserRequestDto": {
+            "type": "object",
+            "properties": {
+                "captcha": {
+                    "type": "string"
+                },
+                "phone": {
+                    "type": "string"
+                }
+            }
+        },
+        "dtos.LoginUserResponseDto": {
+            "type": "object",
+            "properties": {
+                "userId": {
+                    "type": "string"
+                }
+            }
+        },
+        "dtos.SendCaptchaRequestDto": {
+            "type": "object",
+            "properties": {
+                "phone": {
+                    "type": "string"
+                }
+            }
+        },
+        "dtos.SendCaptchaResponseDto": {
+            "type": "object"
+        },
+        "v1.UserDto": {
+            "type": "object",
+            "properties": {
+                "createdAt": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "nickname": {
+                    "type": "string"
+                },
+                "phone": {
+                    "type": "string"
+                },
+                "updatedAt": {
+                    "type": "string"
+                },
+                "user_id": {
                     "type": "string"
                 }
             }

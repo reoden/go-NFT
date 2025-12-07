@@ -24,3 +24,18 @@ type FindUserByIdHandlerParams struct {
 	RedisRepository contracts.UserCacheRepository
 	Tracer          tracing.AppTracer
 }
+
+type UserLoginHandlerParams struct {
+	Log             logger.Logger
+	UserDBContext   *dbcontext.UserGormDBContext
+	UserRepository  contracts.UserRepository
+	RedisRepository contracts.UserCacheRepository
+	Tracer          tracing.AppTracer
+}
+
+type SendCaptchaHandlerParams struct {
+	Log             logger.Logger
+	UserRepository  contracts.UserRepository
+	RedisRepository contracts.UserCacheRepository
+	Tracer          tracing.AppTracer
+}
