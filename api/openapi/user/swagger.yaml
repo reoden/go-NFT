@@ -11,6 +11,50 @@ definitions:
       userID:
         type: string
     type: object
+  dtos.FindUserByIdRequestDto:
+    properties:
+      user_id:
+        type: string
+    type: object
+  dtos.FindUserByIdResponseDto:
+    properties:
+      user:
+        $ref: '#/definitions/v1.UserDto'
+    type: object
+  dtos.LoginUserRequestDto:
+    properties:
+      captcha:
+        type: string
+      phone:
+        type: string
+    type: object
+  dtos.LoginUserResponseDto:
+    properties:
+      userId:
+        type: string
+    type: object
+  dtos.SendCaptchaRequestDto:
+    properties:
+      phone:
+        type: string
+    type: object
+  dtos.SendCaptchaResponseDto:
+    type: object
+  v1.UserDto:
+    properties:
+      createdAt:
+        type: string
+      id:
+        type: integer
+      nickname:
+        type: string
+      phone:
+        type: string
+      updatedAt:
+        type: string
+      user_id:
+        type: string
+    type: object
 info:
   contact:
     name: Reoden
@@ -19,7 +63,73 @@ info:
   title: User Service Api
   version: "1.0"
 paths:
-  /api/v1/user:
+  /api/v1/user/{user_id}:
+    get:
+      consumes:
+      - application/json
+      description: Find user item by UserId
+      parameters:
+      - description: User data
+        in: body
+        name: FindUserByIdRequestDto
+        required: true
+        schema:
+          $ref: '#/definitions/dtos.FindUserByIdRequestDto'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/dtos.FindUserByIdResponseDto'
+      summary: Find user By UserId
+      tags:
+      - User
+  /api/v1/user/captcha:
+    post:
+      consumes:
+      - application/json
+      description: send user captcha
+      parameters:
+      - description: User data
+        in: body
+        name: SendCaptchaRequestDto
+        required: true
+        schema:
+          $ref: '#/definitions/dtos.SendCaptchaRequestDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dtos.SendCaptchaResponseDto'
+      summary: send user captcha
+      tags:
+      - User
+  /api/v1/user/loginuser:
+    post:
+      consumes:
+      - application/json
+      description: user loginuser check
+      parameters:
+      - description: User data
+        in: body
+        name: LoginUserRequestDto
+        required: true
+        schema:
+          $ref: '#/definitions/dtos.LoginUserRequestDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dtos.LoginUserResponseDto'
+      summary: user loginuser
+      tags:
+      - User
+  /api/v1/user/register:
     post:
       consumes:
       - application/json

@@ -11,6 +11,10 @@ import (
 	createUserDtosV1 "github.com/reoden/go-NFT/user/internal/user/features/creatinguser/v1/dtos"
 	findUserByIdDtosV1 "github.com/reoden/go-NFT/user/internal/user/features/finduserbyId/v1/dtos"
 	findUserByIdQueryV1 "github.com/reoden/go-NFT/user/internal/user/features/finduserbyId/v1/queries"
+	loginUserCommondV1 "github.com/reoden/go-NFT/user/internal/user/features/loginuser/v1/commands"
+	loginUserDtosV1 "github.com/reoden/go-NFT/user/internal/user/features/loginuser/v1/dtos"
+	sendCaptchaCommondV1 "github.com/reoden/go-NFT/user/internal/user/features/sendcaptcha/v1/commands"
+	sendCaptchaDtosV1 "github.com/reoden/go-NFT/user/internal/user/features/sendcaptcha/v1/dtos"
 )
 
 func ConfigUserMediator(
@@ -31,6 +35,20 @@ func ConfigUserMediator(
 
 	err = mediatr.RegisterRequestHandler[*findUserByIdQueryV1.FindUserById, *findUserByIdDtosV1.FindUserByIdResponseDto](
 		findUserByIdQueryV1.NewFindUserByIdHandler(logger, userDBContext, userRepository, cacheUserRepository, tracer),
+	)
+	if err != nil {
+		return err
+	}
+
+	err = mediatr.RegisterRequestHandler[*loginUserCommondV1.LoginUser, *loginUserDtosV1.LoginUserResponseDto](
+		loginUserCommondV1.NewLoginUserHandler(logger, userDBContext, userRepository, cacheUserRepository, tracer),
+	)
+	if err != nil {
+		return err
+	}
+
+	err = mediatr.RegisterRequestHandler[*sendCaptchaCommondV1.SendCaptcha, *sendCaptchaDtosV1.SendCaptchaResponseDto](
+		sendCaptchaCommondV1.NewSendCaptchaHandler(logger, userRepository, cacheUserRepository, tracer),
 	)
 	if err != nil {
 		return err

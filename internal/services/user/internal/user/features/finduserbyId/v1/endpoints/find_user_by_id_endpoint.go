@@ -6,8 +6,10 @@ import (
 	"emperror.dev/errors"
 	"github.com/labstack/echo/v4"
 	"github.com/mehdihadeli/go-mediatr"
+	"github.com/reoden/go-NFT/pkg/constants"
 	"github.com/reoden/go-NFT/pkg/core/web/route"
 	customErrors "github.com/reoden/go-NFT/pkg/http/httperrors/customerrors"
+	"github.com/reoden/go-NFT/pkg/utils"
 	"github.com/reoden/go-NFT/user/internal/user/dtos/v1/fxparams"
 	"github.com/reoden/go-NFT/user/internal/user/features/finduserbyId/v1/dtos"
 	"github.com/reoden/go-NFT/user/internal/user/features/finduserbyId/v1/queries"
@@ -40,6 +42,14 @@ func (ep *findUserByIdEndpoint) handler() echo.HandlerFunc {
 	return func(c echo.Context) error {
 		ctx := c.Request().Context()
 
+		userId, err := utils.ParseJWTToken(c)
+		if err != nil {
+			return customErrors.NewUnAuthorizedErrorWrap(
+				err,
+				constants.ErrJWTTokenInvalid,
+			)
+		}
+
 		request := &dtos.FindUserByIdRequestDto{}
 		if err := c.Bind(request); err != nil {
 			badRequestErr := customErrors.NewBadRequestErrorWrap(
@@ -48,6 +58,12 @@ func (ep *findUserByIdEndpoint) handler() echo.HandlerFunc {
 			)
 
 			return badRequestErr
+		}
+
+		if request.UserId != userId {
+			return customErrors.NewUnAuthorizedError(
+				"token parse user_id does not eq with request.UserId",
+			)
 		}
 
 		query, err := queries.NewFindUserByIdWithValidation(

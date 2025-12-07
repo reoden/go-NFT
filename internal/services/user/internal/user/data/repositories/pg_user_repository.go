@@ -106,6 +106,51 @@ func (p *postgresUserRepository) FindUserById(
 	return user, nil
 }
 
+func (p *postgresUserRepository) UserLogin(ctx context.Context, telephone string) error {
+	ctx, span := p.tracer.Start(ctx, "postgresUserRepository.UserLogin")
+	defer span.End()
+
+	user, err := p.gormGenericRepository.FirstOrDefault(ctx, map[string]interface{}{
+		"phone": telephone,
+	})
+	err = utils2.TraceStatusFromSpan(
+		span,
+		errors.WrapIf(
+			err,
+			"error in the finding user with telephone from the database.",
+		),
+	)
+	if err != nil {
+		return err
+	}
+
+	span.SetAttributes(attribute.Object("User", user))
+	p.log.Infow(
+		fmt.Sprintf(
+			"user with phone '%s' found",
+			user.Phone,
+		),
+		logger.Fields{"User": user, "Phone": user.Phone},
+	)
+
+	return nil
+}
+
+func (p *postgresUserRepository) SendCaptcha(ctx context.Context, telephone string) error {
+	ctx, span := p.tracer.Start(ctx, "postgresUserRepository.SendCaptcha")
+	defer span.End()
+
+	p.log.Infow(
+		fmt.Sprintf(
+			"user with phone '%s' found",
+			telephone,
+		),
+		logger.Fields{"Phone": telephone},
+	)
+
+	return nil
+}
+
 //func (p *postgresUserRepository) GetAllUsers(
 //	ctx context.Context,
 //	listQuery *utils.ListQuery,

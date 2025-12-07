@@ -25,7 +25,7 @@ func NewCreateUserEndpoint(
 }
 
 func (ep *createUserEndpoint) MapEndpoint() {
-	ep.UserGroup.POST("", ep.handler())
+	ep.UserGroup.POST("/register", ep.handler())
 }
 
 // CreateUser
@@ -36,7 +36,7 @@ func (ep *createUserEndpoint) MapEndpoint() {
 // @Produce json
 // @Param CreateUserRequestDto body dtos.CreateUserRequestDto true "User data"
 // @Success 201 {object} dtos.CreateUserResponseDto
-// @Router /api/v1/user [post]
+// @Router /api/v1/user/register [post]
 func (ep *createUserEndpoint) handler() echo.HandlerFunc {
 	return func(c echo.Context) error {
 		ctx := c.Request().Context()
