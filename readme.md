@@ -1,6 +1,6 @@
 # Go Vertical Slice Template
 
-> A Golang boilerplate template, based on [Vertical Slice Architecture](https://jimmybogard.com/vertical-slice-architecture/) and [CQRS pattern](https://event-driven.io/en/cqrs_facts_and_myths_explained/) with using [Echo](https://github.com/labstack/echo), [Gorm](https://github.com/go-gorm/gorm), [Zap](https://github.com/go-gorm/gorm), [Viper](https://github.com/spf13/viper), [MediatR](https://github.com/mehdihadeli/Go-MediatR/) for CQRS and [uber-go/dig](https://github.com/uber-go/dig) for Dependency Injection.
+> A Golang boilerplate template, based on [Vertical Slice Architecture](https://jimmybogard.com/vertical-slice-architecture/) and [CQRS pattern](https://event-driven.io/en/cqrs_facts_and_myths_explained/) with using [Echo](https://github.com/labstack/echo), [Gorm](https://github.com/go-gorm/gorm), [Zap](https://github.com/go-gorm/gorm), [Viper](https://github.com/spf13/viper), [MediatR](https://github.com/mehdihadeli/Go-MediatR/) for CQRS and [uber-go/fx](https://github.com/uber-go/fx) for Dependency Injection.
 
 **You can use this project as a template for building your backend application in Go, it's designed as a helpful starting point for your development.**
 
@@ -9,7 +9,7 @@
 - ✅ Using `Vertical Slice Architecture` as a high level architecture
 - ✅ Using `Data Centric Architecture` based on CRUD
 - ✅ Using `CQRS Pattern` and `Mediator Pattern`on top of [mehdihadeli/Go-MediatR](https://github.com/mehdihadeli/Go-MediatR) library
-- ✅ Using `Dependency Injection` and `Inversion of Control`on top of [uber-go/dig](https://github.com/uber-go/dig) library
+- ✅ Using `Dependency Injection` and `Inversion of Control`on top of [uber-go/fx](https://github.com/uber-go/fx) library
 - ✅ Using `RESTFul api` with [Echo](https://github.com/labstack/echo) framework and `Open-Api` using swagger with [swaggo/swag](https://github.com/swaggo/swag) library
 - ✅ Using [go-playground/validator](https://github.com/go-playground/validator) for validating input data in the REST and gRpc
 - ✅ Using `Gorm` and `SQLLite` for databases
@@ -26,7 +26,7 @@
 - ✔️ **[`swaggo/swag`](https://github.com/swaggo/swag)** - Automatically generate RESTful API documentation with Swagger 2.0 for Go.
 - ✔️ **[`go-gorm/gorm`](https://github.com/go-gorm/gorm)** - The fantastic ORM library for Golang, aims to be developer friendly
 - ✔️ **[`go-playground/validator`](https://github.com/go-playground/validator)** - Go Struct and Field validation, including Cross Field, Cross Struct, Map, Slice and Array diving
-- ✔️ **[`uber-go/dig`](https://github.com/uber-go/dig)** - A reflection based dependency injection toolkit for Go.
+- ✔️ **[`uber-go/fx`](https://github.com/uber-go/fx)** - A reflection based dependency injection toolkit for Go.
 - ✔️ **[`spf13/viper`](https://github.com/spf13/viper)** - Go configuration with fangs
 - ✔️ **[`caarlos0/env`](https://github.com/caarlos0/env)** - A simple and zero-dependencies library to parse environment variables into structs.
 - ✔️ **[`joho/godotenv`](https://github.com/joho/godotenv)** - A Go port of Ruby's dotenv library (Loads environment variables from .env files)
