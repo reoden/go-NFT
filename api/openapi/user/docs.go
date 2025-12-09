@@ -86,6 +86,40 @@ const docTemplate = `{
                 }
             }
         },
+        "/api/v1/user/logout": {
+            "post": {
+                "description": "user logoutuser check",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "user logoutuser",
+                "parameters": [
+                    {
+                        "description": "User data",
+                        "name": "LogoutUserRequestDto",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dtos.LogoutUserRequestDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dtos.LogoutUserResponseDto"
+                        }
+                    }
+                }
+            }
+        },
         "/api/v1/user/register": {
             "post": {
                 "description": "Create new user item",
@@ -209,6 +243,12 @@ const docTemplate = `{
                     "type": "string"
                 }
             }
+        },
+        "dtos.LogoutUserRequestDto": {
+            "type": "object"
+        },
+        "dtos.LogoutUserResponseDto": {
+            "type": "object"
         },
         "dtos.SendCaptchaRequestDto": {
             "type": "object",

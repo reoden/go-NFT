@@ -46,5 +46,6 @@ const (
 )
 
 const (
-	DEFAULT_NICK_NAME_PREFIX = "藏家_"
+	DefaultNickNamePrefix    = "藏家_"
+	RedisTokenBlackPrefixKey = "logout_invalid_token"
 )

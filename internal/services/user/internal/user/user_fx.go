@@ -10,6 +10,7 @@ import (
 	creatingUserV1 "github.com/reoden/go-NFT/user/internal/user/features/creatinguser/v1/endpoints"
 	findUserByIdV1 "github.com/reoden/go-NFT/user/internal/user/features/findUserById/v1/endpoints"
 	loginUserV1 "github.com/reoden/go-NFT/user/internal/user/features/loginuser/v1/endpoints"
+	logoutV1 "github.com/reoden/go-NFT/user/internal/user/features/logout/v1/endpoints"
 	sendCaptchaV1 "github.com/reoden/go-NFT/user/internal/user/features/sendcaptcha/v1/endpoints"
 	"go.uber.org/fx"
 )
@@ -83,6 +84,10 @@ var Module = fx.Module(
 		),
 		route.AsRoute(
 			sendCaptchaV1.NewSendCaptchaEndpoint,
+			"user-routes",
+		),
+		route.AsRoute(
+			logoutV1.NewLogoutUserEndpoint,
 			"user-routes",
 		),
 		//route.AsRoute(

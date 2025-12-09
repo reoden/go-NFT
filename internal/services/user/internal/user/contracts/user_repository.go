@@ -12,4 +12,5 @@ type UserRepository interface {
 	FindUserById(ctx context.Context, userId uuid.UUID) (*models.User, error)
 	UserLogin(ctx context.Context, telephone string) error
 	SendCaptcha(ctx context.Context, telephone string) error
+	Logout(ctx context.Context, userId uuid.UUID) error
 }

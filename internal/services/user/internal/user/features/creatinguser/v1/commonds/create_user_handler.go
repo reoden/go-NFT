@@ -115,7 +115,7 @@ func (c *createUserHandler) Handle(
 	)
 	for {
 		randomString = random.String(6)
-		defaultNickName = constants.DEFAULT_NICK_NAME_PREFIX + randomString + phone[7:11]
+		defaultNickName = constants.DefaultNickNamePrefix + randomString + phone[7:11]
 		ok, err := c.ExistsNickName(ctx, defaultNickName)
 		if err != nil {
 			return nil, customErrors.NewApplicationErrorWrap(

@@ -13,6 +13,8 @@ import (
 	findUserByIdQueryV1 "github.com/reoden/go-NFT/user/internal/user/features/finduserbyId/v1/queries"
 	loginUserCommondV1 "github.com/reoden/go-NFT/user/internal/user/features/loginuser/v1/commands"
 	loginUserDtosV1 "github.com/reoden/go-NFT/user/internal/user/features/loginuser/v1/dtos"
+	logoutCommondV1 "github.com/reoden/go-NFT/user/internal/user/features/logout/v1/commands"
+	logoutDtosV1 "github.com/reoden/go-NFT/user/internal/user/features/logout/v1/dtos"
 	sendCaptchaCommondV1 "github.com/reoden/go-NFT/user/internal/user/features/sendcaptcha/v1/commands"
 	sendCaptchaDtosV1 "github.com/reoden/go-NFT/user/internal/user/features/sendcaptcha/v1/dtos"
 )
@@ -49,6 +51,13 @@ func ConfigUserMediator(
 
 	err = mediatr.RegisterRequestHandler[*sendCaptchaCommondV1.SendCaptcha, *sendCaptchaDtosV1.SendCaptchaResponseDto](
 		sendCaptchaCommondV1.NewSendCaptchaHandler(logger, userRepository, cacheUserRepository, tracer),
+	)
+	if err != nil {
+		return err
+	}
+
+	err = mediatr.RegisterRequestHandler[*logoutCommondV1.LogoutUser, *logoutDtosV1.LogoutUserResponseDto](
+		logoutCommondV1.NewLogoutUserHandler(logger, userRepository, cacheUserRepository, tracer),
 	)
 	if err != nil {
 		return err

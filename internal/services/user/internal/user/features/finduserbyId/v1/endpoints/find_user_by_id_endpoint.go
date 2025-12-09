@@ -42,7 +42,7 @@ func (ep *findUserByIdEndpoint) handler() echo.HandlerFunc {
 	return func(c echo.Context) error {
 		ctx := c.Request().Context()
 
-		userId, err := utils.ParseJWTToken(c)
+		_, userId, err := utils.ParseJWTToken(c)
 		if err != nil {
 			return customErrors.NewUnAuthorizedErrorWrap(
 				err,

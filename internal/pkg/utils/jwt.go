@@ -27,16 +27,17 @@ func GenJWTToken(userId uuid.UUID) (string, error) {
 	return token, nil
 }
 
-func ParseJWTToken(c echo.Context) (uuid.UUID, error) {
+func ParseJWTToken(c echo.Context) (string, uuid.UUID, error) {
 	token, ok := c.Get("user").(*jwt.Token)
 	if !ok {
-		return uuid.Nil, errors.New(constants.ErrJWTTokenInvalid)
+		return "", uuid.Nil, errors.New(constants.ErrJWTTokenInvalid)
 	}
 
 	claims, ok := token.Claims.(jwt.MapClaims)
 	if !ok {
-		return uuid.Nil, errors.New(constants.ErrJWTTokenFailedCastClaim)
+		return "", uuid.Nil, errors.New(constants.ErrJWTTokenFailedCastClaim)
 	}
 	uuidString := claims["userId"].(string)
-	return uuid.FromString(uuidString)
+	userId, err := uuid.FromString(uuidString)
+	return token.Raw, userId, err
 }

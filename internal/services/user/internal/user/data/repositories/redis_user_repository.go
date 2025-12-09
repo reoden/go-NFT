@@ -8,6 +8,7 @@ import (
 
 	"emperror.dev/errors"
 	"github.com/redis/go-redis/v9"
+	"github.com/reoden/go-NFT/pkg/constants"
 	"github.com/reoden/go-NFT/pkg/logger"
 	"github.com/reoden/go-NFT/pkg/otel/tracing"
 	"github.com/reoden/go-NFT/pkg/otel/tracing/attribute"
@@ -237,14 +238,45 @@ func (r *redisUserRepository) GetUserById(ctx context.Context, key string) (*mod
 	return &user, nil
 }
 
-func (r *redisUserRepository) DeleteUser(ctx context.Context, key string) error {
-	//TODO implement me
-	panic("implement me")
-}
+func (r *redisUserRepository) AddTokenBlack(ctx context.Context, token string) error {
+	ctx, span := r.tracer.Start(ctx, "redisUserRepository.AddTokenBlack")
+	span.SetAttributes(
+		attribute2.String("PrefixKey", constants.RedisTokenBlackPrefixKey),
+	)
 
-func (r *redisUserRepository) DeleteAllUsers(ctx context.Context) error {
-	//TODO implement me
-	panic("implement me")
+	key := fmt.Sprintf("%s#%s", constants.RedisTokenBlackPrefixKey, token)
+	span.SetAttributes(attribute2.String("Key", key))
+	defer span.End()
+
+	if err := r.redisClient.SetNX(ctx, key, token, constants.TokenExpireDuration).Err(); err != nil {
+		return utils.TraceErrStatusFromSpan(
+			span,
+			errors.WrapIf(
+				err,
+				fmt.Sprintf(
+					"error in updating token invalid with key %s",
+					key,
+				),
+			),
+		)
+	}
+
+	span.SetAttributes(attribute.Object("Token", token))
+
+	r.log.Infow(
+		fmt.Sprintf(
+			"token with key '%s', prefix '%s'  updated successfully",
+			key,
+			constants.RedisTokenBlackPrefixKey,
+		),
+		logger.Fields{
+			"Token":     token,
+			"Key":       key,
+			"PrefixKey": constants.RedisTokenBlackPrefixKey,
+		},
+	)
+
+	return nil
 }
 
 func (r *redisUserRepository) getRedisUserMainPrefixKey() string {

@@ -71,7 +71,11 @@ func (ic *UserServiceConfigurator) ConfigureUser() {
 func (ic *UserServiceConfigurator) MapUserEndpoints() {
 	// Shared
 	ic.ResolveFunc(
-		func(userServer echocontracts.EchoHttpServer, options *config.AppOptions) error {
+		func(
+			userServer echocontracts.EchoHttpServer,
+			checker auth.TokenBlacklistChecker,
+			options *config.AppOptions,
+		) error {
 			userServer.SetupDefaultMiddlewares()
 			authSkipper := func(c echo.Context) bool {
 				return func(ec echo.Context) bool {
@@ -92,7 +96,12 @@ func (ic *UserServiceConfigurator) MapUserEndpoints() {
 					return false
 				}(c)
 			}
-			userServer.AddMiddlewares(auth.EchoAuth(authSkipper))
+			authFunc := auth.EchoAuth(authSkipper)
+			userServer.AddMiddlewares(auth.JWTWithBlacklist(
+				authFunc,
+				checker,
+				authSkipper,
+			))
 
 			// config user root endpoint
 			userServer.RouteBuilder().

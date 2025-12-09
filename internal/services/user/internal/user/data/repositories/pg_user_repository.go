@@ -151,6 +151,19 @@ func (p *postgresUserRepository) SendCaptcha(ctx context.Context, telephone stri
 	return nil
 }
 
+func (p *postgresUserRepository) Logout(ctx context.Context, userId uuid.UUID) error {
+	ctx, span := p.tracer.Start(ctx, "postgresUserRepository.Logout")
+	defer span.End()
+
+	p.log.Infow(
+		fmt.Sprintf("user '%s' logout", userId.String()),
+		logger.Fields{
+			"user_id": userId.String(),
+		},
+	)
+	return nil
+}
+
 //func (p *postgresUserRepository) GetAllUsers(
 //	ctx context.Context,
 //	listQuery *utils.ListQuery,

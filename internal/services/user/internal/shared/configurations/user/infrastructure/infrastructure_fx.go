@@ -7,6 +7,7 @@ import (
 	"github.com/reoden/go-NFT/pkg/grpc"
 	"github.com/reoden/go-NFT/pkg/health"
 	customEcho "github.com/reoden/go-NFT/pkg/http/customecho"
+	"github.com/reoden/go-NFT/pkg/http/customecho/middlewares/auth"
 	"github.com/reoden/go-NFT/pkg/migration/goose"
 	"github.com/reoden/go-NFT/pkg/otel/metrics"
 	"github.com/reoden/go-NFT/pkg/otel/tracing"
@@ -34,4 +35,5 @@ var Module = fx.Module(
 
 	// Other provides
 	fx.Provide(validator.New),
+	fx.Provide(auth.NewRedisTokenBlacklistChecker),
 )

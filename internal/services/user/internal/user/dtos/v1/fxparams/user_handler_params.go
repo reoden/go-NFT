@@ -39,3 +39,10 @@ type SendCaptchaHandlerParams struct {
 	RedisRepository contracts.UserCacheRepository
 	Tracer          tracing.AppTracer
 }
+
+type LogoutHandlerParams struct {
+	Log             logger.Logger
+	UserRepository  contracts.UserRepository
+	RedisRepository contracts.UserCacheRepository
+	Tracer          tracing.AppTracer
+}

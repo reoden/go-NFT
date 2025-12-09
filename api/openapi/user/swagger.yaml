@@ -33,6 +33,10 @@ definitions:
       userId:
         type: string
     type: object
+  dtos.LogoutUserRequestDto:
+    type: object
+  dtos.LogoutUserResponseDto:
+    type: object
   dtos.SendCaptchaRequestDto:
     properties:
       phone:
@@ -127,6 +131,28 @@ paths:
           schema:
             $ref: '#/definitions/dtos.LoginUserResponseDto'
       summary: user loginuser
+      tags:
+      - User
+  /api/v1/user/logout:
+    post:
+      consumes:
+      - application/json
+      description: user logoutuser check
+      parameters:
+      - description: User data
+        in: body
+        name: LogoutUserRequestDto
+        required: true
+        schema:
+          $ref: '#/definitions/dtos.LogoutUserRequestDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dtos.LogoutUserResponseDto'
+      summary: user logoutuser
       tags:
       - User
   /api/v1/user/register:
