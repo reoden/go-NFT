@@ -9,12 +9,13 @@ import (
 )
 
 type CreateUserHandlerParams struct {
-	Log             logger.Logger
-	UserDBContext   *dbcontext.UserGormDBContext
-	UserRepository  contracts.UserRepository
-	RedisRepository contracts.UserCacheRepository
-	BloomFilter     *bloom.BloomFilterFactory
-	Tracer          tracing.AppTracer
+	Log                         logger.Logger
+	UserDBContext               *dbcontext.UserGormDBContext
+	UserRepository              contracts.UserRepository
+	UserOperateStreamRepository contracts.UserOperateStreamRepository
+	RedisRepository             contracts.UserCacheRepository
+	BloomFilter                 *bloom.BloomFilterFactory
+	Tracer                      tracing.AppTracer
 }
 
 type FindUserByIdHandlerParams struct {
@@ -26,11 +27,12 @@ type FindUserByIdHandlerParams struct {
 }
 
 type UserLoginHandlerParams struct {
-	Log             logger.Logger
-	UserDBContext   *dbcontext.UserGormDBContext
-	UserRepository  contracts.UserRepository
-	RedisRepository contracts.UserCacheRepository
-	Tracer          tracing.AppTracer
+	Log                         logger.Logger
+	UserDBContext               *dbcontext.UserGormDBContext
+	UserRepository              contracts.UserRepository
+	UserOperateStreamRepository contracts.UserOperateStreamRepository
+	RedisRepository             contracts.UserCacheRepository
+	Tracer                      tracing.AppTracer
 }
 
 type SendCaptchaHandlerParams struct {
@@ -41,8 +43,9 @@ type SendCaptchaHandlerParams struct {
 }
 
 type LogoutHandlerParams struct {
-	Log             logger.Logger
-	UserRepository  contracts.UserRepository
-	RedisRepository contracts.UserCacheRepository
-	Tracer          tracing.AppTracer
+	Log                         logger.Logger
+	UserRepository              contracts.UserRepository
+	UserOperateStreamRepository contracts.UserOperateStreamRepository
+	RedisRepository             contracts.UserCacheRepository
+	Tracer                      tracing.AppTracer
 }

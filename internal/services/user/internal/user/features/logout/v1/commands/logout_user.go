@@ -23,6 +23,7 @@ func NewLogoutUser(
 	command := &LogoutUser{
 		Command: cqrs.NewCommandByT[LogoutUser](),
 		Token:   token,
+		UserId:  userId,
 	}
 
 	return command

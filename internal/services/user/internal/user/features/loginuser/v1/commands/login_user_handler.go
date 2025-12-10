@@ -8,13 +8,16 @@ import (
 	"github.com/reoden/go-NFT/pkg/core/cqrs"
 	customErrors "github.com/reoden/go-NFT/pkg/http/httperrors/customerrors"
 	"github.com/reoden/go-NFT/pkg/logger"
+	"github.com/reoden/go-NFT/pkg/mapper"
 	"github.com/reoden/go-NFT/pkg/otel/tracing"
 	"github.com/reoden/go-NFT/pkg/postgresgorm/gormdbcontext"
+	"github.com/reoden/go-NFT/user/internal/shared/constants"
 	"github.com/reoden/go-NFT/user/internal/shared/data/dbcontext"
 	"github.com/reoden/go-NFT/user/internal/user/contracts"
 	datamodel "github.com/reoden/go-NFT/user/internal/user/data/datamodels"
 	"github.com/reoden/go-NFT/user/internal/user/dtos/v1/fxparams"
 	"github.com/reoden/go-NFT/user/internal/user/features/loginuser/v1/dtos"
+	"github.com/reoden/go-NFT/user/internal/user/models"
 )
 
 type loginUserHandler struct {
@@ -25,16 +28,18 @@ func NewLoginUserHandler(
 	logger logger.Logger,
 	userDBContext *dbcontext.UserGormDBContext,
 	userRepository contracts.UserRepository,
+	userOperateStreamRepository contracts.UserOperateStreamRepository,
 	cacheUserRepository contracts.UserCacheRepository,
 	tracer tracing.AppTracer,
 ) cqrs.RequestHandlerWithRegisterer[*LoginUser, *dtos.LoginUserResponseDto] {
 	return &loginUserHandler{
 		UserLoginHandlerParams: fxparams.UserLoginHandlerParams{
-			Log:             logger,
-			UserDBContext:   userDBContext,
-			UserRepository:  userRepository,
-			RedisRepository: cacheUserRepository,
-			Tracer:          tracer,
+			Log:                         logger,
+			UserDBContext:               userDBContext,
+			UserRepository:              userRepository,
+			UserOperateStreamRepository: userOperateStreamRepository,
+			RedisRepository:             cacheUserRepository,
+			Tracer:                      tracer,
 		},
 	}
 }
@@ -101,6 +106,35 @@ func (c *loginUserHandler) Handle(
 	if err != nil {
 		return nil, err
 	}
+
+	user, err := mapper.Map[*models.User](userDataModelResult)
+	if err != nil {
+		return nil, customErrors.NewApplicationErrorWrap(
+			err,
+			"error in the mapping model user",
+		)
+	}
+
+	operateResult, err := c.UserOperateStreamRepository.InsertStream(ctx, user, constants.LOGIN)
+	if err != nil {
+		return nil, customErrors.NewApplicationErrorWrap(
+			err,
+			"[Login_User_Handler] insert stream err",
+		)
+	}
+
+	c.Log.Infow(
+		fmt.Sprintf(
+			"user with phone '%s' insert operate stream into database successfully",
+			command.Phone,
+		),
+		logger.Fields{
+			"StreamId":    operateResult.Id,
+			"UserId":      operateResult.UserId,
+			"OperateType": operateResult.Type,
+			"Param":       operateResult.Param,
+		},
+	)
 
 	loginUserResult = &dtos.LoginUserResponseDto{
 		UserId: userDataModelResult.UserId,

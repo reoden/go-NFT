@@ -23,13 +23,14 @@ func ConfigUserMediator(
 	logger logger.Logger,
 	userDBContext *dbcontext.UserGormDBContext,
 	userRepository contracts.UserRepository,
+	userOperateStreamRepository contracts.UserOperateStreamRepository,
 	cacheUserRepository contracts.UserCacheRepository,
 	bloomFilter *bloom.BloomFilterFactory,
 	tracer tracing.AppTracer,
 ) error {
 	// https://stackoverflow.com/questions/72034479/how-to-implement-generic-interfaces
 	err := mediatr.RegisterRequestHandler[*creatingUserCommondV1.CreateUser, *createUserDtosV1.CreateUserResponseDto](
-		creatingUserCommondV1.NewCreateUserHandler(logger, userDBContext, userRepository, cacheUserRepository, bloomFilter, tracer),
+		creatingUserCommondV1.NewCreateUserHandler(logger, userDBContext, userRepository, userOperateStreamRepository, cacheUserRepository, bloomFilter, tracer),
 	)
 	if err != nil {
 		return err
@@ -43,7 +44,7 @@ func ConfigUserMediator(
 	}
 
 	err = mediatr.RegisterRequestHandler[*loginUserCommondV1.LoginUser, *loginUserDtosV1.LoginUserResponseDto](
-		loginUserCommondV1.NewLoginUserHandler(logger, userDBContext, userRepository, cacheUserRepository, tracer),
+		loginUserCommondV1.NewLoginUserHandler(logger, userDBContext, userRepository, userOperateStreamRepository, cacheUserRepository, tracer),
 	)
 	if err != nil {
 		return err
@@ -57,7 +58,7 @@ func ConfigUserMediator(
 	}
 
 	err = mediatr.RegisterRequestHandler[*logoutCommondV1.LogoutUser, *logoutDtosV1.LogoutUserResponseDto](
-		logoutCommondV1.NewLogoutUserHandler(logger, userRepository, cacheUserRepository, tracer),
+		logoutCommondV1.NewLogoutUserHandler(logger, userRepository, userOperateStreamRepository, cacheUserRepository, tracer),
 	)
 	if err != nil {
 		return err

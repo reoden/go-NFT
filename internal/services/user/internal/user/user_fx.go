@@ -20,6 +20,7 @@ var Module = fx.Module(
 
 	// Other provides
 	fx.Provide(repositories.NewPostgresUserRepository),
+	fx.Provide(repositories.NewPostgresUserOperateStreamRepository),
 	fx.Provide(
 		fx.Annotate(
 			repositories.NewRedisUserRepository,

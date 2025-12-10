@@ -8,18 +8,18 @@ import (
 
 	"emperror.dev/errors"
 	"github.com/redis/go-redis/v9"
-	"github.com/reoden/go-NFT/pkg/constants"
 	"github.com/reoden/go-NFT/pkg/logger"
 	"github.com/reoden/go-NFT/pkg/otel/tracing"
 	"github.com/reoden/go-NFT/pkg/otel/tracing/attribute"
 	"github.com/reoden/go-NFT/pkg/otel/tracing/utils"
+	"github.com/reoden/go-NFT/user/internal/shared/constants"
 	"github.com/reoden/go-NFT/user/internal/user/models"
 	attribute2 "go.opentelemetry.io/otel/attribute"
 )
 
 const (
-	redisUserMainPrefixKey    = "user_main_service"
-	redisUserCaptchaPrefixKey = "user_captcha_service_telephone"
+	redisUserMainPrefixKey    = "user:cache:id:"
+	redisUserCaptchaPrefixKey = "captcha:cache:"
 )
 
 type redisUserRepository struct {
@@ -48,7 +48,7 @@ func (r *redisUserRepository) GetCaptcha(ctx context.Context, key string) (strin
 	span.SetAttributes(attribute2.String("Key", key))
 	defer span.End()
 
-	redisKey := fmt.Sprintf("%s#%s", r.getRedisUserCaptchaPrefixKey(), key)
+	redisKey := fmt.Sprintf("%s%s", r.getRedisUserCaptchaPrefixKey(), key)
 	captchaBytes, err := r.redisClient.Get(ctx, redisKey).Bytes()
 	if err != nil {
 		if errors.Is(err, redis.Nil) {
@@ -100,8 +100,8 @@ func (r *redisUserRepository) PutCaptcha(
 	span.SetAttributes(attribute2.String("Key", key))
 	defer span.End()
 
-	redisKey := fmt.Sprintf("%s#%s", r.getRedisUserCaptchaPrefixKey(), key)
-	if err := r.redisClient.SetNX(ctx, redisKey, captcha, time.Minute*time.Duration(5)).Err(); err != nil {
+	redisKey := fmt.Sprintf("%s%s", r.getRedisUserCaptchaPrefixKey(), key)
+	if err := r.redisClient.SetNX(ctx, redisKey, captcha, constants.CaptchaExpireDuration).Err(); err != nil {
 		return utils.TraceErrStatusFromSpan(
 			span,
 			errors.WrapIf(
@@ -145,6 +145,7 @@ func (r *redisUserRepository) PutUser(
 	span.SetAttributes(attribute2.String("Key", key))
 	defer span.End()
 
+	cacheKey := fmt.Sprintf("%s%s", r.getRedisUserMainPrefixKey(), key)
 	userBytes, err := json.Marshal(user)
 	if err != nil {
 		return utils.TraceErrStatusFromSpan(
@@ -156,7 +157,7 @@ func (r *redisUserRepository) PutUser(
 		)
 	}
 
-	if err := r.redisClient.HSetNX(ctx, r.getRedisUserMainPrefixKey(), key, userBytes).Err(); err != nil {
+	if err := r.redisClient.SetNX(ctx, cacheKey, userBytes, constants.UserDataCacheExpireDuration).Err(); err != nil {
 		return utils.TraceErrStatusFromSpan(
 			span,
 			errors.WrapIf(
@@ -196,7 +197,9 @@ func (r *redisUserRepository) GetUserById(ctx context.Context, key string) (*mod
 	span.SetAttributes(attribute2.String("Key", key))
 	defer span.End()
 
-	userBytes, err := r.redisClient.HGet(ctx, r.getRedisUserMainPrefixKey(), key).Bytes()
+	cacheKey := fmt.Sprintf("%s%s", r.getRedisUserMainPrefixKey(), key)
+
+	userBytes, err := r.redisClient.Get(ctx, cacheKey).Bytes()
 	if err != nil {
 		if errors.Is(err, redis.Nil) {
 			return nil, nil
@@ -244,11 +247,11 @@ func (r *redisUserRepository) AddTokenBlack(ctx context.Context, token string) e
 		attribute2.String("PrefixKey", constants.RedisTokenBlackPrefixKey),
 	)
 
-	key := fmt.Sprintf("%s#%s", constants.RedisTokenBlackPrefixKey, token)
+	key := fmt.Sprintf("%s%s", constants.RedisTokenBlackPrefixKey, token)
 	span.SetAttributes(attribute2.String("Key", key))
 	defer span.End()
 
-	if err := r.redisClient.SetNX(ctx, key, token, constants.TokenExpireDuration).Err(); err != nil {
+	if err := r.redisClient.SetNX(ctx, key, token, constants.UserTokenExpireDuration).Err(); err != nil {
 		return utils.TraceErrStatusFromSpan(
 			span,
 			errors.WrapIf(
@@ -276,6 +279,18 @@ func (r *redisUserRepository) AddTokenBlack(ctx context.Context, token string) e
 		},
 	)
 
+	return nil
+}
+
+func (r *redisUserRepository) DelayedDelete(ctx context.Context, key string, delay time.Duration) error {
+	go func() {
+		select {
+		case <-time.After(delay):
+			r.redisClient.Del(ctx, key)
+		case <-ctx.Done():
+			return
+		}
+	}()
 	return nil
 }
 

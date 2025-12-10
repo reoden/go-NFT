@@ -64,7 +64,7 @@ func (ic *UserServiceConfigurator) ConfigureUser() {
 	)
 
 	// Modules
-	// Product module
+	// User module
 	ic.userModuleConfigurator.ConfigureUserModule()
 }
 

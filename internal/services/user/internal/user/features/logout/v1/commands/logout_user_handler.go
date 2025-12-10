@@ -9,9 +9,11 @@ import (
 	customErrors "github.com/reoden/go-NFT/pkg/http/httperrors/customerrors"
 	"github.com/reoden/go-NFT/pkg/logger"
 	"github.com/reoden/go-NFT/pkg/otel/tracing"
+	"github.com/reoden/go-NFT/user/internal/shared/constants"
 	"github.com/reoden/go-NFT/user/internal/user/contracts"
 	"github.com/reoden/go-NFT/user/internal/user/dtos/v1/fxparams"
 	"github.com/reoden/go-NFT/user/internal/user/features/logout/v1/dtos"
+	"github.com/reoden/go-NFT/user/internal/user/models"
 )
 
 type logoutUserHandler struct {
@@ -21,15 +23,17 @@ type logoutUserHandler struct {
 func NewLogoutUserHandler(
 	logger logger.Logger,
 	userRepository contracts.UserRepository,
+	userOperateStreamRepository contracts.UserOperateStreamRepository,
 	cacheUserRepository contracts.UserCacheRepository,
 	tracer tracing.AppTracer,
 ) cqrs.RequestHandlerWithRegisterer[*LogoutUser, *dtos.LogoutUserResponseDto] {
 	return &logoutUserHandler{
 		LogoutHandlerParams: fxparams.LogoutHandlerParams{
-			Log:             logger,
-			UserRepository:  userRepository,
-			RedisRepository: cacheUserRepository,
-			Tracer:          tracer,
+			Log:                         logger,
+			UserRepository:              userRepository,
+			UserOperateStreamRepository: userOperateStreamRepository,
+			RedisRepository:             cacheUserRepository,
+			Tracer:                      tracer,
 		},
 	}
 }
@@ -65,6 +69,29 @@ func (c *logoutUserHandler) Handle(
 	if err != nil {
 		return nil, err
 	}
+
+	user := &models.User{
+		UserId: command.UserId,
+	}
+	operateResult, err := c.UserOperateStreamRepository.InsertStream(ctx, user, constants.LOGOUT)
+	if err != nil {
+		return nil, customErrors.NewApplicationErrorWrap(
+			err,
+			"[Logout_User_Handler] insert stream err",
+		)
+	}
+	c.Log.Infow(
+		fmt.Sprintf(
+			"user with user_id '%s' insert operate stream into database successfully",
+			command.UserId.String(),
+		),
+		logger.Fields{
+			"StreamId":    operateResult.Id,
+			"UserId":      operateResult.UserId,
+			"OperateType": operateResult.Type,
+			"Param":       operateResult.Param,
+		},
+	)
 
 	logoutUserResult = &dtos.LogoutUserResponseDto{}
 

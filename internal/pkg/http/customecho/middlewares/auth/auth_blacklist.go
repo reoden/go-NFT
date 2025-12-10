@@ -17,7 +17,7 @@ func NewRedisTokenBlacklistChecker(client *redis.Client) TokenBlacklistChecker {
 }
 
 func (r *RedisTokenBlacklistChecker) IsBlacklisted(ctx context.Context, token string) (bool, error) {
-	key := fmt.Sprintf("%s#%s", constants.RedisTokenBlackPrefixKey, token)
+	key := fmt.Sprintf("%s:%s", constants.TokenBlackPrefixKey, token)
 	exists, err := r.client.Exists(ctx, key).Result()
 	if err != nil {
 		return false, err

@@ -34,12 +34,13 @@ func (c *UserModuleConfigurator) ConfigureUserModule() {
 		func(logger logger.Logger,
 			userDBContext *dbcontext.UserGormDBContext,
 			userRepository contracts.UserRepository,
+			userOperationRepository contracts.UserOperateStreamRepository,
 			cacheRepository contracts.UserCacheRepository,
 			bloomFilter *bloom.BloomFilterFactory,
 			tracer tracing.AppTracer,
 		) error {
 			// config User Mediators
-			err := mediator.ConfigUserMediator(logger, userDBContext, userRepository, cacheRepository, bloomFilter, tracer)
+			err := mediator.ConfigUserMediator(logger, userDBContext, userRepository, userOperationRepository, cacheRepository, bloomFilter, tracer)
 			if err != nil {
 				return err
 			}

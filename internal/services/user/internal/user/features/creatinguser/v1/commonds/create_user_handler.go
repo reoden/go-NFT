@@ -6,13 +6,13 @@ import (
 
 	"github.com/labstack/gommon/random"
 	"github.com/reoden/go-NFT/pkg/bloom"
-	"github.com/reoden/go-NFT/pkg/constants"
 	"github.com/reoden/go-NFT/pkg/core/cqrs"
 	customErrors "github.com/reoden/go-NFT/pkg/http/httperrors/customerrors"
 	"github.com/reoden/go-NFT/pkg/logger"
 	"github.com/reoden/go-NFT/pkg/mapper"
 	"github.com/reoden/go-NFT/pkg/otel/tracing"
 	"github.com/reoden/go-NFT/pkg/postgresgorm/gormdbcontext"
+	"github.com/reoden/go-NFT/user/internal/shared/constants"
 	"github.com/reoden/go-NFT/user/internal/shared/data/dbcontext"
 	"github.com/reoden/go-NFT/user/internal/user/contracts"
 	datamodel "github.com/reoden/go-NFT/user/internal/user/data/datamodels"
@@ -35,18 +35,20 @@ func NewCreateUserHandler(
 	logger logger.Logger,
 	userDBContext *dbcontext.UserGormDBContext,
 	userRepository contracts.UserRepository,
+	userOperateStreamRepository contracts.UserOperateStreamRepository,
 	cacheUserRepository contracts.UserCacheRepository,
 	bloomFilter *bloom.BloomFilterFactory,
 	tracer tracing.AppTracer,
 ) cqrs.RequestHandlerWithRegisterer[*CreateUser, *dtos.CreateUserResponseDto] {
 	return &createUserHandler{
 		CreateUserHandlerParams: fxparams.CreateUserHandlerParams{
-			Log:             logger,
-			UserDBContext:   userDBContext,
-			UserRepository:  userRepository,
-			RedisRepository: cacheUserRepository,
-			BloomFilter:     bloomFilter,
-			Tracer:          tracer,
+			Log:                         logger,
+			UserDBContext:               userDBContext,
+			UserRepository:              userRepository,
+			UserOperateStreamRepository: userOperateStreamRepository,
+			RedisRepository:             cacheUserRepository,
+			BloomFilter:                 bloomFilter,
+			Tracer:                      tracer,
 		},
 		nickNameBloomFilter:   bloomFilter.NewWithEstimates(1000000, 0.01, "nickname"),
 		inviteCodeBloomFilter: bloomFilter.NewWithEstimates(1000000, 0.01, "inviteCode"),
@@ -108,6 +110,7 @@ func (c *createUserHandler) Handle(
 		)
 	}
 
+	// generate nickname
 	phone := command.Phone
 	var (
 		randomString    string
@@ -152,6 +155,26 @@ func (c *createUserHandler) Handle(
 
 	c.addNickname(ctx, userDto.Nickname)
 	_ = c.RedisRepository.PutUser(ctx, userDto.UserId.String(), user)
+	operateStreamResult, err := c.UserOperateStreamRepository.InsertStream(ctx, user, constants.REGISTER)
+	if err != nil {
+		return nil, customErrors.NewApplicationErrorWrap(
+			err,
+			fmt.Sprintf("[Create_User_Handler] insert user operate stream error"),
+		)
+	}
+
+	c.Log.Infow(
+		fmt.Sprintf(
+			"[Create_User_Handler] insert stream into user_operate_stream database = `%v`",
+			operateStreamResult.Id,
+		),
+		logger.Fields{
+			"StreamId":    operateStreamResult.Id,
+			"UserId":      operateStreamResult.UserId,
+			"OperateType": operateStreamResult.Type,
+			"Param":       operateStreamResult.Param,
+		},
+	)
 
 	createUserResult = &dtos.CreateUserResponseDto{
 		UserID: user.UserId,
