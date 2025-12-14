@@ -1,9 +1,9 @@
 -- +goose Up
 -- +goose StatementBegin
-ALTER TABLE "users" ADD COLUMN "state" VARCHAR(255);
+SELECT 'up SQL query';
 -- +goose StatementEnd
 
 -- +goose Down
 -- +goose StatementBegin
-ALTER TABLE "users" DROP COLUMN "state";
+SELECT 'down SQL query';
 -- +goose StatementEnd

@@ -70,6 +70,7 @@ require (
 	github.com/go-openapi/swag v0.19.15 // indirect
 	github.com/go-playground/locales v0.14.1 // indirect
 	github.com/go-playground/universal-translator v0.18.1 // indirect
+	github.com/go-resty/resty/v2 v2.16.5 // indirect
 	github.com/go-sql-driver/mysql v1.9.3 // indirect
 	github.com/go-testfixtures/testfixtures/v3 v3.19.0 // indirect
 	github.com/go-viper/mapstructure/v2 v2.4.0 // indirect

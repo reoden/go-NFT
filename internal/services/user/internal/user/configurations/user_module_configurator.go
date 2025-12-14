@@ -1,6 +1,7 @@
 package configurations
 
 import (
+	"github.com/reoden/go-NFT/pkg/authcertification"
 	"github.com/reoden/go-NFT/pkg/bloom"
 	fxcontracts "github.com/reoden/go-NFT/pkg/fxapp/contracts"
 	grpcServer "github.com/reoden/go-NFT/pkg/grpc"
@@ -37,10 +38,20 @@ func (c *UserModuleConfigurator) ConfigureUserModule() {
 			userOperationRepository contracts.UserOperateStreamRepository,
 			cacheRepository contracts.UserCacheRepository,
 			bloomFilter *bloom.BloomFilterFactory,
+			authCertification authcertification.AuthCertificationService,
 			tracer tracing.AppTracer,
 		) error {
 			// config User Mediators
-			err := mediator.ConfigUserMediator(logger, userDBContext, userRepository, userOperationRepository, cacheRepository, bloomFilter, tracer)
+			err := mediator.ConfigUserMediator(
+				logger,
+				userDBContext,
+				userRepository,
+				userOperationRepository,
+				cacheRepository,
+				bloomFilter,
+				authCertification,
+				tracer,
+			)
 			if err != nil {
 				return err
 			}

@@ -9,6 +9,7 @@ import (
 	"github.com/reoden/go-NFT/pkg/logger"
 	"github.com/reoden/go-NFT/pkg/mapper"
 	"github.com/reoden/go-NFT/pkg/otel/tracing"
+	"github.com/reoden/go-NFT/pkg/utils"
 	"github.com/reoden/go-NFT/user/internal/shared/data/dbcontext"
 	"github.com/reoden/go-NFT/user/internal/user/contracts"
 	dtosv1 "github.com/reoden/go-NFT/user/internal/user/dtos/v1"
@@ -90,6 +91,22 @@ func (c *findUserByIdHandler) Handle(
 		}
 	}
 
+	decodeRealName, err := utils.Decrypt(user.RealName)
+	if err != nil {
+		return nil, customErrors.NewApplicationErrorWrap(
+			err,
+			"error in decrypting real name",
+		)
+	}
+	user.RealName = decodeRealName
+	decodeIdCardNo, err := utils.Decrypt(user.IdCardNo)
+	if err != nil {
+		return nil, customErrors.NewApplicationErrorWrap(
+			err,
+			"error in decrypting id card no",
+		)
+	}
+	user.IdCardNo = decodeIdCardNo
 	userDto, err := mapper.Map[*dtosv1.UserDto](user)
 	if err != nil {
 		return nil, customErrors.NewApplicationErrorWrap(

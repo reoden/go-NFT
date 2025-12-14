@@ -3,6 +3,7 @@ package contracts
 import (
 	"context"
 
+	"github.com/reoden/go-NFT/user/internal/shared/constants"
 	"github.com/reoden/go-NFT/user/internal/user/models"
 	uuid "github.com/satori/go.uuid"
 )
@@ -13,4 +14,5 @@ type UserRepository interface {
 	UserLogin(ctx context.Context, telephone string) error
 	SendCaptcha(ctx context.Context, telephone string) error
 	Logout(ctx context.Context, userId uuid.UUID) error
+	CheckAuth(ctx context.Context, userId uuid.UUID) (constants.UserStateEnum, error)
 }

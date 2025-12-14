@@ -11,7 +11,7 @@ import (
 	"github.com/reoden/go-NFT/pkg/otel/tracing/attribute"
 	"github.com/reoden/go-NFT/user/internal/shared/contracts"
 	userService "github.com/reoden/go-NFT/user/internal/shared/grpc/genproto"
-	createUserCommandV1 "github.com/reoden/go-NFT/user/internal/user/features/creatinguser/v1/commonds"
+	createUserCommandV1 "github.com/reoden/go-NFT/user/internal/user/features/creatinguser/v1/commands"
 	createUserDtosV1 "github.com/reoden/go-NFT/user/internal/user/features/creatinguser/v1/dtos"
 	attribute2 "go.opentelemetry.io/otel/attribute"
 	api "go.opentelemetry.io/otel/metric"

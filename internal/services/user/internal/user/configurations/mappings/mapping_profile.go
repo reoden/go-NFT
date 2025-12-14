@@ -37,12 +37,17 @@ func ConfigureUserMappings() error {
 				return nil
 			}
 			return &userService.User{
-				Id:        user.Id,
-				UserId:    user.UserId.String(),
-				Nickname:  user.Nickname,
-				Phone:     user.Phone,
-				CreatedAt: timestamppb.New(user.CreatedAt),
-				UpdatedAt: timestamppb.New(user.UpdatedAt),
+				Id:            user.Id,
+				UserId:        user.UserId.String(),
+				Nickname:      user.Nickname,
+				Phone:         user.Phone,
+				State:         string(user.State),
+				Certification: user.Certification,
+				RealName:      user.RealName,
+				IdCardNo:      user.IdCardNo,
+				UserRole:      string(user.UserRole),
+				CreatedAt:     timestamppb.New(user.CreatedAt),
+				UpdatedAt:     timestamppb.New(user.UpdatedAt),
 			}
 		},
 	)
@@ -53,12 +58,17 @@ func ConfigureUserMappings() error {
 	err = mapper.CreateCustomMap(
 		func(user *models.User) *userService.User {
 			return &userService.User{
-				Id:        user.Id,
-				UserId:    user.UserId.String(),
-				Nickname:  user.Nickname,
-				Phone:     user.Phone,
-				CreatedAt: timestamppb.New(user.CreatedAt),
-				UpdatedAt: timestamppb.New(user.UpdatedAt),
+				Id:            user.Id,
+				UserId:        user.UserId.String(),
+				Nickname:      user.Nickname,
+				Phone:         user.Phone,
+				State:         string(user.State),
+				Certification: user.Certification,
+				RealName:      user.RealName,
+				IdCardNo:      user.IdCardNo,
+				UserRole:      string(user.UserRole),
+				CreatedAt:     timestamppb.New(user.CreatedAt),
+				UpdatedAt:     timestamppb.New(user.UpdatedAt),
 			}
 		},
 	)

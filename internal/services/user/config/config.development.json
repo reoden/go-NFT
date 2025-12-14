@@ -119,5 +119,10 @@
     "sslMode": false,
     "migrationsDir": "E:\\fech\\go-NFT\\internal\\services\\user\\db\\migrations\\goose-migrate",
     "skipMigration": false
+  },
+  "authCertificationOptions": {
+    "host": "",
+    "path": "",
+    "appcode": ""
   }
 }

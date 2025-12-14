@@ -1,4 +1,4 @@
-package commonds
+package commands
 
 import (
 	"context"
@@ -137,6 +137,8 @@ func (c *createUserHandler) Handle(
 		Nickname:  defaultNickName,
 		Phone:     command.Phone,
 		CreatedAt: command.CreatedAt,
+		State:     constants.User_INIT,
+		UserRole:  constants.CUSTOMER,
 	}
 
 	var createUserResult *dtos.CreateUserResponseDto

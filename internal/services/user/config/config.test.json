@@ -112,5 +112,10 @@
     "sslMode": false,
     "migrationsDir": "./db/migrations/goose-migrate",
     "skipMigration": false
+  },
+  "authCertificationOptions": {
+    "host": "https://dfidveri.market.alicloudapi.com",
+    "path": "/verify_id_name",
+    "appcode": "${AUTH_APPCODE}"
   }
 }

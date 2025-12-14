@@ -28,6 +28,11 @@ type User struct {
 	UserId        string                 `protobuf:"bytes,2,opt,name=UserId,proto3" json:"UserId,omitempty"`
 	Nickname      string                 `protobuf:"bytes,3,opt,name=Nickname,proto3" json:"Nickname,omitempty"`
 	Phone         string                 `protobuf:"bytes,4,opt,name=Phone,proto3" json:"Phone,omitempty"`
+	State         string                 `protobuf:"bytes,7,opt,name=State,proto3" json:"State,omitempty"`
+	Certification bool                   `protobuf:"varint,8,opt,name=Certification,proto3" json:"Certification,omitempty"`
+	RealName      string                 `protobuf:"bytes,9,opt,name=RealName,proto3" json:"RealName,omitempty"`
+	IdCardNo      string                 `protobuf:"bytes,10,opt,name=IdCardNo,proto3" json:"IdCardNo,omitempty"`
+	UserRole      string                 `protobuf:"bytes,11,opt,name=UserRole,proto3" json:"UserRole,omitempty"`
 	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=CreatedAt,proto3" json:"CreatedAt,omitempty"`
 	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=UpdatedAt,proto3" json:"UpdatedAt,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -88,6 +93,41 @@ func (x *User) GetNickname() string {
 func (x *User) GetPhone() string {
 	if x != nil {
 		return x.Phone
+	}
+	return ""
+}
+
+func (x *User) GetState() string {
+	if x != nil {
+		return x.State
+	}
+	return ""
+}
+
+func (x *User) GetCertification() bool {
+	if x != nil {
+		return x.Certification
+	}
+	return false
+}
+
+func (x *User) GetRealName() string {
+	if x != nil {
+		return x.RealName
+	}
+	return ""
+}
+
+func (x *User) GetIdCardNo() string {
+	if x != nil {
+		return x.IdCardNo
+	}
+	return ""
+}
+
+func (x *User) GetUserRole() string {
+	if x != nil {
+		return x.UserRole
 	}
 	return ""
 }
@@ -207,12 +247,18 @@ var File_user_proto protoreflect.FileDescriptor
 const file_user_proto_rawDesc = "" +
 	"\n" +
 	"\n" +
-	"user.proto\x12\fuser_service\x1a\x1fgoogle/protobuf/timestamp.proto\"\xd4\x01\n" +
+	"user.proto\x12\fuser_service\x1a\x1fgoogle/protobuf/timestamp.proto\"\xe4\x02\n" +
 	"\x04User\x12\x0e\n" +
 	"\x02Id\x18\x01 \x01(\x03R\x02Id\x12\x16\n" +
 	"\x06UserId\x18\x02 \x01(\tR\x06UserId\x12\x1a\n" +
 	"\bNickname\x18\x03 \x01(\tR\bNickname\x12\x14\n" +
-	"\x05Phone\x18\x04 \x01(\tR\x05Phone\x128\n" +
+	"\x05Phone\x18\x04 \x01(\tR\x05Phone\x12\x14\n" +
+	"\x05State\x18\a \x01(\tR\x05State\x12$\n" +
+	"\rCertification\x18\b \x01(\bR\rCertification\x12\x1a\n" +
+	"\bRealName\x18\t \x01(\tR\bRealName\x12\x1a\n" +
+	"\bIdCardNo\x18\n" +
+	" \x01(\tR\bIdCardNo\x12\x1a\n" +
+	"\bUserRole\x18\v \x01(\tR\bUserRole\x128\n" +
 	"\tCreatedAt\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tCreatedAt\x128\n" +
 	"\tUpdatedAt\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tUpdatedAt\"?\n" +
 	"\rCreateUserReq\x12\x14\n" +

@@ -1,6 +1,7 @@
 package fxparams
 
 import (
+	"github.com/reoden/go-NFT/pkg/authcertification"
 	"github.com/reoden/go-NFT/pkg/bloom"
 	"github.com/reoden/go-NFT/pkg/logger"
 	"github.com/reoden/go-NFT/pkg/otel/tracing"
@@ -47,5 +48,15 @@ type LogoutHandlerParams struct {
 	UserRepository              contracts.UserRepository
 	UserOperateStreamRepository contracts.UserOperateStreamRepository
 	RedisRepository             contracts.UserCacheRepository
+	Tracer                      tracing.AppTracer
+}
+
+type CheckAuthHandlerParams struct {
+	Log                         logger.Logger
+	UserDBContext               *dbcontext.UserGormDBContext
+	UserRepository              contracts.UserRepository
+	UserOperateStreamRepository contracts.UserOperateStreamRepository
+	RedisRepository             contracts.UserCacheRepository
+	AuthRepo                    authcertification.AuthCertificationService
 	Tracer                      tracing.AppTracer
 }

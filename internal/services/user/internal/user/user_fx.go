@@ -7,6 +7,7 @@ import (
 	"github.com/reoden/go-NFT/user/internal/shared/grpc"
 	userConstracts "github.com/reoden/go-NFT/user/internal/user/contracts"
 	"github.com/reoden/go-NFT/user/internal/user/data/repositories"
+	authUserV1 "github.com/reoden/go-NFT/user/internal/user/features/checkauth/v1/endpoints"
 	creatingUserV1 "github.com/reoden/go-NFT/user/internal/user/features/creatinguser/v1/endpoints"
 	findUserByIdV1 "github.com/reoden/go-NFT/user/internal/user/features/findUserById/v1/endpoints"
 	loginUserV1 "github.com/reoden/go-NFT/user/internal/user/features/loginuser/v1/endpoints"
@@ -89,6 +90,10 @@ var Module = fx.Module(
 		),
 		route.AsRoute(
 			logoutV1.NewLogoutUserEndpoint,
+			"user-routes",
+		),
+		route.AsRoute(
+			authUserV1.NewAuthEndpoint,
 			"user-routes",
 		),
 		//route.AsRoute(

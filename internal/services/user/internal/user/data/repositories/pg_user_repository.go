@@ -10,6 +10,7 @@ import (
 	"github.com/reoden/go-NFT/pkg/otel/tracing/attribute"
 	utils2 "github.com/reoden/go-NFT/pkg/otel/tracing/utils"
 	"github.com/reoden/go-NFT/pkg/postgresgorm/repository"
+	"github.com/reoden/go-NFT/user/internal/shared/constants"
 	data2 "github.com/reoden/go-NFT/user/internal/user/contracts"
 	"github.com/reoden/go-NFT/user/internal/user/models"
 	uuid "github.com/satori/go.uuid"
@@ -162,6 +163,36 @@ func (p *postgresUserRepository) Logout(ctx context.Context, userId uuid.UUID) e
 		},
 	)
 	return nil
+}
+
+func (p *postgresUserRepository) CheckAuth(ctx context.Context, userId uuid.UUID) (constants.UserStateEnum, error) {
+	ctx, span := p.tracer.Start(ctx, "postgresUserRepository.CheckAuth")
+	defer span.End()
+
+	user, err := p.gormGenericRepository.FirstOrDefault(ctx, map[string]interface{}{
+		"user_id": userId,
+	})
+
+	err = utils2.TraceStatusFromSpan(
+		span,
+		errors.WrapIf(
+			err,
+			fmt.Sprintf("error in the finding user with user_id = '%s' from the database.", userId.String()),
+		),
+	)
+	if err != nil {
+		return "", err
+	}
+
+	span.SetAttributes(attribute.Object("User", user))
+	p.log.Infow(
+		fmt.Sprintf("user '%s' checked auth", userId.String()),
+		logger.Fields{
+			"user_id": userId.String(),
+		},
+	)
+
+	return user.State, nil
 }
 
 //func (p *postgresUserRepository) GetAllUsers(

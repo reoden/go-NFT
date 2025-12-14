@@ -1,4 +1,41 @@
 definitions:
+  constants.UserRoleEnum:
+    enum:
+    - 普通用户
+    - 艺术家
+    - 管理员
+    type: string
+    x-enum-varnames:
+    - CUSTOMER
+    - ARTIST
+    - ADMIN
+  constants.UserStateEnum:
+    enum:
+    - 创建成功
+    - 实名认证
+    - 上链成功
+    - 冻结
+    type: string
+    x-enum-varnames:
+    - User_INIT
+    - User_AUTH
+    - User_ACTIVE
+    - User_FROZEN
+  dtos.AuthRequestDto:
+    properties:
+      id_card_no:
+        type: string
+      real_name:
+        type: string
+    type: object
+  dtos.AuthResponseDto:
+    properties:
+      code:
+        type: integer
+      data: {}
+      msg:
+        type: string
+    type: object
   dtos.CreateUserRequestDto:
     properties:
       captcha:
@@ -46,18 +83,28 @@ definitions:
     type: object
   v1.UserDto:
     properties:
+      certification:
+        type: boolean
       createdAt:
         type: string
       id:
         type: integer
+      id_card_no:
+        type: string
       nickname:
         type: string
       phone:
         type: string
+      real_name:
+        type: string
+      state:
+        $ref: '#/definitions/constants.UserStateEnum'
       updatedAt:
         type: string
       user_id:
         type: string
+      user_role:
+        $ref: '#/definitions/constants.UserRoleEnum'
     type: object
 info:
   contact:
@@ -87,6 +134,30 @@ paths:
           schema:
             $ref: '#/definitions/dtos.FindUserByIdResponseDto'
       summary: Find user By UserId
+      tags:
+      - User
+  /api/v1/user/auth:
+    post:
+      consumes:
+      - application/json
+      description: aut certification
+      parameters:
+      - description: real_name and id_card_number
+        in: body
+        name: AuthRequestDto
+        required: true
+        schema:
+          $ref: '#/definitions/dtos.AuthRequestDto'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/dtos.AuthResponseDto'
+      security:
+      - BearerAuth: []
+      summary: user Auth certification
       tags:
       - User
   /api/v1/user/captcha:

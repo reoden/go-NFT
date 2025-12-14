@@ -283,14 +283,37 @@ func (r *redisUserRepository) AddTokenBlack(ctx context.Context, token string) e
 }
 
 func (r *redisUserRepository) DelayedDelete(ctx context.Context, key string, delay time.Duration) error {
+	ctx, span := r.tracer.Start(ctx, "redisRepository.DelayedDelete")
+	span.SetAttributes(
+		attribute2.String("PrefixKey", r.getRedisUserMainPrefixKey()),
+	)
+	span.SetAttributes(attribute2.String("Key", key))
+	defer span.End()
+
+	cacheKey := fmt.Sprintf("%s%s", r.getRedisUserMainPrefixKey(), key)
+
 	go func() {
 		select {
 		case <-time.After(delay):
-			r.redisClient.Del(ctx, key)
+			r.redisClient.Del(ctx, cacheKey)
 		case <-ctx.Done():
 			return
 		}
 	}()
+	return nil
+}
+
+func (r *redisUserRepository) DelUserById(ctx context.Context, key string) error {
+	ctx, span := r.tracer.Start(ctx, "redisRepository.DelayedDelete")
+	span.SetAttributes(
+		attribute2.String("PrefixKey", r.getRedisUserMainPrefixKey()),
+	)
+	span.SetAttributes(attribute2.String("Key", key))
+	defer span.End()
+
+	cacheKey := fmt.Sprintf("%s%s", r.getRedisUserMainPrefixKey(), key)
+	r.redisClient.Del(ctx, cacheKey)
+
 	return nil
 }
 

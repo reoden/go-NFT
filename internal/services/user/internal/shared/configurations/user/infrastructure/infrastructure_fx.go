@@ -2,6 +2,7 @@ package infrastructure
 
 import (
 	"github.com/go-playground/validator"
+	"github.com/reoden/go-NFT/pkg/authcertification"
 	"github.com/reoden/go-NFT/pkg/bloom"
 	"github.com/reoden/go-NFT/pkg/core"
 	"github.com/reoden/go-NFT/pkg/grpc"
@@ -32,6 +33,7 @@ var Module = fx.Module(
 	tracing.Module,
 	metrics.Module,
 	bloom.Module,
+	authcertification.Module,
 
 	// Other provides
 	fx.Provide(validator.New),

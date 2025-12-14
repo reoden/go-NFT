@@ -15,6 +15,11 @@ message User {
   string UserId = 2;
   string Nickname = 3;
   string Phone = 4;
+  string State = 7;
+  bool Certification = 8;
+  string RealName = 9;
+  string IdCardNo = 10;
+  string UserRole = 11;
   google.protobuf.Timestamp CreatedAt = 5;
   google.protobuf.Timestamp UpdatedAt = 6;
 }

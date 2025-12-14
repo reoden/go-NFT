@@ -18,6 +18,45 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
+        "/api/v1/user/auth": {
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "aut certification",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "user Auth certification",
+                "parameters": [
+                    {
+                        "description": "real_name and id_card_number",
+                        "name": "AuthRequestDto",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dtos.AuthRequestDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/dtos.AuthResponseDto"
+                        }
+                    }
+                }
+            }
+        },
         "/api/v1/user/captcha": {
             "post": {
                 "description": "send user captcha",
@@ -190,6 +229,57 @@ const docTemplate = `{
         }
     },
     "definitions": {
+        "constants.UserRoleEnum": {
+            "type": "string",
+            "enum": [
+                "普通用户",
+                "艺术家",
+                "管理员"
+            ],
+            "x-enum-varnames": [
+                "CUSTOMER",
+                "ARTIST",
+                "ADMIN"
+            ]
+        },
+        "constants.UserStateEnum": {
+            "type": "string",
+            "enum": [
+                "创建成功",
+                "实名认证",
+                "上链成功",
+                "冻结"
+            ],
+            "x-enum-varnames": [
+                "User_INIT",
+                "User_AUTH",
+                "User_ACTIVE",
+                "User_FROZEN"
+            ]
+        },
+        "dtos.AuthRequestDto": {
+            "type": "object",
+            "properties": {
+                "id_card_no": {
+                    "type": "string"
+                },
+                "real_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "dtos.AuthResponseDto": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "data": {},
+                "msg": {
+                    "type": "string"
+                }
+            }
+        },
         "dtos.CreateUserRequestDto": {
             "type": "object",
             "properties": {
@@ -264,11 +354,17 @@ const docTemplate = `{
         "v1.UserDto": {
             "type": "object",
             "properties": {
+                "certification": {
+                    "type": "boolean"
+                },
                 "createdAt": {
                     "type": "string"
                 },
                 "id": {
                     "type": "integer"
+                },
+                "id_card_no": {
+                    "type": "string"
                 },
                 "nickname": {
                     "type": "string"
@@ -276,11 +372,20 @@ const docTemplate = `{
                 "phone": {
                     "type": "string"
                 },
+                "real_name": {
+                    "type": "string"
+                },
+                "state": {
+                    "$ref": "#/definitions/constants.UserStateEnum"
+                },
                 "updatedAt": {
                     "type": "string"
                 },
                 "user_id": {
                     "type": "string"
+                },
+                "user_role": {
+                    "$ref": "#/definitions/constants.UserRoleEnum"
                 }
             }
         }

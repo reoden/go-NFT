@@ -6,7 +6,7 @@ import (
 	"github.com/reoden/go-NFT/pkg/core/web/route"
 	customErrors "github.com/reoden/go-NFT/pkg/http/httperrors/customerrors"
 	"github.com/reoden/go-NFT/user/internal/user/dtos/v1/fxparams"
-	"github.com/reoden/go-NFT/user/internal/user/features/creatinguser/v1/commonds"
+	"github.com/reoden/go-NFT/user/internal/user/features/creatinguser/v1/commands"
 	"github.com/reoden/go-NFT/user/internal/user/features/creatinguser/v1/dtos"
 
 	"emperror.dev/errors"
@@ -51,7 +51,7 @@ func (ep *createUserEndpoint) handler() echo.HandlerFunc {
 			return badRequestErr
 		}
 
-		command, err := commonds.NewCreateUserWithValidation(
+		command, err := commands.NewCreateUserWithValidation(
 			request.Phone,
 			request.Captcha,
 		)
@@ -59,7 +59,7 @@ func (ep *createUserEndpoint) handler() echo.HandlerFunc {
 			return err
 		}
 
-		result, err := mediatr.Send[*commonds.CreateUser, *dtos.CreateUserResponseDto](
+		result, err := mediatr.Send[*commands.CreateUser, *dtos.CreateUserResponseDto](
 			ctx,
 			command,
 		)

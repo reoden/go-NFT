@@ -14,4 +14,5 @@ type UserCacheRepository interface {
 	GetCaptcha(ctx context.Context, key string) (string, error)
 	AddTokenBlack(ctx context.Context, token string) error
 	DelayedDelete(ctx context.Context, key string, delay time.Duration) error
+	DelUserById(ctx context.Context, key string) error
 }

@@ -1,4 +1,4 @@
-package commonds
+package commands
 
 import (
 	"regexp"
